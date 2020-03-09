@@ -1,0 +1,30 @@
+Protocol Requirements
+The protocol must display the following features:
+ STATEFUL: Both the client and server must implement and check & validate the statefulness of your protocol. 
+THIS IS VERY IMPORTANT. In other words, you must implement the DFA you created for your protocol design. 
+NOTE: If your protocol DFA did not earn full credit, you must fix the DFA in order to earn full credit for its implementation.
+
+ CONCURRENT: The server must be able to handle multiple clients (either using a process/thread model or select) 
+– both can be found in any programming text or see Cameron or myself.
+
+ SERVICE: The server must bind to a hardcoded port number (you pick this value) and the client defaults to that port number. 
+This must be documented in your protocol design.
+
+ CLIENT: The client must be able to specify the hostname or IP address of the server (be able to specify either). 
+If using peer-to-peer, you must be able to locate any services that you need.
+
+ UI: The user interface of the client isn’t too important here – a command line UI is acceptable. 
+It will be up to your protocol, but the protocol logic should be inside the client, 
+not visible through the UI only the client and server should know the actual protocol commands). 
+In other words, the user should not have to know the protocol commands to get it to work. 
+
+You are required to provide documentation describing how your project satisfies the Protocol Requirements. 
+You must label areas of your code which address each of these requirements. With your submission, 
+include a file that details what files, classes, etc. satisfy each Protocol Requirement. 
+Within each file, you must identify the segments of code that satisfy the requirement. 
+For instance, the code that implements your DFA should begin with a comment that says “STATEFUL”. 
+In the document, you must also indicate whether or not you implemented the extra credit and how.
+
+NOTES:
+- Porting of the code for the socket algorithm(s) (the shell of the client and server) is acceptable
+– but every procedure MUST be accompanied by a reference in the header of where you took the routine (like a term paper). 
