@@ -5,9 +5,7 @@
  * @version 1
  */
 
-// Java implementation for multithreaded chat client 
-// Save file as Client.java 
-package src.client;
+package impt_client;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -17,7 +15,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-public class ChatClient {
+public class ImptClient {
     final static int ServerPort = 1255;
 
     public static void main(String args[]) throws UnknownHostException, IOException {
@@ -32,7 +30,7 @@ public class ChatClient {
         // obtaining input and out streams
         DataInputStream dis = new DataInputStream(socket.getInputStream());
         DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-        ClientAuth clientAuth = new ClientAuth();
+        ImptClientAuth clientAuth = new ImptClientAuth();
         String message = clientAuth.getAuthMessage();
 
         // sendMessage thread

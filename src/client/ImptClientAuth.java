@@ -5,14 +5,14 @@
  * @version 1
  */
 
-package src.client;
+package impt_client;
 
 // import java.util.List;
 import java.util.Scanner;
 
 // import rtce.RTCEMessageType;
 
-public class ClientAuth {
+public class ImptClientAuth {
 
     // Authentication information
     private String username;
