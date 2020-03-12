@@ -1,30 +1,18 @@
 package impt.server;
 
-// import java.util.Map;
+import java.util.*;
 
 import impt.server.handlers.*;
 
 class ImptMessageManger {
     private ClientMessageObject _clientMessageObject;
-    private boolean _isUserLoggedIn = false;
-    private String _outputMessage;
-
-    // public ImptMessageManger(ClientMessageObject clientMessageObject) {
-    // _clientMessageObject = clientMessageObject;
-    // }
-    // public ImptMessageManger(ClientMessageObject clientMessageObject) {
-    // _clientMessageObject = clientMessageObject;
-    // }
-
-    // public ImptMessageManger(boolean isUserLoggedIn) {
-    // _isUserLoggedIn = isUserLoggedIn;
-    // }
 
     public void receiveHandler(String message) {
         boolean isMessageValid = isMessageValid(message);
         String[] messageArr = message.split(" ");
 
         if (isMessageValid) {
+            _clientMessageObject.command = messageArr[1];
             switch (messageArr[1]) {
                 case "AUTH":
                     AuthenticationHandler authHandler = new AuthenticationHandler();
@@ -32,32 +20,44 @@ class ImptMessageManger {
                     authObject = authHandler.authenticate(messageArr[2], messageArr[3]);
                     _clientMessageObject.isUserLoggedIn = authObject.isUserIdLoggedIn;
                     _clientMessageObject.userIdToken = authObject.userIdToken;
-                    _clientMessageObject.message = "AUTH RES " + authObject.userIdToken;
 
                     if (_isUserLoggedIn) {
                         ImptServer.activeUsers.put(authObject.userName, authObject.userIdToken);
+                        _clientMessageObject.message = "AUTH RES " + authObject.userIdToken;
                     }
 
-                    // for (Map.Entry<String, String> entry : ImptServer.activeUsers.entrySet()) {
-                    // // if the recipient is found, write on its
-                    // // output stream
-                    // if (mc.name.equals(recipient) && mc._isloggedin == true) {
-                    // mc.dos.writeUTF(this.name + " : " + MsgToSend);
-                    // break;
-                    // }
-                    // }
+                    if (authObject.hasAuthError) {
+                        _clientMessageObject.message = "ERR_AUTH BEGIN authError";
+                    }
+                    break;
 
                 case "INIT":
-                    // code block
+                    InitHandler initHandler = new InitHandler();
+                    InitHandler.InitObject initObject = new InitHandler.InitObject();
+                    String initUsername;
+                    for (Map.Entry<String, String> entry : ImptServer.activeUsers.entrySet()) {
+                        if (messageArr[3].equals(entry.getValue())) {
+                            initUsername = entry.getKey();
+                            break;
+                        }
+                    }
+
+                    initObject = initHandler.initialize(messageArr[2], initUsername);
+
+                    _clientMessageObject.userIdToken = initObject.userIdToken;
+
+                    if (initObject.hasInitError) {
+                        _clientMessageObject.message = "ERR_INIT BEGIN initError";
+                    } else {
+                        _clientMessageObject.message = "INIT_RQST BEGIN " + initObject.userIdToken + " "
+                                + initObject.initUserName;
+                    }
+
                     break;
                 default:
                     // code block
             }
         }
-        // figure out what kind of message it is
-        // authenticate -> invoke authenticationHandler
-        // chat -> invoke chatHandler
-        // payment -> invoke paymentHandler
     }
 
     public boolean isMessageValid(String message) {
@@ -68,42 +68,16 @@ class ImptMessageManger {
         return true;
     }
 
-    // public boolean getIsUserLoggedIn() {
-    // return _isUserLoggedIn;
-    // }
-
-    // public String GetCommand() {
-    // return _clientMessageObject.command;
-    // }
-
-    // public String GetMessageStatus() {
-    // return _clientMessageObject.messageStatus;
-    // }
-
     public ClientMessageObject getClientMessageObject() {
         return _clientMessageObject;
     }
 
-    public String getMessage() {
-        return _outputMessage;
-    }
-
-    public boolean getIsUserLoggedIn() {
-        return _isUserLoggedIn;
-    }
-
-    // public String GetToken() {
-    // return _clientMessageObject.token;
-    // }
-
-    // public String GetOptionalParam() {
-    // return _clientMessageObject.optionalParam;
-    // }
-
     public static class ClientMessageObject {
         public boolean isUserLoggedIn;
         public String userIdToken;
+        // public String recipientIdToken;
         public String message;
+        public String command;
 
     }
 }

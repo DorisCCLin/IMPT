@@ -18,10 +18,11 @@ import java.util.Scanner;
 public class ImptClient {
     final static int ServerPort = 1234;
 
-    private static boolean _isLoggedIn = false;
-
-    // private int _currentSequenceId;
-    // private int _nextSequenceId;
+    public static boolean _isLoggedIn = false;
+    public static boolean _isConnectedToOther = false;
+    public static String _recipientUserName;
+    public static String _recipientUserIdToken;
+    public static String _myUserIdToken;
 
     public static void main(String args[]) throws UnknownHostException, IOException {
         Scanner scanner = new Scanner(System.in);
@@ -33,10 +34,8 @@ public class ImptClient {
         Socket socket = new Socket(ip, ServerPort);
 
         // obtaining input and out streams
-        DataInputStream dis = new DataInputStream(socket.getInputStream());
-        DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-        // ImptClientAuth clientAuth = new ImptClientAuth();
-        // String message = clientAuth.getAuthMessage();
+        DataInputStream inputStream = new DataInputStream(socket.getInputStream());
+        DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
 
         // sendMessage thread
         Thread sendMessage = new Thread(new Runnable() {
@@ -44,31 +43,40 @@ public class ImptClient {
             public void run() {
 
                 try {
+                    while (true) {
+                        if (!_isLoggedIn) {
+                            ImptClientAuth clientAuth = new ImptClientAuth();
+                            String message = clientAuth.getAuthInfo();
+                            outputStream.writeUTF(message);
+                            System.out.println("logging in...");
+                        } else {
+                            if (!_isConnectedToOther) {
+                                ImptClientInit clientInit = new ImptClientInit();
+                                String message = clientInit.getInitInfo();
+                                _recipientUserName = clientInit.getRecipientUsername();
+                                outputStream.writeUTF(message);
+                                System.out.println("Checking if " + _recipientUserIdToken + " is online...");
 
-                    if (!_isLoggedIn) {
-                        ImptClientAuth clientAuth = new ImptClientAuth();
-                        String message = clientAuth.getAuthMessage();
-                        dos.writeUTF(message);
-                        _isLoggedIn = true;
+                            } else {
 
-                    } else {
-                        // read the message to deliver.
-                        while (true) {
-                            Scanner generalInput = new Scanner(System.in);
-                            String message = generalInput.nextLine();
+                                Scanner generalInput = new Scanner(System.in);
+                                String message = generalInput.nextLine();
 
-                            if (message.equals("logout")) {
-                                _isLoggedIn = false;
-                                socket.close();
-                                scanner.close();
-                                System.out.println("Good-bye!");
-                                break;
+                                if (message.equals("logout")) {
+                                    _isLoggedIn = false;
+                                    socket.close();
+                                    scanner.close();
+                                    System.out.println("Good-bye!");
+                                    break;
+                                }
+
+                                // write on the output stream
+                                outputStream.writeUTF(message);
                             }
-
-                            // write on the output stream
-                            dos.writeUTF(message);
                         }
+                        scanner.close();
                     }
+
                 } catch (IOException e) {
                     e.printStackTrace();
 
@@ -97,14 +105,31 @@ public class ImptClient {
                 while (true) {
                     try {
                         // read the message sent to this client
-                        String msg = dis.readUTF();
-                        System.out.println(msg);
+                        String message = inputStream.readUTF();
+                        System.out.println(message);
+
+                        if (!_isLoggedIn) {
+                            ImptClientAuth clientAuth = new ImptClientAuth();
+                            clientAuth.handleInputMessage(message);
+                        } else {
+                            String[] messageArr = message.split(" ");
+
+                            switch (messageArr[0]) {
+                                case "INT_RQST":
+                                    ImptClientInit clientInit = new ImptClientInit();
+                                    clientInit.handleConnectRequest(messageArr[3]);
+                                    break;
+                                default:
+                            }
+                        }
                     } catch (IOException e) {
 
                         e.printStackTrace();
                     }
                 }
+
             }
+
         });
 
         sendMessage.start();

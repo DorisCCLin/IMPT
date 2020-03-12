@@ -16,11 +16,12 @@ public class AuthenticationHandler {
                 _authenticationObject.isUserIdLoggedIn = true;
                 return _authenticationObject;
             } else {
+                _authenticationObject.hasAuthError = true;
                 return _authenticationObject;
             }
 
         } else {
-
+            _authenticationObject.hasAuthError = true;
             return _authenticationObject;
         }
     }
@@ -29,6 +30,7 @@ public class AuthenticationHandler {
         public String userName;
         public String userIdToken = "";
         public boolean isUserIdLoggedIn = false;
+        public boolean hasAuthError = false;
 
     }
 }

@@ -7,111 +7,44 @@
 
 package impt.client;
 
-// import java.util.List;
 import java.util.Scanner;
 
 public class ImptClientAuth {
 
     // Authentication information
-    private String username;
-    private String password;
-    private String version = "IMPT 1.0";
+    private String _username;
+    private String _password;
+    private String _version = "IMPT 1.0";
 
-    public ImptClientAuth() {
-
-    }
-
-    public String getAuthMessage() {
+    public String getAuthInfo() {
         Scanner myObj = new Scanner(System.in); // Create a Scanner object
         System.out.println("Enter username");
-        username = myObj.nextLine(); // Read user input
+        _username = myObj.nextLine(); // Read user input
 
         System.out.println("Enter password:"); // Output user input
-        password = myObj.nextLine();
+        _password = myObj.nextLine();
 
-        return buildMessage(username, password);
+        return buildOutputMessage(_username, _password);
     }
 
     /**
      * Build the client authentication message
      */
-    private String buildMessage(String username, String password) {
-
+    private String buildOutputMessage(String username, String password) {
         // need encrypted password and username
-
         return "AUTH BEGIN " + username + " " + password;
     }
 
-    // /**
-    // * Get the client authentication message
-    // *
-    // * @return the client authentication message
-    // */
-    // public RTCEClientMessage getClientMessage() {
-    // return clientMessage;
-    // }
-
-    // /**
-    // * Get the server connection response
-    // *
-    // * @return the server connection response
-    // */
-    // public RTCEClientMessage getServerMessage() {
-    // return serverMessage;
-    // }
-
-    // /**
-    // * Get the client acknowledgement message
-    // *
-    // * @return the client acknowledgement message
-    // */
-    // public RTCEClientMessage getCack() {
-    // return cack;
-    // }
-
-    // /**
-    // * Set the server connection response
-    // *
-    // * @param serverMessage = the server connection response
-    // */
-    // public void setServerMessage(RTCEClientMessage serverMessage) {
-    // this.serverMessage = serverMessage;
-    // }
-
-    // /**
-    // * Get the ordered array of desired encryption options
-    // *
-    // * @return an ordered string array
-    // */
-    // private String[] getEncryptOpts() {
-    // List<String> encrypt = RTCEClientConfig.getDesiredEncrypts();
-    // return encrypt.toArray(new String[encrypt.size()]);
-    // }
-
-    // /**
-    // * Get the array of desired generic options
-    // *
-    // * @return a string array
-    // */
-    // private String[] getGenericOpts() {
-    // List<String> opts = RTCEClientConfig.getDesiredOpts();
-    // return opts.toArray(new String[opts.size()]);
-    // }
-
-    // /**
-    // * Generate and return the client connection object
-    // *
-    // * @return the client connection object
-    // */
-    // public RTCEClientConnection getConnection() {
-    // String encrypt = serverMessage.getEncryptOpts()[0];
-    // String opts[] = serverMessage.getGenericOpts();
-    // String sec[] = serverMessage.getSharedSecrets();
-    // long session = serverMessage.getSessionId();
-    // byte version[] = serverMessage.getVersion();
-    // cack = new RTCEClientMessage();
-    // cack.setSessionId(session);
-    // cack.setRequest(RTCEMessageType.CACK);
-    // return new RTCEClientConnection(encrypt, opts, sec, null, session, version);
-    // }
+    public void handleInputMessage(String message) {
+        String[] messageArr = message.split(" ");
+        // need encrypted password and username
+        if (messageArr[0] == "ERR_AUTH") {
+            System.out.println("Opps, the username and password don't match, try again?");
+            getAuthInfo();
+        } else if (messageArr[0] == "AUTH") {
+            ImptClient._myUserIdToken = messageArr[2];
+            System.out.println("Logged in successfully");
+            ImptClient._isLoggedIn = true;
+        }
+    }
 }

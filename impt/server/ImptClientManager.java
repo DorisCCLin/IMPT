@@ -52,21 +52,24 @@ class ImptClientManager implements Runnable {
                 ImptMessageManger.ClientMessageObject clientMessageObject = new ImptMessageManger.ClientMessageObject();
                 clientMessageObject = imptMessageManger.getClientMessageObject();
 
-                // _outputMessage = imptMessageManger.getMessage();
-                // _isUserLoggedIn = imptMessageManger.getIsUserLoggedIn();
-
-                if (clientMessageObject.isUserLoggedIn) {
-                    ImptServer.activeSockets.put(clientMessageObject.userIdToken, this._socket);
-                }
-                this._dataOutputStream.writeUTF(_outputMessage);
-                // _isUserLoggedIn = imptMessageManger.getIsUserLoggedIn();
-
-                // ImptServer.activeUsers.add(this);
                 System.out.println(ImptServer.activeUsers);
                 System.out.println(_outputMessage);
 
+                switch (clientMessageObject.command) {
+                    case "AUTH":
+                        if (clientMessageObject.isUserLoggedIn) {
+                            ImptServer.activeSockets.put(clientMessageObject.userIdToken, this);
+                        }
+                        this._dataOutputStream.writeUTF(_outputMessage);
+                        break;
+                    case "INIT":
+                        ImptClientManager recipientImptClientManager = ImptServer.activeSockets
+                                .get(clientMessageObject.userIdToken);
+                        recipientImptClientManager._dataOutputStream.writeUTF(_outputMessage);
+                        break;
+                }
+
                 if (receivedMessage.equals("logout")) {
-                    // this._isUserLoggedIn = false;
                     this._socket.close();
                     break;
                 }
@@ -102,27 +105,4 @@ class ImptClientManager implements Runnable {
             e.printStackTrace();
         }
     }
-
-    // private void SetNextSequenceId() {
-    // int maxValue = _currentSequenceId + SEQUENCE_MAX_DELTA;
-    // _nextSequenceId = (int) (Math.random() * ((maxValue - _currentSequenceId) +
-    // 1)) + _currentSequenceId;
-    // }
-
-    // class SequenceMapper {
-    // public String sourceClientGuid;
-    // public List<DestinationClient> destinationClients = new
-    // List<DestinationClient>();
-
-    // class DestinationClient {
-    // public String destinationClientGuid;
-    // public int currentSequenceId;
-    // public int nextSequenceId;
-    // }
-
-    // public void AddDestinationClient(String clientId)
-    // {
-    // if(destinationClients.contains)
-    // }
-    // }
 }

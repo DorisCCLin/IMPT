@@ -12,7 +12,7 @@ public class ImptServer {
 
     // Vector to store active clients
     public static Map<String, String> activeUsers = new HashMap<String, String>();
-    public static Map<String, Socket> activeSockets = new HashMap<String, Socket>();
+    public static Map<String, ImptClientManager> activeSockets = new HashMap<String, ImptClientManager>();
 
     public static void main(String[] args) throws IOException {
         // server is listening on port 1234
