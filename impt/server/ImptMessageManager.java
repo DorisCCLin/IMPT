@@ -34,7 +34,7 @@ class ImptMessageManger {
 
                             _clientMessageObject.initCurrentUserMessage = "INIT BEGIN " + prevUsername + " "
                                     + prevUserIdToken;
-                            _clientMessageObject.initExistingUserMessage = "INIT BEGIN " + authObject.userName
+                            _clientMessageObject.initExistingUserMessage = "INIT BEGIN " + authObject.userName + " "
                                     + authObject.userIdToken;
                         }
 
@@ -46,6 +46,33 @@ class ImptMessageManger {
                         _clientMessageObject.message = "ERR_AUTH BEGIN authError";
                     }
                     break;
+                case "DISCONNECT":
+                    _clientMessageObject.userIdToken = messageArr[2];
+
+                    if (ImptServer.activeUsers.size() > 1) {
+                        String currentUsername = "";
+                        for (Map.Entry<String, String> entry : ImptServer.activeUsers.entrySet()) {
+                            if (entry.getValue().equals(messageArr[2])) {
+                                currentUsername = entry.getKey();
+                            }
+                        }
+
+                        String otherUserIdToken = messageArr[2];
+                        _clientMessageObject.prevUserIdToken = otherUserIdToken;
+
+                        _clientMessageObject.initExistingUserMessage = "DISCONNECT FIN " + currentUsername + " "
+                                + messageArr[2];
+                    }
+                    while (ImptServer.activeUsers.values().remove(_clientMessageObject.userIdToken))
+                        ;
+                    String prevUsername = ImptServer.activeUsers.keySet().iterator().next();
+                    String prevUserIdToken = ImptServer.activeUsers.get(prevUsername);
+                    _clientMessageObject.prevUserIdToken = prevUserIdToken;
+
+                    _clientMessageObject.message = "DISCONNECT FIN";
+
+                    System.out.println(ImptServer.activeUsers);
+
                 default:
                     // code block
             }

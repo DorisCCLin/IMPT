@@ -20,7 +20,7 @@ public class ImptClientAuth {
         System.out.println("Enter password:"); // Output user input
         String password = myObj.nextLine();
 
-        myObj.close();
+        // myObj.close();
 
         return username + " " + password;
     }

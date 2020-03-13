@@ -63,14 +63,28 @@ class ImptClientManager implements Runnable {
                             recipientImptClientManager._dataOutputStream
                                     .writeUTF(clientMessageObject.initExistingUserMessage);
                         }
+                        break;
+                    case "DISCONNECT":
+                        if (ImptServer.activeUsers.size() > 0) {
+                            this._dataOutputStream.writeUTF(clientMessageObject.message);
+                            ImptClientManager recipientImptClientManager = ImptServer.activeSockets
+                                    .get(clientMessageObject.prevUserIdToken);
+
+                            recipientImptClientManager._dataOutputStream
+                                    .writeUTF(clientMessageObject.initExistingUserMessage);
+                        } else {
+                            this._dataOutputStream.writeUTF(clientMessageObject.message);
+
+                        }
 
                         break;
+
                 }
 
-                if (receivedMessage.equals("logout")) {
-                    this._socket.close();
-                    break;
-                }
+                // if (receivedMessage.equals("logout")) {
+                // this._socket.close();
+                // break;
+                // }
 
                 // for (ImptClientManager mc : ImptServer.ar) {
                 // // if the recipient is found, write on its
@@ -83,21 +97,21 @@ class ImptClientManager implements Runnable {
 
             } catch (IOException e) {
                 e.printStackTrace();
-            } catch (Exception ex) {
-                try {
-                    this._socket.close();
-                } catch (Exception ex2) {
-                    ex2.printStackTrace();
-                }
+                // } catch (Exception ex) {
+                // try {
+                // this._socket.close();
+                // } catch (Exception ex2) {
+                // ex2.printStackTrace();
+                // }
             }
         }
 
-        try {
-            // closing resources
-            this._dataInputStream.close();
-            this._dataOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // try {
+        // // closing resources
+        // this._dataInputStream.close();
+        // this._dataOutputStream.close();
+        // } catch (IOException e) {
+        // e.printStackTrace();
+        // }
     }
 }

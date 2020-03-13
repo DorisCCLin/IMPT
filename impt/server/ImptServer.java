@@ -36,6 +36,8 @@ public class ImptServer {
 
             System.out.println("Creating a new handler for this client...");
 
+            // TODO: Create ImptClientManager and add to a Thread THEN establish connection
+            // (Create an Init function instead of constructor)
             // Create a new handler object for handling this request.
             ImptClientManager imptClientManager = new ImptClientManager(socket, inputStream, outputStream);
 
