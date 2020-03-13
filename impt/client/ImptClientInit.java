@@ -12,46 +12,45 @@ import java.util.Scanner;
 public class ImptClientInit {
     // Init information
     private String _recipientUsername;
-    private String _acceptMessage;
+    private String _disconnectMessage;
 
-    // public String getInitInfo() {
-    // Scanner myObj = new Scanner(System.in); // Create a Scanner object
-    // System.out.println("Hi there, who would you like to connect today?");
-    // System.out.println("Enter username");
-    // _recipientUsername = myObj.nextLine(); // Read user input
-
-    // return buildOutputMessage(_recipientUsername);
-    // }
-
-    /**
-     * Build the client authentication message
-     */
-    private String buildOutputMessage(String username) {
-        System.out.println("checking if " + username + " is online...");
-        return "INIT BEGIN " + username + " " + ImptClient._myUserIdToken;
+    public void handleIncomingConnect(String initUsername, String initUserIdToken) {
+        switch (initUsername) {
+            case "none":
+                System.out.println("You are the only one online, idling...");
+                System.out.println("(type 'logout' anytime to exit)");
+                break;
+            default:
+                ImptClient._recipientUserName = initUsername;
+                ImptClient._recipientUserIdToken = initUserIdToken;
+                System.out.println(initUsername + " is now connected with you.");
+                System.out.println("(type 'logout' anytime to exit)");
+        }
+        return;
     }
 
-    public void handleConnectRequest(String initUsername) {
-
-        System.out.println(initUsername + " wants to connect to you, okay? (y/n)");
+    public void handleDisconnect() {
         Scanner myObj = new Scanner(System.in); // Create a Scanner object
+        System.out.println("Are you sure?(y/n)");
         String response = myObj.nextLine();
-
-        if (response == "y" || response == "n") {
-            if (response == "y") {
-                System.out.println("if you can get here" + initUsername);
+        if (response.equals("y") || response.equals("n")) {
+            if (response.equals("y")) {
+                _disconnectMessage = "DISCONNECT BEGIN " + ImptClient._myUserIdToken;
             } else {
-                System.out.println("if you can get here");
+                return;
             }
 
         } else {
-            System.out.println("if you can get here" + initUsername);
+            handleDisconnect();
         }
 
-        myObj.close();
     }
 
     public String getRecipientUsername() {
         return _recipientUsername;
+    }
+
+    public String getDisconnectMessage() {
+        return _disconnectMessage;
     }
 }

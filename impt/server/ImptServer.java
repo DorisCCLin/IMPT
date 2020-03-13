@@ -20,6 +20,8 @@ public class ImptServer {
         ServerSocket serverSocket = new ServerSocket(1234);
         Socket socket;
 
+        System.out.println("IMPT Server Started");
+
         // running infinite loop for getting
         // client request
         while (true) {

@@ -80,17 +80,22 @@ class ImptClientManager implements Runnable {
                 // break;
                 // }
                 // }
+
             } catch (IOException e) {
-
                 e.printStackTrace();
+            } catch (Exception ex) {
+                try {
+                    this._socket.close();
+                } catch (Exception ex2) {
+                    ex2.printStackTrace();
+                }
             }
-
         }
+
         try {
             // closing resources
             this._dataInputStream.close();
             this._dataOutputStream.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

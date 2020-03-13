@@ -26,14 +26,16 @@ class ImptMessageManger {
                         _clientMessageObject.message = "AUTH RES " + authObject.userIdToken;
 
                         if (ImptServer.activeUsers.size() == 0) {
-                            _clientMessageObject.initNoneUserMessage = "INIT BEGIN none";
+                            _clientMessageObject.initNoneUserMessage = "INIT BEGIN none none";
                         } else {
                             String prevUsername = ImptServer.activeUsers.keySet().iterator().next();
                             String prevUserIdToken = ImptServer.activeUsers.get(prevUsername);
                             _clientMessageObject.prevUserIdToken = prevUserIdToken;
 
-                            _clientMessageObject.initCurrentUserMessage = "INIT BEGIN " + prevUsername;
-                            _clientMessageObject.initExistingUserMessage = "INIT BEGIN " + authObject.userName;
+                            _clientMessageObject.initCurrentUserMessage = "INIT BEGIN " + prevUsername + " "
+                                    + prevUserIdToken;
+                            _clientMessageObject.initExistingUserMessage = "INIT BEGIN " + authObject.userName
+                                    + authObject.userIdToken;
                         }
 
                         ImptServer.activeUsers.put(authObject.userName, authObject.userIdToken);
