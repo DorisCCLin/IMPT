@@ -13,7 +13,8 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Scanner;
+import java.util.*;
+import static java.util.Map.entry;
 
 public class ImptClient {
     final static int ServerPort = 1234;
@@ -43,37 +44,38 @@ public class ImptClient {
             public void run() {
 
                 try {
-                    while (true) {
-                        if (!_isLoggedIn) {
-                            ImptClientAuth clientAuth = new ImptClientAuth();
-                            String message = clientAuth.getAuthInfo();
-                            outputStream.writeUTF(message);
-                            System.out.println("logging in...");
-                        } else {
-                            if (!_isConnectedToOther) {
-                                ImptClientInit clientInit = new ImptClientInit();
-                                String message = clientInit.getInitInfo();
-                                _recipientUserName = clientInit.getRecipientUsername();
-                                outputStream.writeUTF(message);
-                                System.out.println("Checking if " + _recipientUserIdToken + " is online...");
 
-                            } else {
+                    if (!_isLoggedIn) {
+                        ImptClientAuth clientAuth = new ImptClientAuth();
+                        String message = clientAuth.getAuthInfo();
+                        outputStream.writeUTF(message);
+                        System.out.println("logging in...");
+                    } else {
+                        // if (!_isConnectedToOther) {
+                        // // ImptClientInit clientInit = new ImptClientInit();
+                        // // String message = clientInit.getInitInfo();
+                        // // _recipientUserName = clientInit.getRecipientUsername();
+                        // // outputStream.writeUTF(message);
+                        // // System.out.println("Checking if " + _recipientUserIdToken + " is
+                        // online...");
 
-                                Scanner generalInput = new Scanner(System.in);
-                                String message = generalInput.nextLine();
+                        // } else {
+                        while (true) {
+                            Scanner generalInput = new Scanner(System.in);
+                            String message = generalInput.nextLine();
 
-                                if (message.equals("logout")) {
-                                    _isLoggedIn = false;
-                                    socket.close();
-                                    scanner.close();
-                                    System.out.println("Good-bye!");
-                                    break;
-                                }
-
-                                // write on the output stream
-                                outputStream.writeUTF(message);
+                            if (message.equals("logout")) {
+                                _isLoggedIn = false;
+                                socket.close();
+                                scanner.close();
+                                System.out.println("Good-bye!");
+                                break;
                             }
+
+                            // write on the output stream
+                            outputStream.writeUTF(message);
                         }
+                        // }
                         scanner.close();
                     }
 
@@ -111,16 +113,15 @@ public class ImptClient {
                         if (!_isLoggedIn) {
                             ImptClientAuth clientAuth = new ImptClientAuth();
                             clientAuth.handleInputMessage(message);
-                        } else {
-                            String[] messageArr = message.split(" ");
+                            // ImptClientInit clientInit = new ImptClientInit();
 
-                            switch (messageArr[0]) {
-                                case "INT_RQST":
-                                    ImptClientInit clientInit = new ImptClientInit();
-                                    clientInit.handleConnectRequest(messageArr[3]);
-                                    break;
-                                default:
-                            }
+                            // String initMessage = clientInit.getInitInfo();
+                            // _recipientUserName = clientInit.getRecipientUsername();
+                            // outputStream.writeUTF(initMessage);
+                            // System.out.println("Checking if " + _recipientUserIdToken + " is online...");
+                        } else {
+                            System.out.println("user is logged in");
+
                         }
                     } catch (IOException e) {
 

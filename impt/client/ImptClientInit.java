@@ -7,7 +7,6 @@
 
 package impt.client;
 
-// import java.util.List;
 import java.util.Scanner;
 
 public class ImptClientInit {
@@ -15,14 +14,14 @@ public class ImptClientInit {
     private String _recipientUsername;
     private String _acceptMessage;
 
-    public String getInitInfo() {
-        Scanner myObj = new Scanner(System.in); // Create a Scanner object
-        System.out.println("Hi there, who would you like to connect today?");
-        System.out.println("Enter username");
-        _recipientUsername = myObj.nextLine(); // Read user input
+    // public String getInitInfo() {
+    // Scanner myObj = new Scanner(System.in); // Create a Scanner object
+    // System.out.println("Hi there, who would you like to connect today?");
+    // System.out.println("Enter username");
+    // _recipientUsername = myObj.nextLine(); // Read user input
 
-        return buildOutputMessage(_recipientUsername);
-    }
+    // return buildOutputMessage(_recipientUsername);
+    // }
 
     /**
      * Build the client authentication message

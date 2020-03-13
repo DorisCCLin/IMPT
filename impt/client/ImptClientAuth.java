@@ -38,10 +38,10 @@ public class ImptClientAuth {
     public void handleInputMessage(String message) {
         String[] messageArr = message.split(" ");
         // need encrypted password and username
-        if (messageArr[0] == "ERR_AUTH") {
+        if (messageArr[0].equals("ERR_AUTH")) {
             System.out.println("Opps, the username and password don't match, try again?");
             getAuthInfo();
-        } else if (messageArr[0] == "AUTH") {
+        } else if (messageArr[0].equals("AUTH")) {
             ImptClient._myUserIdToken = messageArr[2];
             System.out.println("Logged in successfully");
             ImptClient._isLoggedIn = true;

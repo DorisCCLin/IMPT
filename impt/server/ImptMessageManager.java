@@ -5,15 +5,15 @@ import java.util.*;
 import impt.server.handlers.*;
 
 class ImptMessageManger {
-    private ClientMessageObject _clientMessageObject;
+    private ClientMessageObject _clientMessageObject = new ClientMessageObject();
 
     public void receiveHandler(String message) {
         boolean isMessageValid = isMessageValid(message);
         String[] messageArr = message.split(" ");
 
         if (isMessageValid) {
-            _clientMessageObject.command = messageArr[1];
-            switch (messageArr[1]) {
+            _clientMessageObject.command = messageArr[0];
+            switch (messageArr[0]) {
                 case "AUTH":
                     AuthenticationHandler authHandler = new AuthenticationHandler();
                     AuthenticationHandler.AuthenticationObject authObject = new AuthenticationHandler.AuthenticationObject();
@@ -21,38 +21,28 @@ class ImptMessageManger {
                     _clientMessageObject.isUserLoggedIn = authObject.isUserIdLoggedIn;
                     _clientMessageObject.userIdToken = authObject.userIdToken;
 
-                    if (_isUserLoggedIn) {
-                        ImptServer.activeUsers.put(authObject.userName, authObject.userIdToken);
+                    if (authObject.isUserIdLoggedIn) {
+
                         _clientMessageObject.message = "AUTH RES " + authObject.userIdToken;
+
+                        if (ImptServer.activeUsers.size() == 0) {
+                            _clientMessageObject.initNoneUserMessage = "INIT BEGIN none";
+                        } else {
+                            String prevUsername = ImptServer.activeUsers.keySet().iterator().next();
+                            String prevUserIdToken = ImptServer.activeUsers.get(prevUsername);
+                            _clientMessageObject.prevUserIdToken = prevUserIdToken;
+
+                            _clientMessageObject.initCurrentUserMessage = "INIT BEGIN " + prevUsername;
+                            _clientMessageObject.initExistingUserMessage = "INIT BEGIN " + authObject.userName;
+                        }
+
+                        ImptServer.activeUsers.put(authObject.userName, authObject.userIdToken);
+
                     }
 
                     if (authObject.hasAuthError) {
                         _clientMessageObject.message = "ERR_AUTH BEGIN authError";
                     }
-                    break;
-
-                case "INIT":
-                    InitHandler initHandler = new InitHandler();
-                    InitHandler.InitObject initObject = new InitHandler.InitObject();
-                    String initUsername;
-                    for (Map.Entry<String, String> entry : ImptServer.activeUsers.entrySet()) {
-                        if (messageArr[3].equals(entry.getValue())) {
-                            initUsername = entry.getKey();
-                            break;
-                        }
-                    }
-
-                    initObject = initHandler.initialize(messageArr[2], initUsername);
-
-                    _clientMessageObject.userIdToken = initObject.userIdToken;
-
-                    if (initObject.hasInitError) {
-                        _clientMessageObject.message = "ERR_INIT BEGIN initError";
-                    } else {
-                        _clientMessageObject.message = "INIT_RQST BEGIN " + initObject.userIdToken + " "
-                                + initObject.initUserName;
-                    }
-
                     break;
                 default:
                     // code block
@@ -73,11 +63,14 @@ class ImptMessageManger {
     }
 
     public static class ClientMessageObject {
-        public boolean isUserLoggedIn;
-        public String userIdToken;
-        // public String recipientIdToken;
-        public String message;
-        public String command;
+        public boolean isUserLoggedIn = false;
+        public String userIdToken = "";
+        public String prevUserIdToken = "";
+        public String initNoneUserMessage = "";
+        public String initCurrentUserMessage = "";
+        public String initExistingUserMessage = "";
+        public String message = "";
+        public String command = "";
 
     }
 }

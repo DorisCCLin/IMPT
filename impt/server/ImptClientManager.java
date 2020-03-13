@@ -14,17 +14,6 @@ class ImptClientManager implements Runnable {
     final DataOutputStream _dataOutputStream;
     Socket _socket;
     private String _outputMessage;
-    // private boolean _isUserLoggedIn = false;
-    // static Vector<ImptClientManager> activeUsers = new Vector<>();
-
-    // private int SEQUENCE_MAX_DELTA = 20;
-
-    // private int _currentSequenceId;
-    // private int _nextSequenceId;
-
-    // private enum _command {
-    // LOGIN, LOGOUT, CHAT, AUTH, PAYMENT
-    // };
 
     // constructor
     public ImptClientManager(Socket socket, DataInputStream dataInputStream, DataOutputStream dataOutputStream) {
@@ -51,21 +40,30 @@ class ImptClientManager implements Runnable {
 
                 ImptMessageManger.ClientMessageObject clientMessageObject = new ImptMessageManger.ClientMessageObject();
                 clientMessageObject = imptMessageManger.getClientMessageObject();
+                _outputMessage = clientMessageObject.message;
 
-                System.out.println(ImptServer.activeUsers);
                 System.out.println(_outputMessage);
 
                 switch (clientMessageObject.command) {
                     case "AUTH":
                         if (clientMessageObject.isUserLoggedIn) {
                             ImptServer.activeSockets.put(clientMessageObject.userIdToken, this);
+                            System.out.println(ImptServer.activeUsers);
                         }
+
                         this._dataOutputStream.writeUTF(_outputMessage);
-                        break;
-                    case "INIT":
-                        ImptClientManager recipientImptClientManager = ImptServer.activeSockets
-                                .get(clientMessageObject.userIdToken);
-                        recipientImptClientManager._dataOutputStream.writeUTF(_outputMessage);
+
+                        if (ImptServer.activeUsers.size() == 1) {
+                            this._dataOutputStream.writeUTF(clientMessageObject.initNoneUserMessage);
+                        } else {
+                            // send to current user
+                            this._dataOutputStream.writeUTF(clientMessageObject.initCurrentUserMessage);
+                            ImptClientManager recipientImptClientManager = ImptServer.activeSockets
+                                    .get(clientMessageObject.prevUserIdToken);
+                            recipientImptClientManager._dataOutputStream
+                                    .writeUTF(clientMessageObject.initExistingUserMessage);
+                        }
+
                         break;
                 }
 
@@ -73,14 +71,6 @@ class ImptClientManager implements Runnable {
                     this._socket.close();
                     break;
                 }
-
-                // break the string into message and recipient part
-                // StringTokenizer st = new StringTokenizer(received, "#");
-                // String MsgToSend = st.nextToken();
-                // String recipient = st.nextToken();
-
-                // search for the recipient in the connected devices list.
-                // ar is the vector storing client of active users
 
                 // for (ImptClientManager mc : ImptServer.ar) {
                 // // if the recipient is found, write on its
