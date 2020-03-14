@@ -5,8 +5,8 @@ import static java.util.Map.entry;
 
 public class AuthenticationHandler {
     private static AuthenticationObject _authenticationObject;
-    private static Map<String, String> _credentials = Map.ofEntries(entry("Doris", "Doris1"), entry("Calvin", "ca1vin"),
-            entry("Brian", "password"));
+    private static Map<String, String> _credentials = Map.ofEntries(entry("Doris", "doris1"), entry("Calvin", "ca1vin1"),
+            entry("Brian", "brian1"), entry("Emily", "emily1"));
 
     public AuthenticationObject authenticate(String userName, String password) {
         _authenticationObject = new AuthenticationObject();
@@ -34,6 +34,5 @@ public class AuthenticationHandler {
         public String userIdToken = "";
         public boolean isUserIdLoggedIn = false;
         public boolean hasAuthError = false;
-
     }
 }

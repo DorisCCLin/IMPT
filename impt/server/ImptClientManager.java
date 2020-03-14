@@ -4,8 +4,7 @@ import java.io.*;
 import java.util.*;
 import java.net.*;
 
-import impt.server.*;
-// import impt.common.*;
+import impt.common.*;
 
 class ImptClientManager implements Runnable {
     Scanner scn = new Scanner(System.in);
@@ -13,7 +12,9 @@ class ImptClientManager implements Runnable {
     final DataInputStream _dataInputStream;
     final DataOutputStream _dataOutputStream;
     Socket _socket;
+
     private String _outputMessage;
+    private ImptLogger _logger = new ImptLogger();
 
     // constructor
     public ImptClientManager(Socket socket, DataInputStream dataInputStream, DataOutputStream dataOutputStream) {
@@ -33,7 +34,7 @@ class ImptClientManager implements Runnable {
             try {
                 // receive the string
                 receivedMessage = _dataInputStream.readUTF();
-                System.out.println(receivedMessage);
+                _logger.printLog(this.getClass().toString(), receivedMessage);
 
                 ImptMessageManger imptMessageManger = new ImptMessageManger();
                 imptMessageManger.receiveHandler(receivedMessage);
@@ -42,13 +43,13 @@ class ImptClientManager implements Runnable {
                 clientMessageObject = imptMessageManger.getClientMessageObject();
                 _outputMessage = clientMessageObject.message;
 
-                System.out.println(_outputMessage);
+                _logger.printLog(this.getClass().toString(), _outputMessage);
 
                 switch (clientMessageObject.command) {
                     case "AUTH":
                         if (clientMessageObject.isUserLoggedIn) {
                             ImptServer.activeSockets.put(clientMessageObject.userIdToken, this);
-                            System.out.println(ImptServer.activeUsers);
+                            System.out.println("Active Users[ClientManager]: " + ImptServer.activeUsers);
                         }
 
                         this._dataOutputStream.writeUTF(_outputMessage);
@@ -95,8 +96,11 @@ class ImptClientManager implements Runnable {
                 // }
                 // }
 
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                StringWriter errors = new StringWriter();
+                e.printStackTrace(new PrintWriter(errors));
+                _logger.printLog(this.getClass().toString(),
+                        " !! Error Encountered: " + errors.toString());
                 // } catch (Exception ex) {
                 // try {
                 // this._socket.close();

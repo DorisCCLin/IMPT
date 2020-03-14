@@ -71,7 +71,7 @@ class ImptMessageManger {
 
                     _clientMessageObject.message = "DISCONNECT FIN";
 
-                    System.out.println(ImptServer.activeUsers);
+                    System.out.println("Active Users[MessageManager]: " + ImptServer.activeUsers);
 
                 default:
                     // code block
@@ -100,6 +100,5 @@ class ImptMessageManger {
         public String initExistingUserMessage = "";
         public String message = "";
         public String command = "";
-
     }
 }
