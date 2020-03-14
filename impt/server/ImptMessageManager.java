@@ -62,12 +62,16 @@ class ImptMessageManger {
 
                         _clientMessageObject.initExistingUserMessage = "DISCONNECT FIN " + currentUsername + " "
                                 + messageArr[2];
+
+                        while (ImptServer.activeUsers.values().remove(messageArr[2]))
+                            ;
+                        String prevUsername = ImptServer.activeUsers.keySet().iterator().next();
+                        String prevUserIdToken = ImptServer.activeUsers.get(prevUsername);
+                        _clientMessageObject.prevUserIdToken = prevUserIdToken;
+                    } else {
+                        while (ImptServer.activeUsers.values().remove(messageArr[2]))
+                            ;
                     }
-                    while (ImptServer.activeUsers.values().remove(_clientMessageObject.userIdToken))
-                        ;
-                    String prevUsername = ImptServer.activeUsers.keySet().iterator().next();
-                    String prevUserIdToken = ImptServer.activeUsers.get(prevUsername);
-                    _clientMessageObject.prevUserIdToken = prevUserIdToken;
 
                     _clientMessageObject.message = "DISCONNECT FIN";
 

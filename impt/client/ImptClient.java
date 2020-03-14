@@ -20,7 +20,9 @@ public class ImptClient {
     final static int ServerPort = 1234;
 
     public static boolean _isLoggedIn = false;
+    public static boolean _isLoggingOut = false;
     public static boolean _isAwaitingResponseFromServer = false;
+    public static boolean _isAwaitPaymentSendAccept = false;
     public static boolean _isConnectedToOther = false;
     public static String _recipientUserName;
     public static String _recipientUserIdToken;
@@ -29,6 +31,27 @@ public class ImptClient {
 
     public boolean toggleIsAwaitingResponseFromServer() {
         return !_isAwaitingResponseFromServer;
+    }
+
+    public static void handleGeneralUserInput(String input, DataOutputStream outputStream)
+            throws UnknownHostException, IOException {
+        switch (input) {
+            case ("p"):
+                ImptClientPayment imptClientPayment = new ImptClientPayment(_recipientUserName, _recipientUserIdToken);
+                String paymentSendMessage = imptClientPayment.initialPaymentSend();
+                outputStream.writeUTF(paymentSendMessage);
+                _isAwaitPaymentSendAccept = true;
+                break;
+            case ("logout"):
+                ImptClientInit clientInit = new ImptClientInit();
+                clientInit.handleDisconnect();
+                String disconnectMessage = clientInit.getDisconnectMessage();
+                outputStream.writeUTF(disconnectMessage);
+                _isLoggingOut = true;
+                _isAwaitingResponseFromServer = true;
+                break;
+        }
+
     }
 
     public static void main(String args[]) throws UnknownHostException, IOException {
@@ -48,11 +71,10 @@ public class ImptClient {
         Thread sendMessage = new Thread(new Runnable() {
             @Override
             public void run() {
+                while (true) {
+                    try {
 
-                try {
-
-                    if (!_isAwaitingResponseFromServer) {
-                        while (true) {
+                        if (!_isAwaitingResponseFromServer) {
                             if (!_isLoggedIn) {
                                 ImptClientAuth clientAuth = new ImptClientAuth();
                                 String credential = clientAuth.getAuthInfo();
@@ -61,31 +83,32 @@ public class ImptClient {
                                 _isAwaitingResponseFromServer = true;
                                 System.out.println("logging in...");
                             } else {
-                                System.out.println(_myUsername + ", what's on your mind?");
-                                String message = scanner.nextLine();
+                                if (!_isLoggingOut) {
+                                    if (!_isAwaitPaymentSendAccept) {
+                                        System.out.println(_myUsername + ", what's on your mind?");
+                                        System.out.println("(p => pay, logout => exit)");
 
-                                // if (message != null && message.isEmpty()) {
-                                if (message.equals("logout")) {
-                                    ImptClientInit clientInit = new ImptClientInit();
-                                    clientInit.handleDisconnect();
-                                    String disconnectMessage = clientInit.getDisconnectMessage();
-                                    outputStream.writeUTF(disconnectMessage);
-                                    _isAwaitingResponseFromServer = true;
+                                        String message = scanner.nextLine();
+
+                                        handleGeneralUserInput(message, outputStream);
+                                    } else {
+                                        break;
+                                    }
+
+                                } else {
+                                    break;
                                 }
-                                // // } else {
 
-                                // // write on the output stream
-                                // // outputStream.writeUTF(message);
-                                // }
                             }
 
                             // _isAwaitingResponseFromServer = true;
-                            System.out.println("await for server");
                         }
+                        System.out.println("await for server");
 
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
+
                 }
 
             }
@@ -124,6 +147,7 @@ public class ImptClient {
                                     _isLoggedIn = false;
                                     _myUsername = null;
                                     clientAuth.getAuthInfo();
+                                    _isAwaitingResponseFromServer = true;
                                     // _isAwaitingResponseFromServer = false;
                                 }
                             } else {
@@ -133,7 +157,21 @@ public class ImptClient {
                                     case "INIT":
                                         System.out.println("SERVER INIT");
                                         ImptClientInit clientInit = new ImptClientInit();
-                                        clientInit.handleIncomingConnect(messageArr[2], messageArr[3]);
+                                        clientInit.handleIncomingConnect(messageArr[2]);
+                                        ImptClient._recipientUserName = messageArr[2];
+                                        ImptClient._recipientUserIdToken = messageArr[3];
+                                        _isAwaitingResponseFromServer = false;
+                                        break;
+                                    case "DISCONNECT":
+                                        if (messageArr.length == 2) {
+                                            // socket.close();
+                                            System.out.println("you are disconnected");
+
+                                        } else {
+                                            _recipientUserName = null;
+                                            _recipientUserIdToken = null;
+                                            System.out.println("someone got disconnected");
+                                        }
 
                                         break;
                                 }

@@ -14,7 +14,7 @@ public class ImptClientInit {
     private String _recipientUsername;
     private String _disconnectMessage;
 
-    public void handleIncomingConnect(String initUsername, String initUserIdToken) {
+    public void handleIncomingConnect(String initUsername) {
         ImptClient imptClient = new ImptClient();
         switch (initUsername) {
             case "none":
@@ -23,8 +23,6 @@ public class ImptClientInit {
 
                 break;
             default:
-                ImptClient._recipientUserName = initUsername;
-                ImptClient._recipientUserIdToken = initUserIdToken;
                 System.out.println(initUsername + " is now connected with you.");
                 System.out.println("(type 'logout' anytime to exit)");
 

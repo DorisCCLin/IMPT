@@ -49,20 +49,23 @@ class ImptClientManager implements Runnable {
                         if (clientMessageObject.isUserLoggedIn) {
                             ImptServer.activeSockets.put(clientMessageObject.userIdToken, this);
                             System.out.println(ImptServer.activeUsers);
-                        }
+                            this._dataOutputStream.writeUTF(_outputMessage);
 
-                        this._dataOutputStream.writeUTF(_outputMessage);
-
-                        if (ImptServer.activeUsers.size() == 1) {
-                            this._dataOutputStream.writeUTF(clientMessageObject.initNoneUserMessage);
+                            if (ImptServer.activeUsers.size() == 1) {
+                                this._dataOutputStream.writeUTF(clientMessageObject.initNoneUserMessage);
+                            } else {
+                                // send to current user
+                                this._dataOutputStream.writeUTF(clientMessageObject.initCurrentUserMessage);
+                                ImptClientManager recipientImptClientManager = ImptServer.activeSockets
+                                        .get(clientMessageObject.prevUserIdToken);
+                                recipientImptClientManager._dataOutputStream
+                                        .writeUTF(clientMessageObject.initExistingUserMessage);
+                            }
                         } else {
-                            // send to current user
-                            this._dataOutputStream.writeUTF(clientMessageObject.initCurrentUserMessage);
-                            ImptClientManager recipientImptClientManager = ImptServer.activeSockets
-                                    .get(clientMessageObject.prevUserIdToken);
-                            recipientImptClientManager._dataOutputStream
-                                    .writeUTF(clientMessageObject.initExistingUserMessage);
+
+                            this._dataOutputStream.writeUTF(_outputMessage);
                         }
+
                         break;
                     case "DISCONNECT":
                         if (ImptServer.activeUsers.size() > 0) {
