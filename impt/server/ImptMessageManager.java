@@ -7,7 +7,7 @@ import impt.server.handlers.*;
 class ImptMessageManger {
     private ClientMessageObject _clientMessageObject = new ClientMessageObject();
 
-    public void receiveHandler(String message) {
+    public void handleClientMessage(String message) {
         boolean isMessageValid = isMessageValid(message);
         String[] messageArr = message.split(" ");
 
@@ -88,7 +88,7 @@ class ImptMessageManger {
 
                     _clientMessageObject.message = "DISCONNECT FIN";
 
-                    System.out.println(ImptServer.activeUsers);
+                    System.out.println("Active Users[MessageManager]: " + ImptServer.activeUsers);
 
                 default:
                     // code block
@@ -106,17 +106,5 @@ class ImptMessageManger {
 
     public ClientMessageObject getClientMessageObject() {
         return _clientMessageObject;
-    }
-
-    public static class ClientMessageObject {
-        public boolean isUserLoggedIn = false;
-        public String userIdToken = "";
-        public String prevUserIdToken = "";
-        public String initNoneUserMessage = "";
-        public String initCurrentUserMessage = "";
-        public String initExistingUserMessage = "";
-        public String message = "";
-        public String command = "";
-
-    }
+    }  
 }

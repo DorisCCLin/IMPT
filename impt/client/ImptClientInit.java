@@ -8,46 +8,80 @@
 package impt.client;
 
 import java.util.Scanner;
+import impt.common.*;
 
 public class ImptClientInit {
     // Init information
     private String _recipientUsername;
+    private String _recipientUserIdToken;
     private String _disconnectMessage;
+    private ImptLogger _logger = new ImptLogger();
 
-    public void handleIncomingConnect(String initUsername) {
-        ImptClient imptClient = new ImptClient();
+    public Boolean handleIncomingConnect(String initUsername, String initUserIdToken) {
+        Boolean success = false;
+
+        // public void handleIncomingConnect(String initUsername) {
+        // ImptClient imptClient = new ImptClient();
+        // switch (initUsername) {
+        // case "none":
+        // System.out.println("You are the only one online, idling...");
+
+        // break;
+        // default:
+        // System.out.println(initUsername + " is now connected with you.");
+
+        // }
+        // imptClient.toggleIsAwaitingResponseFromServer();
+        // return;
         switch (initUsername) {
             case "none":
-                System.out.println("You are the only one online, idling...");
-
+                _logger.printLog(this.getClass().toString(),
+                        ">> You are the only one Online. Waiting for other user...");
                 break;
             default:
-                System.out.println(initUsername + " is now connected with you.");
-
+                _recipientUsername = initUsername;
+                _recipientUserIdToken = initUserIdToken;
+                _logger.printLog(this.getClass().toString(), initUsername + " is now connected with you!");
+                success = true;
+                break;
         }
-        imptClient.toggleIsAwaitingResponseFromServer();
-        return;
+
+        _logger.printLog(this.getClass().toString(),
+                "\n** Type '#logout' or '#exit' anytime to disconnet **\n** Type '#payment' anytime to initiate payment **\n** Type '#help' anytime to view help on commands **");
+
+        return success;
     }
 
-    public void handleDisconnect() {
-        Scanner myObj = new Scanner(System.in); // Create a Scanner object
-        System.out.println("Are you sure to log out?(y/n)");
-        String response = myObj.nextLine();
-        if (response.equals("y") || response.equals("n")) {
-            if (response.equals("y")) {
-                _disconnectMessage = "DISCONNECT BEGIN " + ImptClient._myUserIdToken;
-            } else {
-                return;
-            }
+    public boolean handleDisconnect() {
+        Scanner disconnectConfirmScanner = new Scanner(System.in); // Create a Scanner object
+        String response = "o";
 
-        } else {
-            handleDisconnect();
+        while (response.toLowerCase().equals("y") || response.toLowerCase().equals("n")) {
+            _logger.printLog(this.getClass().toString(), ">> Are you sure you want to log out? (y/n) **");
+            response = disconnectConfirmScanner.nextLine();
+
+            if (response.toLowerCase().equals("y")) {
+                _disconnectMessage = "DISCONNECT BEGIN " + ImptClient._myUserIdToken;
+                disconnectConfirmScanner.close();
+
+                return true;
+            } else if (response.toLowerCase().equals("n")) {
+                disconnectConfirmScanner.close();
+
+                return false;
+            }
         }
 
+        disconnectConfirmScanner.close();
+        return false;
     }
 
     public String getRecipientUsername() {
         return _recipientUsername;
+    }
+
+    public String getRecipientUserIdToken() {
+        return _recipientUserIdToken;
     }
 
     public String getDisconnectMessage() {
