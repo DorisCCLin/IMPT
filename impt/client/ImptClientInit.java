@@ -22,12 +22,18 @@ public class ImptClientInit {
         switch (initUsername) {
             case "none":
                 _logger.printLog(this.getClass().toString(),
-                        ">> You are the only one Online. Waiting for other user...");
+                        ">> You are the only one Online. Waiting for other user...", ImptLoggerConfig.Level.INFO);
                 break;
             default:
                 _recipientUsername = initUsername;
                 _recipientUserIdToken = initUserIdToken;
-                _logger.printLog(this.getClass().toString(), initUsername + " is now connected with you!");
+                _logger.printLog(this.getClass().toString(), initUsername + " is now connected with you!",
+                        ImptLoggerConfig.Level.INFO);
+                _logger.printLog(this.getClass().toString(),
+                        "\n** Type '#logout' anytime to disconnect **\n** Type '#payment' anytime to initiate payment **\n** Type '#help' anytime to view help on commands **",
+                        ImptLoggerConfig.Level.INFO);
+                _logger.printLog(this.getClass().toString(), ImptClient._myUsername + ", what's on your mind? :)",
+                        ImptLoggerConfig.Level.INFO);
                 success = true;
                 break;
         }
@@ -40,7 +46,8 @@ public class ImptClientInit {
         String response = "o";
 
         while (response.toLowerCase().equals("y") || response.toLowerCase().equals("n")) {
-            _logger.printLog(this.getClass().toString(), ">> Are you sure you want to log out? (y/n) **");
+            _logger.printLog(this.getClass().toString(), ">> Are you sure you want to log out? (y/n) **",
+                    ImptLoggerConfig.Level.PROMPT);
             response = disconnectConfirmScanner.nextLine();
 
             if (response.toLowerCase().equals("y")) {

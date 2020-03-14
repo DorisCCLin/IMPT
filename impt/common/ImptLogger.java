@@ -9,18 +9,23 @@ package impt.common;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.io.*;
+import java.awt.*;
 
 public class ImptLogger {
 
-    // Print log on console
     public void printLog(String source, String message) {
+        printLog(source, message, ImptLoggerConfig.Level.DEFAULT);
+    }
+
+    // Print log on console
+    public void printLog(String source, String message, String level) {
         DateTimeFormatter dateTimeFormmatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss.SSS a");
         LocalDateTime now = LocalDateTime.now();
         String timeStamp = dateTimeFormmatter.format(now);
         String[] sourceDissected = source.split("\\.");
         String shortSource = sourceDissected.length > 1 ? sourceDissected[sourceDissected.length - 1] : source;
-
         String formattedMessage = "[" + timeStamp + "] [" + shortSource + "] " + message;
+        formatMessage(level);
 
         System.out.println(formattedMessage);
         printToFile(formattedMessage);
@@ -39,6 +44,39 @@ public class ImptLogger {
             printWriter.close();
         } catch (Exception ex) {
             // Meh...
+        }
+    }
+
+    private void formatMessage(String level)
+    {
+        // Color color = new Color(255, 0, 0);
+
+        switch (level) {
+            case ImptLoggerConfig.Level.DEFAULT:
+                System.out.println(Color.LIGHT_GRAY);
+                // formattedMessage = ImptLoggerConfig.Color.ANSI_RESET + formattedMessage
+                //         + ImptLoggerConfig.Color.ANSI_RESET;
+                break;
+            case ImptLoggerConfig.Level.PROMPT:
+            System.out.println(Color.LIGHT_GRAY);
+                // formattedMessage = ImptLoggerConfig.Color.ANSI_WHITE + formattedMessage
+                //         + ImptLoggerConfig.Color.ANSI_RESET;
+                break;
+            case ImptLoggerConfig.Level.INFO:
+            System.out.println(Color.LIGHT_GRAY);
+                // formattedMessage = ImptLoggerConfig.Color.ANSI_YELLOW + formattedMessage
+                //         + ImptLoggerConfig.Color.ANSI_RESET;
+                break;
+            case ImptLoggerConfig.Level.ERROR:
+            System.out.println(Color.LIGHT_GRAY);
+                // formattedMessage = ImptLoggerConfig.Color.ANSI_RED + formattedMessage
+                //         + ImptLoggerConfig.Color.ANSI_RESET;
+                break;
+            case ImptLoggerConfig.Level.DEBUG:
+            System.out.println(Color.LIGHT_GRAY);
+                // formattedMessage = ImptLoggerConfig.Color.ANSI_CYAN + formattedMessage
+                //         + ImptLoggerConfig.Color.ANSI_RESET;
+                break;
         }
     }
 }

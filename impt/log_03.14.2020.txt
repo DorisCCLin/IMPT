@@ -9262,3 +9262,138 @@
 	at impt.client.ImptClient$2.run(ImptClient.java:188)
 	at java.base/java.lang.Thread.run(Thread.java:830)
 
+[03/14/2020 07:11:08.416 AM] [ImptServer] IMPT Server Started
+[03/14/2020 07:11:11.240 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=61237,localport=1234]
+[03/14/2020 07:11:11.241 AM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 07:11:11.250 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/14/2020 07:11:17.739 AM] [ImptClientManager] AUTH BEGIN asdf asdf IMPT1.0
+[03/14/2020 07:11:17.741 AM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/14/2020 07:11:17.746 AM] [ImptClientManager]  !! Error Encountered: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 07:17:58.402 AM] [ImptServer] IMPT Server Started
+[03/14/2020 07:18:00.774 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=61378,localport=1234]
+[03/14/2020 07:18:00.775 AM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 07:18:00.784 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/14/2020 07:18:04.338 AM] [ImptClientManager] AUTH BEGIN asdf asdf IMPT1.0
+[03/14/2020 07:18:04.340 AM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/14/2020 07:18:07.799 AM] [ImptClientManager] AUTH BEGIN asdf asdf IMPT1.0
+[03/14/2020 07:18:07.799 AM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/14/2020 07:18:11.415 AM] [ImptClientManager] AUTH BEGIN asdf asdf IMPT1.0
+[03/14/2020 07:18:11.416 AM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/14/2020 07:18:14.623 AM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/14/2020 07:18:14.816 AM] [ImptClientManager] AUTH RES 3235c4b4-fdd0-4a07-b8a9-7fa9a8744da9
+[03/14/2020 07:18:43.006 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=61386,localport=1234]
+[03/14/2020 07:18:43.007 AM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 07:18:43.008 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/14/2020 07:18:46.795 AM] [ImptClientManager] AUTH BEGIN asdf asdf IMPT1.0
+[03/14/2020 07:18:46.796 AM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/14/2020 07:18:54.416 AM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/14/2020 07:18:54.417 AM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/14/2020 07:19:14.466 AM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/14/2020 07:19:14.467 AM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/14/2020 07:19:49.739 AM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/14/2020 07:19:49.743 AM] [ImptClientManager] AUTH RES 273c26c3-40fa-4a76-89b7-da45d400de30
+[03/14/2020 07:23:52.413 AM] [ImptServer] IMPT Server Started
+[03/14/2020 07:23:54.955 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=61462,localport=1234]
+[03/14/2020 07:23:54.957 AM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 07:23:54.966 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/14/2020 07:23:57.214 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=61463,localport=1234]
+[03/14/2020 07:23:57.215 AM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 07:23:57.216 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/14/2020 07:24:03.591 AM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/14/2020 07:24:03.787 AM] [ImptClientManager] AUTH RES 39fc9810-97b1-45c1-a8a7-98a5dc6f6fc1
+[03/14/2020 07:24:10.040 AM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/14/2020 07:24:10.041 AM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/14/2020 07:24:23.413 AM] [ImptClientManager] AUTH BEGIN Calvin ca1vin1 IMPT1.0
+[03/14/2020 07:24:23.418 AM] [ImptClientManager] AUTH RES a2991a99-a928-4045-9221-2cd736037aba
+[03/14/2020 07:27:11.585 AM] [ImptClientManager]  !! Error Encountered: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 07:27:13.807 AM] [ImptClientManager]  !! Error Encountered: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 07:28:12.250 AM] [ImptServer] IMPT Server Started
+[03/14/2020 07:28:14.630 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=61517,localport=1234]
+[03/14/2020 07:28:14.631 AM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 07:28:14.642 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/14/2020 07:28:16.651 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=61518,localport=1234]
+[03/14/2020 07:28:16.652 AM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 07:28:16.653 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/14/2020 07:28:22.177 AM] [ImptClientManager] AUTH BEGIN Calvin ca1vin1 IMPT1.0
+[03/14/2020 07:28:22.179 AM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/14/2020 07:28:26.910 AM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/14/2020 07:28:27.120 AM] [ImptClientManager] AUTH RES 50438b7e-1204-4229-8b09-e7f60bfab382
+[03/14/2020 07:28:32.546 AM] [ImptClientManager] AUTH BEGIN Emily emily1 IMPT1.0
+[03/14/2020 07:28:32.551 AM] [ImptClientManager] AUTH RES 180f6147-2a5e-4f9d-9bd9-e1a1d8599e2b
+[03/14/2020 07:30:52.912 AM] [ImptClientManager]  !! Error Encountered: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 07:30:55.248 AM] [ImptClientManager]  !! Error Encountered: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 07:38:19.300 AM] [ImptServer] IMPT Server Started
+[03/14/2020 07:38:23.467 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=61663,localport=1234]
+[03/14/2020 07:38:23.469 AM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 07:38:23.478 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/14/2020 07:38:26.839 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=61664,localport=1234]
+[03/14/2020 07:38:26.840 AM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 07:38:26.840 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/14/2020 07:38:36.584 AM] [ImptClientManager] AUTH BEGIN Doris dori IMPT1.0
+[03/14/2020 07:38:36.586 AM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/14/2020 07:38:50.699 AM] [ImptClientManager]  !! Error Encountered: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[33m[03/14/2020 10:16:28.927 AM] [ImptServer] IMPT Server Started[0m
+[33m[03/14/2020 10:16:54.188 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=64002,localport=1234][0m
+[33m[03/14/2020 10:16:54.190 AM] [ImptServer] Creating a new handler for this client...[0m
+[36m[03/14/2020 10:16:54.200 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-0[0m

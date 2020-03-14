@@ -27,22 +27,26 @@ public class ImptClientPayment {
     // fetch User's choice of payment service
     private void getPaymentServiceChoice() {
         Scanner myObj = new Scanner(System.in); // Create a Scanner object
-        _logger.printLog(this.getClass().toString(), "what payment service, please enter the number?");
-        _logger.printLog(this.getClass().toString(), "(1.PayPal 2.Venmo 3.Cash)");
+        _logger.printLog(this.getClass().toString(), "what payment service, please enter the number?",
+                ImptLoggerConfig.Level.PROMPT);
+        _logger.printLog(this.getClass().toString(), "(1.PayPal 2.Venmo 3.Cash)", ImptLoggerConfig.Level.PROMPT);
 
         String service = myObj.nextLine();
 
         switch (service) {
             case "1":
                 _paymentService = "PayPay";
-                _logger.printLog(this.getClass().toString(), "You picked " + _paymentService);
+                _logger.printLog(this.getClass().toString(), "You picked " + _paymentService,
+                        ImptLoggerConfig.Level.INFO);
                 break;
             case "2":
                 _paymentService = "Venmo";
-                _logger.printLog(this.getClass().toString(), "You picked " + _paymentService);
+                _logger.printLog(this.getClass().toString(), "You picked " + _paymentService,
+                        ImptLoggerConfig.Level.INFO);
             case "3":
                 _paymentService = "Cash";
-                _logger.printLog(this.getClass().toString(), "You picked " + _paymentService);
+                _logger.printLog(this.getClass().toString(), "You picked " + _paymentService,
+                        ImptLoggerConfig.Level.INFO);
             default:
                 getPaymentServiceChoice();
         }
@@ -52,12 +56,14 @@ public class ImptClientPayment {
     // fetch User's info to send a payment request
     public String initialPaymentSend() {
         Scanner myObj = new Scanner(System.in); // Create a Scanner object
-        _logger.printLog(this.getClass().toString(), "You are sending payment to " + _recipientUsername + "? (y/n):");
+        _logger.printLog(this.getClass().toString(), "Are you sending payment to " + _recipientUsername + "? (y/n):",
+                ImptLoggerConfig.Level.PROMPT);
         String response = myObj.nextLine();
 
         if (response.equals("y") || response.equals("n")) {
             if (response.equals("y")) {
-                _logger.printLog(this.getClass().toString(), "How much would you like to send?");
+                _logger.printLog(this.getClass().toString(), "How much would you like to send?",
+                        ImptLoggerConfig.Level.PROMPT);
                 _paymentAmount = myObj.nextLine();
                 getPaymentServiceChoice();
             }
@@ -73,14 +79,16 @@ public class ImptClientPayment {
     public void handlePaymentResponse(String[] response) {
         if (response.length == 4 && response[3].equals("success")) {
             _logger.printLog(this.getClass().toString(),
-                    "You have paid " + _recipientUsername + " " + response[2] + ".");
+                    "You have paid " + _recipientUsername + " " + response[2] + ".", ImptLoggerConfig.Level.INFO);
         } else
             switch (response[2]) {
                 case ("fail"):
-                    _logger.printLog(this.getClass().toString(), "Opps, transaction failed");
+                    _logger.printLog(this.getClass().toString(), "Opps, transaction failed",
+                            ImptLoggerConfig.Level.INFO);
                     break;
                 default:
-                    _logger.printLog(this.getClass().toString(), "Opps, something went wrong");
+                    _logger.printLog(this.getClass().toString(), "Opps, something went wrong",
+                            ImptLoggerConfig.Level.INFO);
 
             }
     }

@@ -14,16 +14,12 @@ public class ImptClientAuth {
     private ImptLogger _logger = new ImptLogger();
 
     // fetch user log info
-    public String getAuthInfo() {
-        Scanner loginScanner = new Scanner(System.in); // Create a Scanner object
-
-        _logger.printLog(this.getClass().toString(), "<< Enter username:");
+    public String getAuthInfo(Scanner loginScanner) {
+        _logger.printLog(this.getClass().toString(), "<< ENTER USERNAME:", ImptLoggerConfig.Level.PROMPT);
         String username = loginScanner.nextLine(); // Read user input
 
-        _logger.printLog(this.getClass().toString(), "<< Enter password:"); // Output user input
+        _logger.printLog(this.getClass().toString(), "<< ENTER PASSWORD:", ImptLoggerConfig.Level.PROMPT); // Output user input
         String password = loginScanner.nextLine();
-
-        loginScanner.close();
 
         return username + " " + password;
     }
@@ -37,10 +33,10 @@ public class ImptClientAuth {
         // need encrypted password and username
         if (serverResponseCommand.equals("ERR_AUTH")) {
             _logger.printLog(this.getClass().toString(),
-                    "** Oops! The username and password do not match. Try again! :( **");
+                    "** Oops! The username and password do not match. :( Try again! **", ImptLoggerConfig.Level.INFO);
         } else if (serverResponseCommand.equals("AUTH")) {
             userToken = messageArr[2];
-            _logger.printLog(this.getClass().toString(), "** Logged in successfully!");
+            _logger.printLog(this.getClass().toString(), "** Logged in successfully!", ImptLoggerConfig.Level.INFO);
         }
 
         return userToken;

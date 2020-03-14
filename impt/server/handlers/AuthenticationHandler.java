@@ -14,7 +14,7 @@ public class AuthenticationHandler {
 
     // mock user credential data
     private static Map<String, String> _credentials = Map.ofEntries(entry("Doris", "doris1"),
-            entry("Calvin", "ca1vin1"), entry("Brian", "brian1"), entry("Emily", "emily1"));
+            entry("Calvin", "calvin1"), entry("Brian", "brian1"), entry("Emily", "emily1"));
 
     // authenticating user's credential
     public AuthenticationObject authenticate(String userName, String password) {

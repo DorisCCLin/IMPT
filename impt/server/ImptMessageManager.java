@@ -97,6 +97,8 @@ class ImptMessageManger {
                     _clientMessageObject.message = "DISCONNECT FIN";
 
                     System.out.println("Active Users[MessageManager]: " + ImptServer.activeUsers);
+
+                    break;
             }
         }
     }

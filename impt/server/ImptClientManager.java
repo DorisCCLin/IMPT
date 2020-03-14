@@ -39,7 +39,7 @@ class ImptClientManager implements Runnable {
             try {
                 // receive the string
                 receivedMessage = this._inputStream.readUTF();
-                _logger.printLog(this.getClass().toString(), receivedMessage);
+                _logger.printLog(this.getClass().toString(), receivedMessage, ImptLoggerConfig.Level.DEBUG);
 
                 // sending incoming messager to message manager
                 ImptMessageManger imptMessageManger = new ImptMessageManger();
@@ -48,14 +48,15 @@ class ImptClientManager implements Runnable {
                 _clientMessageObject = imptMessageManger.getClientMessageObject();
                 String outputMessage = _clientMessageObject.message;
 
-                _logger.printLog(this.getClass().toString(), outputMessage);
+                _logger.printLog(this.getClass().toString(), outputMessage, ImptLoggerConfig.Level.DEBUG);
 
                 // dispatch messages to different user socket
                 switch (_clientMessageObject.command) {
                     case "AUTH":
                         if (_clientMessageObject.isUserLoggedIn) {
                             ImptServer.activeSockets.put(_clientMessageObject.userIdToken, this);
-                            System.out.println("Active Users[ClientManager]: " + ImptServer.activeUsers);
+                            _logger.printLog(this.getClass().toString(), 
+                                    ImptServer.activeUsers.toString(), ImptLoggerConfig.Level.DEBUG);
                             this._outputStream.writeUTF(outputMessage);
 
                             if (ImptServer.activeUsers.size() == 1) {
@@ -100,7 +101,8 @@ class ImptClientManager implements Runnable {
             } catch (Exception e) {
                 StringWriter errors = new StringWriter();
                 e.printStackTrace(new PrintWriter(errors));
-                _logger.printLog(this.getClass().toString(), " !! Error Encountered: " + errors.toString());
+                _logger.printLog(this.getClass().toString(), " Error Encountered: " + errors.toString(), 
+                        ImptLoggerConfig.Level.ERROR);
                 break;
             }
         }

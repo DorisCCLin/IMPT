@@ -26,7 +26,7 @@ public class ImptServer {
         ServerSocket serverSocket = new ServerSocket(1234);
         Socket socket;
 
-        _logger.printLog("ImptServer", "IMPT Server Started");
+        _logger.printLog("ImptServer", "IMPT Server Started", ImptLoggerConfig.Level.INFO);
 
         try {
             // running infinite loop for getting
@@ -35,19 +35,21 @@ public class ImptServer {
                 // Accept the incoming request
                 socket = serverSocket.accept();
 
-                _logger.printLog("ImptServer", "New client request received : " + socket);
+                _logger.printLog("ImptServer", "New client request received : " + socket, ImptLoggerConfig.Level.INFO);
 
                 // obtain input and output streams
                 DataInputStream inputStream = new DataInputStream(socket.getInputStream());
                 DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
 
-                _logger.printLog("ImptServer", "Creating a new handler for this client...");
+                _logger.printLog("ImptServer", "Creating a new handler for this client...",
+                        ImptLoggerConfig.Level.INFO);
 
                 ImptClientManager imptClientManager = new ImptClientManager(socket, inputStream, outputStream);
 
                 // Create a new Thread with this object. CONCURRENT
                 Thread thread = new Thread(imptClientManager);
-                _logger.printLog("ImptServer", "IMPT Client Manager Thread Name: " + thread.getName());
+                _logger.printLog("ImptServer", "IMPT Client Manager Thread Name: " + thread.getName(), 
+                        ImptLoggerConfig.Level.DEBUG);
 
                 // start the thread.
                 thread.start();
@@ -55,7 +57,8 @@ public class ImptServer {
         } catch (Exception ex) {
             StringWriter errors = new StringWriter();
             ex.printStackTrace(new PrintWriter(errors));
-            _logger.printLog("ImptServer", " !! Error Encountered in IMPT Server: " + errors.toString());
+            _logger.printLog("ImptServer", " Error Encountered in IMPT Server: " + errors.toString(), 
+                    ImptLoggerConfig.Level.ERROR);
         } finally {
             serverSocket.close();
         }

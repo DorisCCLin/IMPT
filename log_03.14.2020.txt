@@ -267,3 +267,283 @@
 	at impt.server.ImptClientManager.run(ImptClientManager.java:34)
 	at java.base/java.lang.Thread.run(Thread.java:830)
 
+[03/14/2020 07:11:11.262 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 07:11:11.262 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 07:11:11.287 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:11:14.208 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:11:17.739 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:11:17.739 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:11:17.742 AM] [ImptClient$2] << ERR_AUTH BEGIN authError
+[03/14/2020 07:11:17.742 AM] [ImptClientAuth] ** Oops! The username and password do not match. Try again! :( **
+[03/14/2020 07:11:17.743 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:11:17.744 AM] [ImptClient$1]  !! Error Encountered in sendMessage Thread: java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
+	at impt.client.ImptClientAuth.getAuthInfo(ImptClientAuth.java:21)
+	at impt.client.ImptClient$1.run(ImptClient.java:92)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 07:11:17.746 AM] [ImptClient$2]  !! Error Encountered in readMessage Thread: java.net.SocketException: Socket closed
+	at java.base/sun.nio.ch.NioSocketImpl.endRead(NioSocketImpl.java:249)
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:180)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 07:18:00.797 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 07:18:00.797 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 07:18:00.822 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:18:03.383 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:18:04.338 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:18:04.339 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:18:04.341 AM] [ImptClient$2] << ERR_AUTH BEGIN authError
+[03/14/2020 07:18:04.342 AM] [ImptClientAuth] ** Oops! The username and password do not match. Try again! :( **
+[03/14/2020 07:18:04.342 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:18:06.638 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:18:07.799 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:18:07.800 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:18:07.800 AM] [ImptClient$2] << ERR_AUTH BEGIN authError
+[03/14/2020 07:18:07.801 AM] [ImptClientAuth] ** Oops! The username and password do not match. Try again! :( **
+[03/14/2020 07:18:07.801 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:18:10.639 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:18:11.415 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:18:11.416 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:18:11.417 AM] [ImptClient$2] << ERR_AUTH BEGIN authError
+[03/14/2020 07:18:11.417 AM] [ImptClientAuth] ** Oops! The username and password do not match. Try again! :( **
+[03/14/2020 07:18:11.418 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:18:13.015 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:18:14.623 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:18:14.624 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:18:14.818 AM] [ImptClient$2] << AUTH RES 3235c4b4-fdd0-4a07-b8a9-7fa9a8744da9
+[03/14/2020 07:18:14.818 AM] [ImptClientAuth] ** Logged in successfully!
+[03/14/2020 07:18:14.819 AM] [ImptClient$2] << INIT BEGIN none none
+[03/14/2020 07:18:14.820 AM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/14/2020 07:18:43.030 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 07:18:43.030 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 07:18:43.056 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:18:45.952 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:18:46.795 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:18:46.796 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:18:46.797 AM] [ImptClient$2] << ERR_AUTH BEGIN authError
+[03/14/2020 07:18:46.798 AM] [ImptClientAuth] ** Oops! The username and password do not match. Try again! :( **
+[03/14/2020 07:18:46.798 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:18:52.648 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:18:54.416 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:18:54.417 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:18:54.418 AM] [ImptClient$2] << ERR_AUTH BEGIN authError
+[03/14/2020 07:18:54.419 AM] [ImptClientAuth] ** Oops! The username and password do not match. Try again! :( **
+[03/14/2020 07:18:54.419 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:19:12.482 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:19:14.466 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:19:14.467 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:19:14.468 AM] [ImptClient$2] << ERR_AUTH BEGIN authError
+[03/14/2020 07:19:14.468 AM] [ImptClientAuth] ** Oops! The username and password do not match. Try again! :( **
+[03/14/2020 07:19:14.469 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:19:47.786 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:19:49.739 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:19:49.739 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:19:49.744 AM] [ImptClient$2] << AUTH RES 273c26c3-40fa-4a76-89b7-da45d400de30
+[03/14/2020 07:19:49.744 AM] [ImptClientAuth] ** Logged in successfully!
+[03/14/2020 07:19:49.745 AM] [ImptClient$2] << 
+[03/14/2020 07:20:19.872 AM] [ImptClient$2]  !! Error Encountered in readMessage Thread: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:180)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 07:20:19.872 AM] [ImptClient$2]  !! Error Encountered in readMessage Thread: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:180)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 07:23:54.978 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 07:23:54.978 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 07:23:55.003 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:23:57.240 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 07:23:57.240 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 07:23:57.265 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:24:01.676 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:24:03.591 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:24:03.592 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:24:03.788 AM] [ImptClient$2] << AUTH RES 39fc9810-97b1-45c1-a8a7-98a5dc6f6fc1
+[03/14/2020 07:24:03.789 AM] [ImptClientAuth] ** Logged in successfully!
+[03/14/2020 07:24:03.790 AM] [ImptClient$2] << INIT BEGIN none none
+[03/14/2020 07:24:03.791 AM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/14/2020 07:24:07.989 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:24:10.040 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:24:10.041 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:24:10.043 AM] [ImptClient$2] << ERR_AUTH BEGIN authError
+[03/14/2020 07:24:10.043 AM] [ImptClientAuth] ** Oops! The username and password do not match. Try again! :( **
+[03/14/2020 07:24:10.044 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:24:21.165 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:24:23.413 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:24:23.414 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:24:23.419 AM] [ImptClient$2] << AUTH RES a2991a99-a928-4045-9221-2cd736037aba
+[03/14/2020 07:24:23.419 AM] [ImptClient$2] << INIT BEGIN Calvin a2991a99-a928-4045-9221-2cd736037aba
+[03/14/2020 07:24:23.420 AM] [ImptClientAuth] ** Logged in successfully!
+[03/14/2020 07:24:23.421 AM] [ImptClient$2] << INIT BEGIN Doris 39fc9810-97b1-45c1-a8a7-98a5dc6f6fc1
+[03/14/2020 07:24:23.421 AM] [ImptClientInit] Calvin is now connected with you!
+[03/14/2020 07:24:23.423 AM] [ImptClientInit] Doris is now connected with you!
+[03/14/2020 07:28:14.656 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 07:28:14.656 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 07:28:14.681 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:28:16.677 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 07:28:16.677 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 07:28:16.703 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:28:20.238 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:28:22.177 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:28:22.178 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:28:22.180 AM] [ImptClient$2] << ERR_AUTH BEGIN authError
+[03/14/2020 07:28:22.181 AM] [ImptClientAuth] ** Oops! The username and password do not match. Try again! :( **
+[03/14/2020 07:28:22.181 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:28:25.094 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:28:26.910 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:28:26.911 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:28:27.121 AM] [ImptClient$2] << AUTH RES 50438b7e-1204-4229-8b09-e7f60bfab382
+[03/14/2020 07:28:27.122 AM] [ImptClientAuth] ** Logged in successfully!
+[03/14/2020 07:28:27.122 AM] [ImptClient$2] << INIT BEGIN none none
+[03/14/2020 07:28:27.123 AM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/14/2020 07:28:30.654 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:28:32.546 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:28:32.547 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:28:32.552 AM] [ImptClient$2] << AUTH RES 180f6147-2a5e-4f9d-9bd9-e1a1d8599e2b
+[03/14/2020 07:28:32.553 AM] [ImptClient$2] << INIT BEGIN Emily 180f6147-2a5e-4f9d-9bd9-e1a1d8599e2b
+[03/14/2020 07:28:32.554 AM] [ImptClientAuth] ** Logged in successfully!
+[03/14/2020 07:28:32.554 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:28:32.554 AM] [ImptClientInit] Emily is now connected with you!
+[03/14/2020 07:28:32.554 AM] [ImptClient$2] << INIT BEGIN Calvin 50438b7e-1204-4229-8b09-e7f60bfab382
+[03/14/2020 07:28:32.555 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:28:32.556 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:28:32.556 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:28:32.557 AM] [ImptClientInit] Calvin is now connected with you!
+[03/14/2020 07:28:32.557 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:28:32.558 AM] [ImptClient$1] Emily, what's on your mind? :)
+[03/14/2020 07:28:32.559 AM] [ImptClient$1] 
+** Type 'logout' anytime to disconnect **
+** Type 'p' anytime to initiate payment **
+** Type '#help' anytime to view help on commands **
+[03/14/2020 07:30:00.634 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:30:00.635 AM] [ImptClient$1] Emily, what's on your mind? :)
+[03/14/2020 07:30:00.636 AM] [ImptClient$1] 
+** Type 'logout' anytime to disconnect **
+** Type 'p' anytime to initiate payment **
+** Type '#help' anytime to view help on commands **
+[03/14/2020 07:30:36.354 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:30:36.355 AM] [ImptClient$1] Emily, what's on your mind? :)
+[03/14/2020 07:30:36.356 AM] [ImptClient$1] 
+** Type 'logout' anytime to disconnect **
+** Type 'p' anytime to initiate payment **
+** Type '#help' anytime to view help on commands **
+[03/14/2020 07:38:23.490 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 07:38:23.491 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 07:38:23.514 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:38:26.862 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 07:38:26.862 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 07:38:26.886 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:38:35.108 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 07:38:36.584 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 07:38:36.585 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 07:38:36.587 AM] [ImptClient$2] << ERR_AUTH BEGIN authError
+[03/14/2020 07:38:36.588 AM] [ImptClientAuth] ** Oops! The username and password do not match. Try again! :( **
+[03/14/2020 07:38:36.589 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 07:38:52.187 AM] [ImptClient$2]  !! Error Encountered in readMessage Thread: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:186)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 10:16:54.212 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 10:16:54.212 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 10:16:54.238 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 10:17:04.400 AM] [ImptClient$2]  !! Error Encountered in readMessage Thread: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:180)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[33m[03/14/2020 10:25:20.615 AM] [ImptServer] IMPT Server Started[0m
+[33m[03/14/2020 10:25:25.667 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=64122,localport=1234][0m
+[33m[03/14/2020 10:25:25.668 AM] [ImptServer] Creating a new handler for this client...[0m
+[36m[03/14/2020 10:25:25.679 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-0[0m
+[03/14/2020 10:25:25.692 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 10:25:25.692 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 10:25:25.718 AM] [ImptClientAuth] << Enter username:
+[33m[03/14/2020 10:25:35.020 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=64123,localport=1234][0m
+[33m[03/14/2020 10:25:35.021 AM] [ImptServer] Creating a new handler for this client...[0m
+[36m[03/14/2020 10:25:35.022 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-1[0m
+[36m[03/14/2020 10:25:35.044 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1[0m
+[36m[03/14/2020 10:25:35.044 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0[0m
+[37m[03/14/2020 10:25:35.070 AM] [ImptClientAuth] << ENTER USERNAME:[0m
+[03/14/2020 10:27:15.551 AM] [ImptClient$2]  !! Error Encountered in readMessage Thread: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:180)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[31m[03/14/2020 10:27:15.551 AM] [ImptClient$2]  Error Encountered in readMessage Thread: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:192)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+[0m
+[33m[03/14/2020 11:24:07.031 AM] [ImptServer] IMPT Server Started[0m
+[33m[03/14/2020 11:24:10.277 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=49602,localport=1234][0m
+[33m[03/14/2020 11:24:10.278 AM] [ImptServer] Creating a new handler for this client...[0m
+[36m[03/14/2020 11:24:10.287 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-0[0m
+[03/14/2020 11:24:10.299 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 11:24:10.299 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 11:24:10.324 AM] [ImptClientAuth] << Enter username:
+[31m[03/14/2020 11:37:42.233 AM] [ImptClientManager]  Error Encountered: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+[0m
