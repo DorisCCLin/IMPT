@@ -1,5 +1,5 @@
 /**
- * ClientAuth The client authentication module for the initial handshake
+ * ImptClient is The client module for enter client side
  * 
  * @author Doris Chia-ching Lin
  * @version 1
@@ -25,7 +25,6 @@ public class ImptClient {
     private static Socket _clientSocket = null;
 
     public static boolean _isLoggedIn = false;
-    // public static boolean _isLoggingOut = false;
     public static boolean _isAwaitingResponseFromServer = false;
     public static boolean _isAwaitPaymentSendAccept = false;
     public static boolean _isConnectedToOther = false;
@@ -34,6 +33,7 @@ public class ImptClient {
     public static String _myUserIdToken;
     public static String _myUsername;
 
+    // handle general request from user
     public static void handleGeneralUserInput(String input, DataOutputStream outputStream)
             throws UnknownHostException, IOException {
         switch (input) {
@@ -43,15 +43,6 @@ public class ImptClient {
                 outputStream.writeUTF(paymentSendMessage);
                 _isAwaitPaymentSendAccept = true;
                 break;
-            // case ("logout"):
-            // ImptClientInit clientInit = new ImptClientInit();
-            // clientInit.handleDisconnect();
-
-            // String disconnectMessage = clientInit.getDisconnectMessage();
-            // outputStream.writeUTF(disconnectMessage);
-            // // _isLoggingOut = true;
-            // _isAwaitingResponseFromServer = true;
-            // break;
 
             case "logout":
                 ImptClientInit clientInit = new ImptClientInit();
@@ -68,6 +59,7 @@ public class ImptClient {
 
     }
 
+    // Start running main method
     public static void main(String args[]) throws UnknownHostException, IOException {
         // getting localhost ip
         InetAddress ip = InetAddress.getByName("localhost");
@@ -104,36 +96,39 @@ public class ImptClient {
 
                                 _logger.printLog(this.getClass().toString(), "** Logging in...");
                             } else {
-                                _logger.printLog(this.getClass().toString(), _myUsername + ", what's on your mind? :)");
-                                String message = userInputScanner.nextLine();
-
-                                if (!message.isEmpty()) {
+                                if (_isConnectedToOther) {
+                                    // Scanner newInputScanner = new Scanner(System.in);
+                                    _logger.printLog(this.getClass().toString(),
+                                            _myUsername + ", what's on your mind? :)");
 
                                     _logger.printLog(this.getClass().toString(),
                                             "\n** Type 'logout' anytime to disconnect **\n** Type 'p' anytime to initiate payment **\n** Type '#help' anytime to view help on commands **");
-                                    handleGeneralUserInput(message.toLowerCase(), outputStream);
+                                    String message = userInputScanner.nextLine();
+                                    if (!message.isEmpty()) {
+                                        // handleGeneralUserInput(message.toLowerCase(), outputStream);
 
-                                    // switch (message.toLowerCase()) {
-                                    // // LOGOUT
-                                    // case "#logout":
-                                    // case "#exit":
-                                    // ImptClientInit clientInit = new ImptClientInit();
-                                    // Boolean disconnectConfirmed = clientInit.handleDisconnect();
+                                        switch (message.toLowerCase()) {
+                                            // LOGOUT
+                                            case "#logout":
+                                            case "#exit":
+                                                ImptClientInit clientInit = new ImptClientInit();
+                                                Boolean disconnectConfirmed = clientInit.handleDisconnect();
 
-                                    // if (disconnectConfirmed) {
-                                    // String disconnectMessage = clientInit.getDisconnectMessage();
-                                    // outputStream.writeUTF(disconnectMessage);
-                                    // _isAwaitingResponseFromServer = true;
-                                    // _clientSocket.close();
-                                    // }
-                                    // break;
-                                    // // PAYMENT
-                                    // case "#payment":
-                                    // break;
-                                    // // CHAT
-                                    // default:
-                                    // break;
-                                    // }
+                                                if (disconnectConfirmed) {
+                                                    String disconnectMessage = clientInit.getDisconnectMessage();
+                                                    outputStream.writeUTF(disconnectMessage);
+                                                    _isAwaitingResponseFromServer = true;
+                                                    _clientSocket.close();
+                                                }
+                                                break;
+                                            // PAYMENT
+                                            case "#payment":
+                                                break;
+                                            // CHAT
+                                            default:
+                                                break;
+                                        }
+                                    }
                                 }
                             }
 
@@ -148,7 +143,7 @@ public class ImptClient {
 
                     try {
                         outputStream.close();
-                        userInputScanner.close();
+                        // userInputScanner.close();
                     } catch (Exception exClose) {
                         exClose.printStackTrace();
                     }
@@ -204,21 +199,13 @@ public class ImptClient {
                                 switch (incomingCommand) {
                                     case "INIT":
                                         ImptClientInit clientInit = new ImptClientInit();
-                                        // clientInit.handleIncomingConnect(messageArr[2]);
-                                        // if (messageArr.length == 4) {
-                                        // ImptClient._recipientUserName = messageArr[2];
-                                        // ImptClient._recipientUserIdToken = messageArr[3];
-                                        // _isConnectedToOther = true;
-                                        // }
-
-                                        // _isAwaitingResponseFromServer = false;
-                                        // break;
                                         Boolean connected = clientInit.handleIncomingConnect(messageArr[2],
                                                 messageArr[3]);
 
                                         if (connected) {
                                             _recipientUserName = clientInit.getRecipientUsername();
                                             _recipientUserIdToken = clientInit.getRecipientUserIdToken();
+                                            _isConnectedToOther = true;
                                         } else {
                                             _recipientUserName = _recipientUserIdToken = null;
                                         }

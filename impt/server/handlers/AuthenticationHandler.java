@@ -1,3 +1,9 @@
+/**
+ * AuthenticationHandler is to handle authentication related tasks.
+ * 
+ * @author Doris Chia-ching Lin
+ * @version 1
+ */
 package impt.server.handlers;
 
 import java.util.*;
@@ -5,9 +11,12 @@ import static java.util.Map.entry;
 
 public class AuthenticationHandler {
     private static AuthenticationObject _authenticationObject;
-    private static Map<String, String> _credentials = Map.ofEntries(entry("Doris", "doris1"), entry("Calvin", "ca1vin1"),
-            entry("Brian", "brian1"), entry("Emily", "emily1"));
 
+    // mock user credential data
+    private static Map<String, String> _credentials = Map.ofEntries(entry("Doris", "doris1"),
+            entry("Calvin", "ca1vin1"), entry("Brian", "brian1"), entry("Emily", "emily1"));
+
+    // authenticating user's credential
     public AuthenticationObject authenticate(String userName, String password) {
         _authenticationObject = new AuthenticationObject();
 
@@ -29,6 +38,7 @@ public class AuthenticationHandler {
         }
     }
 
+    // the object return to ImptMessageManager
     public static class AuthenticationObject {
         public String userName = "";
         public String userIdToken = "";

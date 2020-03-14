@@ -13,6 +13,7 @@ import impt.common.*;
 public class ImptClientAuth {
     private ImptLogger _logger = new ImptLogger();
 
+    // fetch user log info
     public String getAuthInfo() {
         Scanner loginScanner = new Scanner(System.in); // Create a Scanner object
 
@@ -27,6 +28,7 @@ public class ImptClientAuth {
         return username + " " + password;
     }
 
+    // when Authentication response returns, handle accordingly
     public String handleServerAuthResponse(String message) {
         String[] messageArr = message.split(" ");
         String userToken = null;

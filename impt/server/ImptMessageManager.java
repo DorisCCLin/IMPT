@@ -1,3 +1,9 @@
+/**
+ * ImptMessageManager is to handle incoming message and form the outgoing manage the message to be delivered.
+ * 
+ * @author Doris Chia-ching Lin
+ * @version 1
+ */
 package impt.server;
 
 import java.util.*;
@@ -7,6 +13,8 @@ import impt.server.handlers.*;
 class ImptMessageManger {
     private ClientMessageObject _clientMessageObject = new ClientMessageObject();
 
+    // handle incoming message and form message and recipient info in
+    // ClientMessageObject
     public void handleClientMessage(String message) {
         boolean isMessageValid = isMessageValid(message);
         String[] messageArr = message.split(" ");
@@ -89,18 +97,13 @@ class ImptMessageManger {
                     _clientMessageObject.message = "DISCONNECT FIN";
 
                     System.out.println("Active Users[MessageManager]: " + ImptServer.activeUsers);
-
-                default:
-                    // code block
             }
         }
     }
 
+    // mockup message validation mechanism
     public boolean isMessageValid(String message) {
-        // validate correct json format
-        // if no - throw invalid json message format error
-        // try parsing into ClientMessageObject
-        // if no - throw invalid message format error
+
         return true;
     }
 

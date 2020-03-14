@@ -1,6 +1,9 @@
-// Java implementation of Server side 
-// It contains two classes : Server and ClientHandler 
-// Save file as Server.java 
+/**
+ * Server is where the service and concurrenting happens.
+ * 
+ * @author Doris Chia-ching Lin
+ * @version 1
+ */
 package impt.server;
 
 import java.io.*;
@@ -11,12 +14,13 @@ import impt.common.*;
 // Server class 
 public class ImptServer {
 
-    // Vector to store active clients
+    // Map to store active clients
     public static Map<String, String> activeUsers = new HashMap<String, String>();
     public static Map<String, ImptClientManager> activeSockets = new HashMap<String, ImptClientManager>();
 
     private static ImptLogger _logger = new ImptLogger();
 
+    // Entry Server point
     public static void main(String[] args) throws IOException {
         // server is listening on port 1234
         ServerSocket serverSocket = new ServerSocket(1234);
@@ -39,19 +43,11 @@ public class ImptServer {
 
                 _logger.printLog("ImptServer", "Creating a new handler for this client...");
 
-                // TODO: Create ImptClientManager and add to a Thread THEN establish connection
-                // (Create an Init function instead of constructor)
-                // Create a new handler object for handling this request.
                 ImptClientManager imptClientManager = new ImptClientManager(socket, inputStream, outputStream);
 
-                // Create a new Thread with this object.
+                // Create a new Thread with this object. CONCURRENT
                 Thread thread = new Thread(imptClientManager);
                 _logger.printLog("ImptServer", "IMPT Client Manager Thread Name: " + thread.getName());
-
-                // _logger.printLog("ImptServer", "Adding this client to active client list");
-
-                // add this client to active clients list
-                // ar.add(imptClientManager);
 
                 // start the thread.
                 thread.start();

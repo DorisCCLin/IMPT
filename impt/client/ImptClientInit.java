@@ -19,20 +19,6 @@ public class ImptClientInit {
 
     public Boolean handleIncomingConnect(String initUsername, String initUserIdToken) {
         Boolean success = false;
-
-        // public void handleIncomingConnect(String initUsername) {
-        // ImptClient imptClient = new ImptClient();
-        // switch (initUsername) {
-        // case "none":
-        // System.out.println("You are the only one online, idling...");
-
-        // break;
-        // default:
-        // System.out.println(initUsername + " is now connected with you.");
-
-        // }
-        // imptClient.toggleIsAwaitingResponseFromServer();
-        // return;
         switch (initUsername) {
             case "none":
                 _logger.printLog(this.getClass().toString(),

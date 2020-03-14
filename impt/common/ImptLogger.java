@@ -1,3 +1,9 @@
+/**
+ * ImptLogger is to print logs of communication between server and client
+ * 
+ * @author Doris Chia-ching Lin
+ * @version 1
+ */
 package impt.common;
 
 import java.time.format.DateTimeFormatter;
@@ -5,6 +11,8 @@ import java.time.LocalDateTime;
 import java.io.*;
 
 public class ImptLogger {
+
+    // Print log on console
     public void printLog(String source, String message) {
         DateTimeFormatter dateTimeFormmatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss.SSS a");
         LocalDateTime now = LocalDateTime.now();
@@ -18,6 +26,7 @@ public class ImptLogger {
         printToFile(formattedMessage);
     }
 
+    // Print log a output file
     public void printToFile(String message) {
         DateTimeFormatter dateTimeFormmatter = DateTimeFormatter.ofPattern("MM.dd.yyyy");
         LocalDateTime currentDate = LocalDateTime.now();

@@ -1,3 +1,10 @@
+/**
+ * ClientMessageObject is the returned object from ImptMessageManager to ImptClientManager.
+ * 
+ * @author Doris Chia-ching Lin
+ * @version 1
+ */
+
 package impt.server;
 
 public class ClientMessageObject {

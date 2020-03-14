@@ -24,6 +24,7 @@ public class ImptClientPayment {
         _recipientUserIdToken = recipientUserIdToken;
     }
 
+    // fetch User's choice of payment service
     private void getPaymentServiceChoice() {
         Scanner myObj = new Scanner(System.in); // Create a Scanner object
         _logger.printLog(this.getClass().toString(), "what payment service, please enter the number?");
@@ -48,6 +49,7 @@ public class ImptClientPayment {
 
     }
 
+    // fetch User's info to send a payment request
     public String initialPaymentSend() {
         Scanner myObj = new Scanner(System.in); // Create a Scanner object
         _logger.printLog(this.getClass().toString(), "You are sending payment to " + _recipientUsername + "? (y/n):");
@@ -67,6 +69,7 @@ public class ImptClientPayment {
         return "PAYSND BEGIN " + _recipientUserIdToken + " " + _paymentAmount + " " + _paymentService;
     }
 
+    // handle when Server resturns the payment transaction result
     public void handlePaymentResponse(String[] response) {
         if (response.length == 4 && response[3].equals("success")) {
             _logger.printLog(this.getClass().toString(),
