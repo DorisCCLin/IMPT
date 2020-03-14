@@ -9,78 +9,85 @@ import impt.common.*;
 class ImptClientManager implements Runnable {
     Scanner scn = new Scanner(System.in);
     // private String name;
-    final DataInputStream _dataInputStream;
-    final DataOutputStream _dataOutputStream;
-    Socket _socket;
-
-    private String _outputMessage;
+    private Socket _socket;
+    // private String _outputMessage;
     private ImptLogger _logger = new ImptLogger();
+    private ClientMessageObject _clientMessageObject = new ClientMessageObject();
 
     // constructor
-    public ImptClientManager(Socket socket, DataInputStream dataInputStream, DataOutputStream dataOutputStream) {
-        this._dataInputStream = dataInputStream;
-        this._dataOutputStream = dataOutputStream;
-        // this.name = name;
-        this._socket = socket;
-        // this._isMessageValid = false;
-        // this._isUserLoggedIn = false;
+    public ImptClientManager(Socket socket) {
+        _socket = socket;
     }
 
     @Override
     public void run() {
 
-        String receivedMessage;
+        String receivedMessage = null;
+        DataInputStream inputStream = null;
+        DataOutputStream outputStream = null;
+
+        try
+        {
+            inputStream = new DataInputStream(_socket.getInputStream());
+            outputStream = new DataOutputStream(_socket.getOutputStream());
+        } catch (Exception ex) {
+            
+        }
+        
         while (true) {
             try {
                 // receive the string
-                receivedMessage = _dataInputStream.readUTF();
+                receivedMessage = inputStream.readUTF();
                 _logger.printLog(this.getClass().toString(), receivedMessage);
 
                 ImptMessageManger imptMessageManger = new ImptMessageManger();
-                imptMessageManger.receiveHandler(receivedMessage);
+                imptMessageManger.handleClientMessage(receivedMessage);
 
-                ImptMessageManger.ClientMessageObject clientMessageObject = new ImptMessageManger.ClientMessageObject();
-                clientMessageObject = imptMessageManger.getClientMessageObject();
-                _outputMessage = clientMessageObject.message;
+                _clientMessageObject = imptMessageManger.getClientMessageObject();
+                String outputMessage = _clientMessageObject.message;
 
-                _logger.printLog(this.getClass().toString(), _outputMessage);
+                _logger.printLog(this.getClass().toString(), outputMessage);
 
-                switch (clientMessageObject.command) {
+                switch (_clientMessageObject.command) {
                     case "AUTH":
-                        if (clientMessageObject.isUserLoggedIn) {
-                            ImptServer.activeSockets.put(clientMessageObject.userIdToken, this);
+                        if (_clientMessageObject.isUserLoggedIn) {
+                            ImptServer.activeSockets.put(_clientMessageObject.userIdToken, this);
                             System.out.println("Active Users[ClientManager]: " + ImptServer.activeUsers);
                         }
 
-                        this._dataOutputStream.writeUTF(_outputMessage);
+                        outputStream.writeUTF(outputMessage);
 
                         if (ImptServer.activeUsers.size() == 1) {
-                            this._dataOutputStream.writeUTF(clientMessageObject.initNoneUserMessage);
+                            outputStream.writeUTF(_clientMessageObject.initNoneUserMessage);
                         } else {
                             // send to current user
-                            this._dataOutputStream.writeUTF(clientMessageObject.initCurrentUserMessage);
-                            ImptClientManager recipientImptClientManager = ImptServer.activeSockets
-                                    .get(clientMessageObject.prevUserIdToken);
-                            recipientImptClientManager._dataOutputStream
-                                    .writeUTF(clientMessageObject.initExistingUserMessage);
+                            outputStream.writeUTF(_clientMessageObject.initCurrentUserMessage);
+                            
+                            // ImptClientManager recipientImptClientManager = ImptServer.activeSockets
+                            //         .get(_clientMessageObject.prevUserIdToken);
+                            // recipientImptClientManager.outputStream
+                            //         .writeUTF(_clientMessageObject.initExistingUserMessage);
                         }
                         break;
                     case "DISCONNECT":
                         if (ImptServer.activeUsers.size() > 0) {
-                            this._dataOutputStream.writeUTF(clientMessageObject.message);
-                            ImptClientManager recipientImptClientManager = ImptServer.activeSockets
-                                    .get(clientMessageObject.prevUserIdToken);
+                            outputStream.writeUTF(_clientMessageObject.message);
 
-                            recipientImptClientManager._dataOutputStream
-                                    .writeUTF(clientMessageObject.initExistingUserMessage);
+                            // ImptClientManager recipientImptClientManager = ImptServer.activeSockets
+                            //         .get(_clientMessageObject.prevUserIdToken);
+
+                            // recipientImptClientManager.outputStream
+                            //         .writeUTF(_clientMessageObject.initExistingUserMessage);
                         } else {
-                            this._dataOutputStream.writeUTF(clientMessageObject.message);
+                            outputStream.writeUTF(_clientMessageObject.message);
 
                         }
 
                         break;
 
                 }
+
+                receivedMessage = null;
 
                 // if (receivedMessage.equals("logout")) {
                 // this._socket.close();
@@ -101,6 +108,7 @@ class ImptClientManager implements Runnable {
                 e.printStackTrace(new PrintWriter(errors));
                 _logger.printLog(this.getClass().toString(),
                         " !! Error Encountered: " + errors.toString());
+                break;
                 // } catch (Exception ex) {
                 // try {
                 // this._socket.close();
@@ -113,7 +121,7 @@ class ImptClientManager implements Runnable {
         // try {
         // // closing resources
         // this._dataInputStream.close();
-        // this._dataOutputStream.close();
+        // this.outputStream.close();
         // } catch (IOException e) {
         // e.printStackTrace();
         // }

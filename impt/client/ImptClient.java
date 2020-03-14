@@ -189,7 +189,7 @@ public class ImptClient {
 
                         _logger.printLog(this.getClass().toString(),
                                 " !! Error Encountered in readMessage Thread: " + errors.toString());
-
+                        break;
                     }
                 }
 

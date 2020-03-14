@@ -1,0 +1,63 @@
+[03/14/2020 12:47:43.244 AM] [ImptServer] IMPT Server Started
+[03/14/2020 12:47:46.631 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=56275,localport=1234]
+[03/14/2020 12:47:46.631 AM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 12:47:46.645 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/14/2020 12:47:46.655 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 12:47:46.655 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 12:47:46.682 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 12:47:51.390 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 12:47:53.839 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 12:47:53.839 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 12:48:08.747 AM] [ImptClientManager] AUTH BEGIN Doris doris1
+[03/14/2020 12:49:15.124 AM] [ImptClientManager] AUTH RES b9a0294a-0635-43a9-9b81-3043cfe665b7
+[03/14/2020 12:49:32.518 AM] [ImptClient$2] << AUTH RES b9a0294a-0635-43a9-9b81-3043cfe665b7
+[03/14/2020 12:49:32.519 AM] [ImptClientAuth] ** Logged in successfully!
+[03/14/2020 12:49:34.878 AM] [ImptClient$2] << INIT BEGIN none none
+[03/14/2020 12:49:34.879 AM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/14/2020 12:49:34.880 AM] [ImptClientInit] 
+** Type '#logout' or '#exit' anytime to disconnet **
+** Type '#payment' anytime to initiate payment **
+** Type '#help' anytime to view help on commands **
+[03/14/2020 12:52:19.732 AM] [ImptClientManager]  !! Error Encountered: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:40)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 12:55:52.432 AM] [ImptServer] IMPT Server Started
+[03/14/2020 12:55:59.667 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=56418,localport=1234]
+[03/14/2020 12:55:59.669 AM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 12:55:59.679 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/14/2020 12:55:59.693 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 12:55:59.693 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 12:55:59.706 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 12:56:11.371 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 12:56:12.587 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 12:56:12.587 AM] [ImptClientManager] AUTH BEGIN Doris asdf
+[03/14/2020 12:56:12.587 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 12:56:12.589 AM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/14/2020 12:56:12.590 AM] [ImptClient$2] << ERR_AUTH BEGIN authError
+[03/14/2020 12:56:12.591 AM] [ImptClientManager]  !! Error Encountered: java.lang.NullPointerException
+	at impt.server.ImptClientManager.run(ImptClientManager.java:65)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 12:56:12.591 AM] [ImptClientAuth] ** Oops! The username and password do not match. Try again! :( **
+[03/14/2020 12:56:21.941 AM] [ImptClient$2] << 
+[03/14/2020 12:56:32.258 AM] [ImptClient$2]  !! Error Encountered in readMessage Thread: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:142)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+

@@ -9,7 +9,7 @@ public class ImptLogger {
         DateTimeFormatter dateTimeFormmatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss.SSS a");
         LocalDateTime now = LocalDateTime.now();
         String timeStamp = dateTimeFormmatter.format(now);
-        String[] sourceDissected = source.split(".");
+        String[] sourceDissected = source.split("\\.");
         String shortSource = sourceDissected.length > 1 ? sourceDissected[sourceDissected.length - 1] : source;
 
         String formattedMessage = "[" + timeStamp + "] [" + shortSource + "] " + message;
