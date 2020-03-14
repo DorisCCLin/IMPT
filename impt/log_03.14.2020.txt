@@ -1,0 +1,95 @@
+[03/14/2020 02:46:35.807 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 02:46:35.806 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 02:46:35.841 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 02:46:48.120 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 02:46:48.120 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 02:46:48.155 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 02:46:58.736 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 02:47:01.573 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 02:47:01.574 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 02:47:01.593 AM] [ImptClient$2] << AUTH RES 50f8e5e8-f076-48bb-999a-ac8a9d28ac7a
+[03/14/2020 02:47:01.594 AM] [ImptClientAuth] ** Logged in successfully!
+[03/14/2020 02:47:01.595 AM] [ImptClient$2] << INIT BEGIN none none
+[03/14/2020 02:47:01.600 AM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/14/2020 02:47:11.375 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 02:47:17.778 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 02:47:17.779 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 02:47:17.780 AM] [ImptClient$2] << ERR_AUTH BEGIN authError
+[03/14/2020 02:47:17.781 AM] [ImptClientAuth] ** Oops! The username and password do not match. Try again! :( **
+[03/14/2020 02:47:17.781 AM] [ImptClient$2] << 
+[03/14/2020 02:47:17.781 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 02:47:17.783 AM] [ImptClient$1]  !! Error Encountered in sendMessage Thread: java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
+	at impt.client.ImptClientAuth.getAuthInfo(ImptClientAuth.java:20)
+	at impt.client.ImptClient$1.run(ImptClient.java:100)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 02:47:17.787 AM] [ImptClient$2]  !! Error Encountered in readMessage Thread: java.net.SocketException: Socket closed
+	at java.base/sun.nio.ch.NioSocketImpl.endRead(NioSocketImpl.java:249)
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 02:47:36.428 AM] [ImptClient$2]  !! Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 02:47:55.039 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 02:47:55.039 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 02:47:55.081 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 02:48:06.357 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 02:48:06.357 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 02:48:06.394 AM] [ImptClientAuth] << Enter username:
+[03/14/2020 02:48:13.683 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 02:48:16.139 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 02:48:16.140 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 02:48:16.158 AM] [ImptClient$2] << AUTH RES ab21d17f-d4b4-49d9-8019-f0699a3a97d7
+[03/14/2020 02:48:16.159 AM] [ImptClientAuth] ** Logged in successfully!
+[03/14/2020 02:48:16.160 AM] [ImptClient$2] << INIT BEGIN none none
+[03/14/2020 02:48:16.162 AM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/14/2020 02:48:21.850 AM] [ImptClientAuth] << Enter password:
+[03/14/2020 02:48:24.517 AM] [ImptClient$1] ** Logging in...
+[03/14/2020 02:48:24.518 AM] [ImptClient$1] ** Awaiting server response...
+[03/14/2020 02:48:24.524 AM] [ImptClient$2] << AUTH RES c4e54811-3ac9-440e-92d0-684d63659cca
+[03/14/2020 02:48:24.524 AM] [ImptClient$2] << INIT BEGIN Brian c4e54811-3ac9-440e-92d0-684d63659cca
+[03/14/2020 02:48:24.524 AM] [ImptClientAuth] ** Logged in successfully!
+[03/14/2020 02:48:24.525 AM] [ImptClientInit] Brian is now connected with you!
+[03/14/2020 02:48:24.526 AM] [ImptClient$2] << INIT BEGIN Doris ab21d17f-d4b4-49d9-8019-f0699a3a97d7
+[03/14/2020 02:48:24.526 AM] [ImptClient$1] Brian, what's on your mind? :)
+[03/14/2020 02:48:24.528 AM] [ImptClient$1]  !! Error Encountered in sendMessage Thread: java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1651)
+	at impt.client.ImptClient$1.run(ImptClient.java:108)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 02:48:24.528 AM] [ImptClientInit] Doris is now connected with you!
+[03/14/2020 02:48:24.532 AM] [ImptClient$2]  !! Error Encountered in readMessage Thread: java.net.SocketException: Socket closed
+	at java.base/sun.nio.ch.NioSocketImpl.ensureOpenAndConnected(NioSocketImpl.java:166)
+	at java.base/sun.nio.ch.NioSocketImpl.beginRead(NioSocketImpl.java:232)
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:300)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 02:57:04.257 AM] [ImptClient$2]  !! Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+

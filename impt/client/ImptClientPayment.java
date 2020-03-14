@@ -8,6 +8,7 @@
 package impt.client;
 
 import java.util.Scanner;
+import impt.common.*;
 
 public class ImptClientPayment {
     // Init information
@@ -16,6 +17,8 @@ public class ImptClientPayment {
     private String _paymentAmount;
     private String _paymentService;
 
+    private static ImptLogger _logger = new ImptLogger();
+
     public ImptClientPayment(String recipientUsername, String recipientUserIdToken) {
         _recipientUsername = recipientUsername;
         _recipientUserIdToken = recipientUserIdToken;
@@ -23,22 +26,22 @@ public class ImptClientPayment {
 
     private void getPaymentServiceChoice() {
         Scanner myObj = new Scanner(System.in); // Create a Scanner object
-        System.out.println("what payment service, please enter the number?");
-        System.out.println("(1.PayPal 2.Venmo 3.Cash)");
+        _logger.printLog(this.getClass().toString(), "what payment service, please enter the number?");
+        _logger.printLog(this.getClass().toString(), "(1.PayPal 2.Venmo 3.Cash)");
 
         String service = myObj.nextLine();
 
         switch (service) {
             case "1":
                 _paymentService = "PayPay";
-                System.out.println("You picked " + _paymentService);
+                _logger.printLog(this.getClass().toString(), "You picked " + _paymentService);
                 break;
             case "2":
                 _paymentService = "Venmo";
-                System.out.println("You picked " + _paymentService);
+                _logger.printLog(this.getClass().toString(), "You picked " + _paymentService);
             case "3":
                 _paymentService = "Cash";
-                System.out.println("You picked " + _paymentService);
+                _logger.printLog(this.getClass().toString(), "You picked " + _paymentService);
             default:
                 getPaymentServiceChoice();
         }
@@ -47,12 +50,12 @@ public class ImptClientPayment {
 
     public String initialPaymentSend() {
         Scanner myObj = new Scanner(System.in); // Create a Scanner object
-        System.out.println("You are sending payment to " + _recipientUsername + "? (y/n):");
+        _logger.printLog(this.getClass().toString(), "You are sending payment to " + _recipientUsername + "? (y/n):");
         String response = myObj.nextLine();
 
         if (response.equals("y") || response.equals("n")) {
             if (response.equals("y")) {
-                System.out.println("How much would you like to send?");
+                _logger.printLog(this.getClass().toString(), "How much would you like to send?");
                 _paymentAmount = myObj.nextLine();
                 getPaymentServiceChoice();
             }
@@ -66,14 +69,15 @@ public class ImptClientPayment {
 
     public void handlePaymentResponse(String[] response) {
         if (response.length == 4 && response[3].equals("success")) {
-            System.out.println("You have paid " + _recipientUsername + " " + response[2] + ".");
+            _logger.printLog(this.getClass().toString(),
+                    "You have paid " + _recipientUsername + " " + response[2] + ".");
         } else
             switch (response[2]) {
                 case ("fail"):
-                    System.out.println("Opps, transaction failed");
+                    _logger.printLog(this.getClass().toString(), "Opps, transaction failed");
                     break;
                 default:
-                    System.out.println("Opps, something went wrong");
+                    _logger.printLog(this.getClass().toString(), "Opps, something went wrong");
 
             }
     }

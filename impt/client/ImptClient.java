@@ -37,7 +37,7 @@ public class ImptClient {
     public static void handleGeneralUserInput(String input, DataOutputStream outputStream)
             throws UnknownHostException, IOException {
         switch (input) {
-            case ("p"):
+            case "p":
                 ImptClientPayment imptClientPayment = new ImptClientPayment(_recipientUserName, _recipientUserIdToken);
                 String paymentSendMessage = imptClientPayment.initialPaymentSend();
                 outputStream.writeUTF(paymentSendMessage);
@@ -108,6 +108,9 @@ public class ImptClient {
                                 String message = userInputScanner.nextLine();
 
                                 if (!message.isEmpty()) {
+
+                                    _logger.printLog(this.getClass().toString(),
+                                            "\n** Type 'logout' anytime to disconnect **\n** Type 'p' anytime to initiate payment **\n** Type '#help' anytime to view help on commands **");
                                     handleGeneralUserInput(message.toLowerCase(), outputStream);
 
                                     // switch (message.toLowerCase()) {
@@ -222,7 +225,7 @@ public class ImptClient {
 
                                         break;
                                     case "PAYSND":
-                                        System.out.println("SERVER PAY");
+                                        _logger.printLog(this.getClass().toString(), "SERVER PAY");
 
                                         ImptClientPayment imptClientPayment = new ImptClientPayment(_recipientUserName,
                                                 _recipientUserIdToken);
@@ -233,12 +236,12 @@ public class ImptClient {
                                     case "DISCONNECT":
                                         if (messageArr.length == 2) {
                                             // socket.close();
-                                            System.out.println("you are disconnected");
+                                            _logger.printLog(this.getClass().toString(), "you are disconnected");
 
                                         } else {
                                             _recipientUserName = null;
                                             _recipientUserIdToken = null;
-                                            System.out.println("someone got disconnected");
+                                            _logger.printLog(this.getClass().toString(), "someone got disconnected");
                                         }
                                     case "CHAT":
                                         break;

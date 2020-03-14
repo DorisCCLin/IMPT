@@ -46,9 +46,6 @@ public class ImptClientInit {
                 break;
         }
 
-        _logger.printLog(this.getClass().toString(),
-                "\n** Type '#logout' or '#exit' anytime to disconnet **\n** Type '#payment' anytime to initiate payment **\n** Type '#help' anytime to view help on commands **");
-
         return success;
     }
 

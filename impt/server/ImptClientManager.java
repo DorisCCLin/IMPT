@@ -10,33 +10,28 @@ class ImptClientManager implements Runnable {
     Scanner scn = new Scanner(System.in);
     // private String name;
     private Socket _socket;
+    private DataInputStream _inputStream;
+    private DataOutputStream _outputStream;
     // private String _outputMessage;
     private ImptLogger _logger = new ImptLogger();
     private ClientMessageObject _clientMessageObject = new ClientMessageObject();
 
     // constructor
-    public ImptClientManager(Socket socket) {
+    public ImptClientManager(Socket socket, DataInputStream inputStream, DataOutputStream outputStream) {
         _socket = socket;
+        _inputStream = inputStream;
+        _outputStream = outputStream;
     }
 
     @Override
     public void run() {
 
         String receivedMessage = null;
-        DataInputStream inputStream = null;
-        DataOutputStream outputStream = null;
-
-        try {
-            inputStream = new DataInputStream(_socket.getInputStream());
-            outputStream = new DataOutputStream(_socket.getOutputStream());
-        } catch (Exception ex) {
-
-        }
 
         while (true) {
             try {
                 // receive the string
-                receivedMessage = inputStream.readUTF();
+                receivedMessage = _inputStream.readUTF();
                 _logger.printLog(this.getClass().toString(), receivedMessage);
 
                 ImptMessageManger imptMessageManger = new ImptMessageManger();
@@ -82,40 +77,39 @@ class ImptClientManager implements Runnable {
                             System.out.println("Active Users[ClientManager]: " + ImptServer.activeUsers);
                         }
 
-                        outputStream.writeUTF(outputMessage);
+                        _outputStream.writeUTF(outputMessage);
 
                         if (ImptServer.activeUsers.size() == 1) {
-                            outputStream.writeUTF(_clientMessageObject.initNoneUserMessage);
+                            _outputStream.writeUTF(_clientMessageObject.initNoneUserMessage);
                         } else {
                             // send to current user
-                            outputStream.writeUTF(_clientMessageObject.initCurrentUserMessage);
+                            _outputStream.writeUTF(_clientMessageObject.initCurrentUserMessage);
 
-                            // ImptClientManager recipientImptClientManager = ImptServer.activeSockets
-                            // .get(_clientMessageObject.prevUserIdToken);
-                            // recipientImptClientManager.outputStream
-                            // .writeUTF(_clientMessageObject.initExistingUserMessage);
+                            ImptClientManager recipientImptClientManager = ImptServer.activeSockets
+                                    .get(_clientMessageObject.prevUserIdToken);
+
+                            recipientImptClientManager._outputStream
+                                    .writeUTF(_clientMessageObject.initExistingUserMessage);
                         }
                         break;
                     case "PAYSND":
-                        outputStream.writeUTF(outputMessage);
+                        _outputStream.writeUTF(outputMessage);
                         break;
 
                     case "DISCONNECT":
                         if (ImptServer.activeUsers.size() > 0) {
-                            outputStream.writeUTF(_clientMessageObject.message);
+                            _outputStream.writeUTF(_clientMessageObject.message);
 
-                            // ImptClientManager recipientImptClientManager = ImptServer.activeSockets
-                            // .get(_clientMessageObject.prevUserIdToken);
+                            ImptClientManager recipientImptClientManager = ImptServer.activeSockets
+                                    .get(_clientMessageObject.prevUserIdToken);
 
-                            // recipientImptClientManager.outputStream
-                            // .writeUTF(_clientMessageObject.initExistingUserMessage);
+                            recipientImptClientManager._outputStream
+                                    .writeUTF(_clientMessageObject.initExistingUserMessage);
                         } else {
-                            outputStream.writeUTF(_clientMessageObject.message);
-
+                            _outputStream.writeUTF(_clientMessageObject.message);
                         }
 
                         break;
-
                 }
 
                 receivedMessage = null;
