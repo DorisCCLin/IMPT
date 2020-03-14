@@ -6,7 +6,6 @@ package impt.server;
 import java.io.*;
 import java.util.*;
 import java.net.*;
-import static java.util.Map.entry;
 
 // Server class 
 public class ImptServer {

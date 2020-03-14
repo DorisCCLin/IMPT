@@ -26,7 +26,7 @@ class ImptMessageManger {
                         _clientMessageObject.message = "AUTH RES " + authObject.userIdToken;
 
                         if (ImptServer.activeUsers.size() == 0) {
-                            _clientMessageObject.initNoneUserMessage = "INIT BEGIN none none";
+                            _clientMessageObject.initNoneUserMessage = "INIT BEGIN none";
                         } else {
                             String prevUsername = ImptServer.activeUsers.keySet().iterator().next();
                             String prevUserIdToken = ImptServer.activeUsers.get(prevUsername);
@@ -46,6 +46,19 @@ class ImptMessageManger {
                         _clientMessageObject.message = "ERR_AUTH BEGIN authError";
                     }
                     break;
+
+                case "PAYSND":
+                    PaymentHandler paymentHandler = new PaymentHandler();
+                    PaymentHandler.PaymentObject paymentObject = new PaymentHandler.PaymentObject();
+                    paymentObject = paymentHandler.sendPayment();
+                    if (paymentObject.isPaymentSuccess) {
+                        _clientMessageObject.message = "PAYSND RES " + messageArr[3] + " success";
+                    } else {
+                        _clientMessageObject.message = "PAYSND RES fail";
+                    }
+
+                    break;
+
                 case "DISCONNECT":
                     _clientMessageObject.userIdToken = messageArr[2];
 

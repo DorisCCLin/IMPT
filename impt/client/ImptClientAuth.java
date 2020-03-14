@@ -10,7 +10,6 @@ package impt.client;
 import java.util.Scanner;
 
 public class ImptClientAuth {
-    private String _version = "IMPT 1.0";
 
     public String getAuthInfo() {
         Scanner myObj = new Scanner(System.in); // Create a Scanner object
@@ -19,8 +18,6 @@ public class ImptClientAuth {
 
         System.out.println("Enter password:"); // Output user input
         String password = myObj.nextLine();
-
-        // myObj.close();
 
         return username + " " + password;
     }

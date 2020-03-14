@@ -14,10 +14,10 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.*;
-import static java.util.Map.entry;
 
 public class ImptClient {
     final static int ServerPort = 1234;
+    private static String _version = "IMPT1.0";
 
     public static boolean _isLoggedIn = false;
     public static boolean _isLoggingOut = false;
@@ -85,12 +85,19 @@ public class ImptClient {
                             } else {
                                 if (!_isLoggingOut) {
                                     if (!_isAwaitPaymentSendAccept) {
-                                        System.out.println(_myUsername + ", what's on your mind?");
-                                        System.out.println("(p => pay, logout => exit)");
+                                        if (_recipientUserName != null && !_recipientUserName.isEmpty()) {
+                                            System.out.println(_myUsername + ", what's on your mind?");
+                                            System.out.println("(p => pay, logout => exit)");
 
-                                        String message = scanner.nextLine();
+                                            String message = scanner.nextLine();
 
-                                        handleGeneralUserInput(message, outputStream);
+                                            handleGeneralUserInput(message, outputStream);
+
+                                        } else {
+                                            System.out.println("await for other user online...");
+                                            System.out.println("(type 'logout' anytime to exit)");
+                                        }
+
                                     } else {
                                         break;
                                     }
@@ -98,10 +105,8 @@ public class ImptClient {
                                 } else {
                                     break;
                                 }
-
+                                // break;
                             }
-
-                            // _isAwaitingResponseFromServer = true;
                         }
                         System.out.println("await for server");
 
@@ -114,11 +119,11 @@ public class ImptClient {
             }
 
             /**
-             * Build the client authentication message
+             * Build the client authentication message and add version#
              */
             String buildAuthOutputMessage(String loginCredential) {
                 // need encrypted password and username
-                return "AUTH BEGIN " + loginCredential;
+                return "AUTH BEGIN " + loginCredential + " " + _version;
             }
         });
 
@@ -147,8 +152,7 @@ public class ImptClient {
                                     _isLoggedIn = false;
                                     _myUsername = null;
                                     clientAuth.getAuthInfo();
-                                    _isAwaitingResponseFromServer = true;
-                                    // _isAwaitingResponseFromServer = false;
+                                    _isAwaitingResponseFromServer = false;
                                 }
                             } else {
                                 System.out.println("SERVER MSG");
@@ -158,8 +162,21 @@ public class ImptClient {
                                         System.out.println("SERVER INIT");
                                         ImptClientInit clientInit = new ImptClientInit();
                                         clientInit.handleIncomingConnect(messageArr[2]);
-                                        ImptClient._recipientUserName = messageArr[2];
-                                        ImptClient._recipientUserIdToken = messageArr[3];
+                                        if (messageArr.length == 4) {
+                                            ImptClient._recipientUserName = messageArr[2];
+                                            ImptClient._recipientUserIdToken = messageArr[3];
+                                            _isConnectedToOther = true;
+                                        }
+
+                                        _isAwaitingResponseFromServer = false;
+                                        break;
+                                    case "PAYSND":
+                                        System.out.println("SERVER PAY");
+
+                                        ImptClientPayment imptClientPayment = new ImptClientPayment(_recipientUserName,
+                                                _recipientUserIdToken);
+                                        imptClientPayment.handlePaymentResponse(messageArr);
+
                                         _isAwaitingResponseFromServer = false;
                                         break;
                                     case "DISCONNECT":
@@ -175,7 +192,6 @@ public class ImptClient {
 
                                         break;
                                 }
-                                // _isAwaitingResponseFromServer = false;
                             }
 
                             message = null;
@@ -192,9 +208,5 @@ public class ImptClient {
 
         sendMessage.start();
         readMessage.start();
-
-        // if user types EXIT or LOGOUT
-        // trigger scanner.close();
-        // trigger socket.close();
     }
 }

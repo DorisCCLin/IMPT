@@ -1,5 +1,5 @@
 /**
- * ClientAuth The client authentication module for the initial handshake
+ * ImptClientInit The client connection module for establish connection with other user
  * 
  * @author Doris Chia-ching Lin
  * @version 1
@@ -19,15 +19,12 @@ public class ImptClientInit {
         switch (initUsername) {
             case "none":
                 System.out.println("You are the only one online, idling...");
-                System.out.println("(type 'logout' anytime to exit)");
 
                 break;
             default:
                 System.out.println(initUsername + " is now connected with you.");
-                System.out.println("(type 'logout' anytime to exit)");
 
         }
-
         imptClient.toggleIsAwaitingResponseFromServer();
         return;
     }

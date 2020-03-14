@@ -44,6 +44,8 @@ class ImptClientManager implements Runnable {
 
                 System.out.println(_outputMessage);
 
+                // Output message to client
+
                 switch (clientMessageObject.command) {
                     case "AUTH":
                         if (clientMessageObject.isUserLoggedIn) {
@@ -67,6 +69,10 @@ class ImptClientManager implements Runnable {
                         }
 
                         break;
+                    case "PAYSND":
+                        this._dataOutputStream.writeUTF(_outputMessage);
+                        break;
+
                     case "DISCONNECT":
                         if (ImptServer.activeUsers.size() > 0) {
                             this._dataOutputStream.writeUTF(clientMessageObject.message);

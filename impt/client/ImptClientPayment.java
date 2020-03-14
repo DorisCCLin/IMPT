@@ -1,5 +1,5 @@
 /**
- * ClientAuth The client authentication module for the initial handshake
+ * ImptClientPayment The client payment module for payment inquiry
  * 
  * @author Doris Chia-ching Lin
  * @version 1
@@ -61,6 +61,21 @@ public class ImptClientPayment {
             initialPaymentSend();
         }
 
-        return "PAYSD BEGIN " + _recipientUserIdToken + " " + _paymentAmount + " " + _paymentService;
+        return "PAYSND BEGIN " + _recipientUserIdToken + " " + _paymentAmount + " " + _paymentService;
     }
+
+    public void handlePaymentResponse(String[] response) {
+        if (response.length == 4 && response[3].equals("success")) {
+            System.out.println("You have paid " + _recipientUsername + " " + response[2] + ".");
+        } else
+            switch (response[2]) {
+                case ("fail"):
+                    System.out.println("Opps, transaction failed");
+                    break;
+                default:
+                    System.out.println("Opps, something went wrong");
+
+            }
+    }
+
 }
