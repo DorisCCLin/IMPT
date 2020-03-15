@@ -33,15 +33,23 @@ public class ImptClient {
     public static String _myUserIdToken;
     public static String _myUsername;
 
+    public static String[] _matchedPaymentServices = null;
+
     // handle general request from user
     public static void handleGeneralUserInput(String input, DataOutputStream outputStream)
             throws UnknownHostException, IOException {
         switch (input) {
             case "#payment":
-                ImptClientPayment imptClientPayment = new ImptClientPayment(_recipientUserName, _recipientUserIdToken);
-                String paymentSendMessage = imptClientPayment.initialPaymentSend();
-                outputStream.writeUTF(paymentSendMessage);
-                _isAwaitPaymentSendAccept = true;
+                if (_matchedPaymentServices.length == 0 || _matchedPaymentServices == null) {
+                    ImptClientPayment imptClientPayment = new ImptClientPayment(_recipientUserName,
+                            _recipientUserIdToken, _matchedPaymentServices);
+                    String paymentSendMessage = imptClientPayment.initialPaymentSend();
+                    outputStream.writeUTF(paymentSendMessage);
+                    _isAwaitPaymentSendAccept = true;
+                } else {
+                    _logger.printLog("ImptClient", "Opps, there is no payment options", ImptLoggerConfig.Level.INFO);
+                    _isAwaitPaymentSendAccept = true;
+                }
                 break;
 
             case "#logout":
@@ -242,12 +250,21 @@ public class ImptClient {
 
                                         _isAwaitingResponseFromServer = false;
                                         break;
+                                    case "PAYINFO":
+                                        _logger.printLog(this.getClass().toString(), "SERVER PAY",
+                                                ImptLoggerConfig.Level.DEBUG);
+
+                                        _matchedPaymentServices = messageArr[2].split(",");
+                                        System.out.println(_matchedPaymentServices[0]);
+
+                                        _isAwaitingResponseFromServer = false;
+                                        break;
                                     case "PAYSND":
                                         _logger.printLog(this.getClass().toString(), "SERVER PAY",
                                                 ImptLoggerConfig.Level.DEBUG);
 
                                         ImptClientPayment imptClientPayment = new ImptClientPayment(_recipientUserName,
-                                                _recipientUserIdToken);
+                                                _recipientUserIdToken, _matchedPaymentServices);
                                         imptClientPayment.handlePaymentResponse(messageArr);
 
                                         _isAwaitingResponseFromServer = false;

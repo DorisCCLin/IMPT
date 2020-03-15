@@ -71,7 +71,7 @@ public class ImptMessageManager {
                                         _clientMessageObject.payInfoMessage = "ERR_PAY BEGIN noServices";
 
                                     } else {
-                                        _clientMessageObject.message = "PAYINFO BEGIN "
+                                        _clientMessageObject.payInfoMessage = "PAYINFO BEGIN "
                                                 + authPaymentObject.matchedPaymentServices;
 
                                     }

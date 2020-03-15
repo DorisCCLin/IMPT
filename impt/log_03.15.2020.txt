@@ -345,3 +345,38 @@
 	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
 	at java.base/java.lang.Thread.run(Thread.java:830)
 
+[03/15/2020 04:35:13.059 PM] [ImptServer] IMPT Server Started
+[03/15/2020 04:35:17.471 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=58621,localport=1234]
+[03/15/2020 04:35:17.472 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 04:35:17.487 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 04:35:25.701 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=58628,localport=1234]
+[03/15/2020 04:35:25.702 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 04:35:25.703 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 04:35:36.115 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 04:35:36.132 PM] [ImptClientManager] AUTH RES 872ac7da-78b6-4729-8bbb-c92bc9bd3084
+[03/15/2020 04:35:36.133 PM] [ImptClientManager] {Doris=872ac7da-78b6-4729-8bbb-c92bc9bd3084}
+[03/15/2020 04:35:47.652 PM] [ImptClientManager] AUTH BEGIN Brian brian1 IMPT1.0
+[03/15/2020 04:35:47.656 PM] [ImptClientManager] PAYINFO BEGIN Venmo
+[03/15/2020 04:35:47.658 PM] [ImptClientManager] {Brian=3bbe45f8-9be2-4709-a8c3-6cb81ab91e37, Doris=872ac7da-78b6-4729-8bbb-c92bc9bd3084}
+[03/15/2020 04:42:42.965 PM] [ImptServer] IMPT Server Started
+[03/15/2020 04:42:46.180 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=59009,localport=1234]
+[03/15/2020 04:42:46.181 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 04:42:46.196 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 04:42:49.115 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 04:42:49.135 PM] [ImptClientManager] AUTH RES d3df8e47-b859-4417-ac37-2d3c5c1ee2cc
+[03/15/2020 04:42:49.136 PM] [ImptClientManager] {Doris=d3df8e47-b859-4417-ac37-2d3c5c1ee2cc}
+[03/15/2020 04:42:53.744 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=59010,localport=1234]
+[03/15/2020 04:42:53.745 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 04:42:53.747 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 04:43:04.124 PM] [ImptClientManager] AUTH BEGIN Calvin clavin1 IMPT1.0
+[03/15/2020 04:43:04.125 PM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/15/2020 04:43:18.092 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 04:43:18.098 PM] [ImptClientManager] AUTH RES 2f12a48e-b9bc-467c-aa97-9d40e7ec91ed
+[03/15/2020 04:43:18.099 PM] [ImptClientManager] {Doris=d3df8e47-b859-4417-ac37-2d3c5c1ee2cc, Calvin=2f12a48e-b9bc-467c-aa97-9d40e7ec91ed}
+[03/15/2020 04:43:28.200 PM] [ImptClientManager]  Error Encountered: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+

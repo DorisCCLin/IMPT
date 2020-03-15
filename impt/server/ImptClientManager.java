@@ -64,12 +64,12 @@ class ImptClientManager implements Runnable {
                                 this._outputStream.writeUTF(_clientMessageObject.initNoneUserMessage);
                             } else {
                                 // send connection message to current user
-                                this._outputStream.writeUTF(_clientMessageObject.initCurrentUserMessage);
+                                // this._outputStream.writeUTF(_clientMessageObject.initCurrentUserMessage);
                                 // send connection message to existing user
                                 ImptClientManager recipientImptClientManager = ImptServer.activeSockets
                                         .get(_clientMessageObject.prevUserIdToken);
-                                recipientImptClientManager._outputStream
-                                        .writeUTF(_clientMessageObject.initExistingUserMessage);
+                                // recipientImptClientManager._outputStream
+                                // .writeUTF(_clientMessageObject.initExistingUserMessage);
 
                                 // send payment message to current user
                                 this._outputStream.writeUTF(_clientMessageObject.payInfoMessage);
