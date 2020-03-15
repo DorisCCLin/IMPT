@@ -47,36 +47,7 @@ public class MessageOutputHandler implements Runnable {
                             String message = userInputScanner.nextLine();
 
                             if (!message.isEmpty()) {
-                                // handleGeneralUserInput(message.toLowerCase(), outputStream);
-
-                                switch (message.toLowerCase()) {
-                                    // LOGOUT
-                                    case "#logout":
-                                    case "#exit":
-                                        ImptClientInit clientInit = new ImptClientInit();
-                                        Boolean disconnectConfirmed = clientInit.handleDisconnect();
-
-                                        if (disconnectConfirmed) {
-                                            String disconnectMessage = clientInit.getDisconnectMessage();
-                                            outputStream.writeUTF(disconnectMessage);
-                                            ImptClient._isAwaitingResponseFromServer = true;
-                                            ImptClient.disconnect();
-                                            return;
-                                            // _clientSocket.close();
-                                        }
-                                        break;
-                                    // PAYMENT
-                                    case "#payment":
-                                        ImptClientPayment imptClientPayment = new ImptClientPayment(
-                                                ImptClient._recipientUserName, ImptClient._recipientUserIdToken);
-                                        String paymentSendMessage = imptClientPayment.initialPaymentSend();
-                                        outputStream.writeUTF(paymentSendMessage);
-                                        ImptClient._isAwaitPaymentSendAccept = true;
-                                        break;
-                                    // CHAT
-                                    default:
-                                        break;
-                                }
+                                handleGeneralUserInput(message.toLowerCase(), outputStream);
                             }
                         }
                     }
@@ -102,5 +73,47 @@ public class MessageOutputHandler implements Runnable {
     private String buildAuthOutputMessage(String loginCredential) {
         // need encrypted password and username
         return "AUTH BEGIN " + loginCredential + " " + _version;
+    }
+
+    // handle general request from user
+    public void handleGeneralUserInput(String input, DataOutputStream outputStream)
+            throws UnknownHostException, IOException {
+        switch (input) {
+            case "#payment":
+                if (ImptClient._matchedPaymentServices.length == 0 || ImptClient._matchedPaymentServices == null) {
+                    ImptClientPayment imptClientPayment = new ImptClientPayment(
+                            ImptClient._recipientUserName,
+                            ImptClient._recipientUserIdToken, ImptClient._matchedPaymentServices);
+                    String paymentSendMessage = imptClientPayment.initialPaymentSend();
+                    outputStream.writeUTF(paymentSendMessage);
+                    ImptClient._isAwaitPaymentSendAccept = true;
+                } else {
+                    _logger.printLog("ImptClient", "Opps, there is no payment options", ImptLoggerConfig.Level.INFO);
+                    ImptClient._isAwaitPaymentSendAccept = true;
+                }
+
+                break;
+            case "#logout":
+                ImptClientInit clientInit = new ImptClientInit();
+                Boolean disconnectConfirmed = clientInit.handleDisconnect();
+
+                if (disconnectConfirmed) {
+                    String disconnectMessage = clientInit.getDisconnectMessage();
+                    outputStream.writeUTF(disconnectMessage);
+                    ImptClient._isAwaitingResponseFromServer = true;
+                    ImptClient.disconnect();
+                    return;
+                    // _clientSocket.close();
+                }
+
+                break;
+            case "#help":
+                ImptClient.printHelpCommands();
+
+                break;
+            default:
+                _logger.printLog("ImptClient", "** Unknown command **", ImptLoggerConfig.Level.INFO);
+                break;
+        }
     }
 }

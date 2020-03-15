@@ -33,32 +33,13 @@ public class ImptClient {
     public static String _myUserIdToken;
     public static String _myUsername;
 
-    // handle general request from user
-    // public static void handleGeneralUserInput(String input, DataOutputStream
-    // outputStream)
-    // throws UnknownHostException, IOException {
-    // switch (input) {
-    // case "p":
-    // ImptClientPayment imptClientPayment = new
-    // ImptClientPayment(_recipientUserName, _recipientUserIdToken);
-    // String paymentSendMessage = imptClientPayment.initialPaymentSend();
-    // outputStream.writeUTF(paymentSendMessage);
-    // _isAwaitPaymentSendAccept = true;
-    // break;
+    public static String[] _matchedPaymentServices = null;
 
-    // case "logout":
-    // ImptClientInit clientInit = new ImptClientInit();
-    // Boolean disconnectConfirmed = clientInit.handleDisconnect();
-
-    // if (disconnectConfirmed) {
-    // String disconnectMessage = clientInit.getDisconnectMessage();
-    // outputStream.writeUTF(disconnectMessage);
-    // _isAwaitingResponseFromServer = true;
-    // _clientSocket.close();
-    // }
-    // break;
-    // }
-    // }
+    public static void printHelpCommands() {
+        _logger.printLog("ImptClient",
+                "\n** Type '#logout' anytime to disconnect **\n** Type '#payment' anytime to initiate payment **\n** Type '#help' anytime to view help on commands **",
+                ImptLoggerConfig.Level.INFO);
+    }
 
     public static void disconnect() {
         _isLoggedIn = _isConnectedToOther = false;

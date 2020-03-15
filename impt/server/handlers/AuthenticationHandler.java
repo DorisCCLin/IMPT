@@ -7,18 +7,16 @@
 package impt.server.handlers;
 
 import java.util.*;
-import static java.util.Map.entry;
 
 public class AuthenticationHandler {
-    private static AuthenticationObject _authenticationObject;
+    private AuthenticationObject _authenticationObject = new AuthenticationObject();
 
     // mock user credential data
-    private static Map<String, String> _credentials = Map.ofEntries(entry("Doris", "doris1"),
-            entry("Calvin", "calvin1"), entry("Brian", "brian1"), entry("Emily", "emily1"));
+    private Map<String, String> _credentials = Map.ofEntries(Map.entry("Doris", "doris1"),
+            Map.entry("Calvin", "calvin1"), Map.entry("Brian", "brian1"), Map.entry("Emily", "emily1"));
 
     // authenticating user's credential
-    public AuthenticationObject authenticate(String userName, String password) {
-        _authenticationObject = new AuthenticationObject();
+    public void authenticate(String userName, String password) {
 
         if ((_credentials.containsKey(userName))) {
 
@@ -26,20 +24,21 @@ public class AuthenticationHandler {
                 _authenticationObject.userName = userName;
                 _authenticationObject.userIdToken = UUID.randomUUID().toString();
                 _authenticationObject.isUserIdLoggedIn = true;
-                return _authenticationObject;
             } else {
                 _authenticationObject.hasAuthError = true;
-                return _authenticationObject;
             }
 
         } else {
             _authenticationObject.hasAuthError = true;
-            return _authenticationObject;
         }
     }
 
+    public AuthenticationObject getAuthenticationObject() {
+        return _authenticationObject;
+    }
+
     // the object return to ImptMessageManager
-    public static class AuthenticationObject {
+    public class AuthenticationObject {
         public String userName = "";
         public String userIdToken = "";
         public boolean isUserIdLoggedIn = false;

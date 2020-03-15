@@ -17,7 +17,8 @@ public class MessageInputHandler implements Runnable {
     public void run() {
         DataInputStream inputStream = null;
         _logger.printLog(this.getClass().toString(),
-                "**** MessageInputHandler Thread Name: " + Thread.currentThread().getName(), ImptLoggerConfig.Level.DEBUG);
+                "**** MessageInputHandler Thread Name: " + Thread.currentThread().getName(),
+                ImptLoggerConfig.Level.DEBUG);
 
         try {
             inputStream = new DataInputStream(_clientSocket.getInputStream());
@@ -35,13 +36,16 @@ public class MessageInputHandler implements Runnable {
                 if (message != null && !message.isEmpty()) {
                     if (!ImptClient._isLoggedIn) {
                         ImptClientAuth clientAuth = new ImptClientAuth();
-                        ImptClient._myUserIdToken = clientAuth.handleServerAuthResponse(message);
+
+                        clientAuth.handleServerAuthResponse(message);
+                        ImptClient._myUserIdToken = clientAuth.getUserToken();
 
                         if (ImptClient._myUserIdToken != null && !ImptClient._myUserIdToken.isEmpty()) {
                             ImptClient._isLoggedIn = true;
                         } else {
                             ImptClient.disconnect();
                         }
+
                         ImptClient._isAwaitingResponseFromServer = false;
                     } else {
                         String[] messageArr = message.split(" ");
@@ -62,12 +66,22 @@ public class MessageInputHandler implements Runnable {
 
                                 ImptClient._isAwaitingResponseFromServer = false;
                                 break;
+                            case "PAYINFO":
+                                _logger.printLog(this.getClass().toString(), "SERVER PAY",
+                                        ImptLoggerConfig.Level.DEBUG);
+
+                                ImptClient._matchedPaymentServices = messageArr[2].split(",");
+                                System.out.println(ImptClient._matchedPaymentServices[0]);
+
+                                ImptClient._isAwaitingResponseFromServer = false;
+                                break;
                             case "PAYSND":
                                 _logger.printLog(this.getClass().toString(), "SERVER PAY",
                                         ImptLoggerConfig.Level.DEBUG);
 
                                 ImptClientPayment imptClientPayment = new ImptClientPayment(
-                                        ImptClient._recipientUserName, ImptClient._recipientUserIdToken);
+                                        ImptClient._recipientUserName, ImptClient._recipientUserIdToken,
+                                        ImptClient._matchedPaymentServices);
                                 imptClientPayment.handlePaymentResponse(messageArr);
 
                                 ImptClient._isAwaitingResponseFromServer = false;
@@ -91,14 +105,13 @@ public class MessageInputHandler implements Runnable {
                     message = null;
                 }
 
-            } 
-            catch (SocketException socketEx) {
-                _logger.printToFile("** SocketException below normally indicates loss of connection from the Server **");
+            } catch (SocketException socketEx) {
+                _logger.printToFile(
+                        "** SocketException below normally indicates loss of connection from the Server **");
                 _logger.printToFile(_logger.getExceptionMessage(socketEx));
                 break;
             } catch (Exception e) {
-                _logger.printLog(this.getClass().toString(),
-                        " Error Encountered: " + _logger.getExceptionMessage(e),
+                _logger.printLog(this.getClass().toString(), " Error Encountered: " + _logger.getExceptionMessage(e),
                         ImptLoggerConfig.Level.ERROR);
             }
         }

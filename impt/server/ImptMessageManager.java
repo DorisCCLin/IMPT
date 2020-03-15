@@ -11,7 +11,7 @@ import java.util.regex.*;
 
 import impt.server.handlers.*;
 
-class ImptMessageManger {
+public class ImptMessageManager {
     // handle incoming message and form message and recipient info in
     // ClientMessageObject
     public ClientMessageObject handleClientMessage(String message) {
@@ -26,32 +26,72 @@ class ImptMessageManger {
             switch (messageArr[0]) {
                 case "AUTH":
                     AuthenticationHandler authHandler = new AuthenticationHandler();
-                    AuthenticationHandler.AuthenticationObject authObject = new AuthenticationHandler.AuthenticationObject();
-                    authObject = authHandler.authenticate(messageArr[2], messageArr[3]);
+                    authHandler.authenticate(messageArr[2], messageArr[3]);
+                    AuthenticationHandler.AuthenticationObject authObject = authHandler.getAuthenticationObject();
                     clientMessageObject.isUserLoggedIn = authObject.isUserIdLoggedIn;
                     clientMessageObject.userIdToken = authObject.userIdToken;
 
                     if (authObject.isUserIdLoggedIn) {
+                        switch (ImptServer.activeUsers.size()) {
+                            // If currently no other users on the server, add the user to server and send
+                            // none init message.
+                            case 0:
+                                clientMessageObject.message = "AUTH RES " + authObject.userIdToken;
+                                clientMessageObject.initNoneUserMessage = "INIT BEGIN none none";
+                                ImptServer.activeUsers.put(authObject.userName, authObject.userIdToken);
+                                break;
 
-                        clientMessageObject.message = "AUTH RES " + authObject.userIdToken;
+                            // If currently one other user on the server, add the user to server and send
+                            // init-begin message to both users.
+                            case 1:
+                                // If it's the same user login again
+                                if (ImptServer.activeUsers.containsKey(authObject.userName)) {
+                                    clientMessageObject.message = "ERR_AUTH BEGIN sameUser";
 
-                        if (ImptServer.activeUsers.size() == 0) {
-                            clientMessageObject.initNoneUserMessage = "INIT BEGIN none none";
-                        } else {
-                            String otherUsername = ImptServer.activeUsers.keySet().iterator().next();
-                            String otherUserIdToken = ImptServer.activeUsers.get(otherUsername);
-                            clientMessageObject.otherUserIdToken = otherUserIdToken;
+                                } else {
+                                    clientMessageObject.message = "AUTH RES " + authObject.userIdToken;
+                                    String otherUsername = ImptServer.activeUsers.keySet().iterator().next();
+                                    String otherUserIdToken = ImptServer.activeUsers.get(otherUsername);
+                                    clientMessageObject.otherUserIdToken = otherUserIdToken;
 
-                            clientMessageObject.initCurrentUserMessage = "INIT BEGIN " + otherUsername + " "
-                                    + otherUserIdToken;
-                            clientMessageObject.initExistingUserMessage = "INIT BEGIN " + authObject.userName + " "
-                                    + authObject.userIdToken;
+                                    // INIT Message handling
+                                    clientMessageObject.initCurrentUserMessage = "INIT BEGIN " + otherUsername + " "
+                                            + otherUserIdToken;
+                                    clientMessageObject.initExistingUserMessage = "INIT BEGIN " + authObject.userName
+                                            + " " + authObject.userIdToken;
+
+                                    ImptServer.activeUsers.put(authObject.userName, authObject.userIdToken);
+
+                                    // PAYMENT Message handling - prepare payment info
+                                    PaymentHandler authPaymentHandler = new PaymentHandler();
+                                    authPaymentHandler.preparePaymentInfo(authObject.userName, otherUsername);
+                                    PaymentHandler.PaymentObject authPaymentObject = authPaymentHandler
+                                            .getPaymentObject();
+
+                                    if (authPaymentObject.hasPaymentError) {
+                                        clientMessageObject.payInfoMessage = "ERR_PAY BEGIN noServices";
+
+                                    } else {
+                                        clientMessageObject.payInfoMessage = "PAYINFO BEGIN "
+                                                + authPaymentObject.matchedPaymentServices;
+                                    }
+
+                                }
+                                break;
+
+                            // If currently one other user on the server, add the user to server and send
+                            // init-begin message to both users.
+                            case 2:
+                                clientMessageObject.message = "ERR_AUTH BEGIN serverFull";
+                                break;
+
+                            default:
+                                clientMessageObject.message = "ERR_AUTH BEGIN unknown";
+                                break;
                         }
-
-                        ImptServer.activeUsers.put(authObject.userName, authObject.userIdToken);
-
                     }
 
+                    // user login error
                     if (authObject.hasAuthError) {
                         clientMessageObject.message = "ERR_AUTH BEGIN authError";
                     }
@@ -59,8 +99,9 @@ class ImptMessageManger {
 
                 case "PAYSND":
                     PaymentHandler paymentHandler = new PaymentHandler();
-                    PaymentHandler.PaymentObject paymentObject = new PaymentHandler.PaymentObject();
-                    paymentObject = paymentHandler.sendPayment();
+                    paymentHandler.sendPayment();
+                    PaymentHandler.PaymentObject paymentObject = paymentHandler.getPaymentObject();
+
                     if (paymentObject.isPaymentSuccess) {
                         clientMessageObject.message = "PAYSND RES " + messageArr[3] + " success";
                     } else {
@@ -83,13 +124,14 @@ class ImptMessageManger {
                         String otherUserIdToken = messageArr[2];
                         clientMessageObject.otherUserIdToken = otherUserIdToken;
                         clientMessageObject.initExistingUserMessage = "DISCONNECT FIN " + currentUsername + " "
-                                + messageArr[2];                          
-                            
+                                + messageArr[2];
+
                         String otherUsername = ImptServer.activeUsers.keySet().iterator().next();
                         clientMessageObject.otherUserIdToken = ImptServer.activeUsers.get(otherUsername);
                     } else {
-                            
-                        while (ImptServer.activeUsers.values().remove(messageArr[2]));
+
+                        while (ImptServer.activeUsers.values().remove(messageArr[2]))
+                            ;
                     }
 
                     clientMessageObject.message = "DISCONNECT FIN";
@@ -99,7 +141,7 @@ class ImptMessageManger {
                     break;
             }
         }
-        
+
         return clientMessageObject;
     }
 

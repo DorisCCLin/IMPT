@@ -1,3 +1,8 @@
+/**
+ * ImptLoggerConfig is to store config strings for logging purpose. 
+ * @author Doris Chia-ching Lin
+ * @version 1
+ */
 package impt.common;
 
 public class ImptLoggerConfig {

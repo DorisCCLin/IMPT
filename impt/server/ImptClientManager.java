@@ -39,8 +39,8 @@ class ImptClientManager implements Runnable {
                 _logger.printLog(this.getClass().toString(), receivedMessage, ImptLoggerConfig.Level.DEBUG);
 
                 // sending incoming messager to message manager
-                ImptMessageManger imptMessageManger = new ImptMessageManger();
-                ClientMessageObject newClientMessageObject = imptMessageManger.handleClientMessage(receivedMessage);
+                ImptMessageManager imptMessageManager = new ImptMessageManager();
+                ClientMessageObject newClientMessageObject = imptMessageManager.handleClientMessage(receivedMessage);
 
                 if(newClientMessageObject != null)
                 {
@@ -70,6 +70,7 @@ class ImptClientManager implements Runnable {
                                     ImptLoggerConfig.Level.DEBUG);
                             _outputStream.writeUTF(outputMessage);
 
+                            // handle INIT message delivery
                             if (ImptServer.activeUsers.size() == 1) {
                                 _outputStream.writeUTF(_clientMessageObject.initNoneUserMessage);
                             } else {
@@ -78,7 +79,15 @@ class ImptClientManager implements Runnable {
 
                                 ImptServer.activeSockets.get(_clientMessageObject.otherUserIdToken)._outputStream
                                         .writeUTF(_clientMessageObject.initExistingUserMessage);
+
+                                // send payment message to current user
+                                _outputStream.writeUTF(_clientMessageObject.payInfoMessage);
+
+                                // send payment message to existing user
+                                ImptServer.activeSockets.get(_clientMessageObject.otherUserIdToken)._outputStream
+                                        .writeUTF(_clientMessageObject.payInfoMessage);
                             }
+
                         } else {
                             _outputStream.writeUTF(outputMessage);
                         }

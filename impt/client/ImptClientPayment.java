@@ -15,41 +15,71 @@ public class ImptClientPayment {
     private String _recipientUsername;
     private String _recipientUserIdToken;
     private String _paymentAmount;
-    private String _paymentService;
+    private String _chosenService;
+    private String[] _paymentServices;
 
     private static ImptLogger _logger = new ImptLogger();
 
-    public ImptClientPayment(String recipientUsername, String recipientUserIdToken) {
+    public ImptClientPayment(String recipientUsername, String recipientUserIdToken, String[] paymentServices) {
         _recipientUsername = recipientUsername;
         _recipientUserIdToken = recipientUserIdToken;
+        _paymentServices = paymentServices;
+    }
+
+    private String renderPaymentServices(String[] paymentServices) {
+        String list = "";
+        for (String service : paymentServices) {
+            int i = 1;
+            list.concat(i + "." + service + " ");
+            i++;
+        }
+
+        return list;
+
     }
 
     // fetch User's choice of payment service
-    private void getPaymentServiceChoice() {
+    private void getPaymentServiceChoice(String[] paymentServices) {
+        String matchedPaymentServices = "** ( " + renderPaymentServices(paymentServices) + ") **";
+
         Scanner myObj = new Scanner(System.in); // Create a Scanner object
-        _logger.printLog(this.getClass().toString(), "what payment service, please enter the number?",
+        _logger.printLog(this.getClass().toString(), "** what payment service, please enter the number? **",
                 ImptLoggerConfig.Level.PROMPT);
-        _logger.printLog(this.getClass().toString(), "(1.PayPal 2.Venmo 3.Cash)", ImptLoggerConfig.Level.PROMPT);
+        _logger.printLog(this.getClass().toString(), matchedPaymentServices, ImptLoggerConfig.Level.PROMPT);
 
-        String service = myObj.nextLine();
+        String entryNumber = myObj.nextLine();
 
-        switch (service) {
-            case "1":
-                _paymentService = "PayPay";
-                _logger.printLog(this.getClass().toString(), "You picked " + _paymentService,
+        for (String service : paymentServices) {
+            int i = 0;
+            if (entryNumber.equals(Integer.toString(i + 1))) {
+                _chosenService = service;
+                _logger.printLog(this.getClass().toString(), "You picked " + _chosenService,
                         ImptLoggerConfig.Level.INFO);
-                break;
-            case "2":
-                _paymentService = "Venmo";
-                _logger.printLog(this.getClass().toString(), "You picked " + _paymentService,
-                        ImptLoggerConfig.Level.INFO);
-            case "3":
-                _paymentService = "Cash";
-                _logger.printLog(this.getClass().toString(), "You picked " + _paymentService,
-                        ImptLoggerConfig.Level.INFO);
-            default:
-                getPaymentServiceChoice();
+            }
+            i++;
+
         }
+
+        // switch (service) {
+        // case "1":
+
+        // _paymentService = "PayPay";
+        // _logger.printLog(this.getClass().toString(), "You picked " + _paymentService,
+        // ImptLoggerConfig.Level.INFO);
+        // break;
+        // case "2":
+        // _paymentService = "Venmo";
+        // _logger.printLog(this.getClass().toString(), "You picked " + _paymentService,
+        // ImptLoggerConfig.Level.INFO);
+        // break;
+        // case "3":
+        // _paymentService = "Cash";
+        // _logger.printLog(this.getClass().toString(), "You picked " + _paymentService,
+        // ImptLoggerConfig.Level.INFO);
+        // break;
+        // default:
+        // getPaymentServiceChoice();
+        // }
 
     }
 
@@ -65,14 +95,14 @@ public class ImptClientPayment {
                 _logger.printLog(this.getClass().toString(), "How much would you like to send?",
                         ImptLoggerConfig.Level.PROMPT);
                 _paymentAmount = myObj.nextLine();
-                getPaymentServiceChoice();
+                getPaymentServiceChoice(_paymentServices);
             }
 
         } else {
             initialPaymentSend();
         }
 
-        return "PAYSND BEGIN " + _recipientUserIdToken + " " + _paymentAmount + " " + _paymentService;
+        return "PAYSND BEGIN " + _recipientUserIdToken + " " + _paymentAmount + " " + _chosenService;
     }
 
     // handle when Server resturns the payment transaction result
