@@ -185,3 +185,670 @@
 	at impt.client.ImptClient$2.run(ImptClient.java:193)
 	at java.base/java.lang.Thread.run(Thread.java:830)
 
+[03/15/2020 02:32:14.458 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 02:32:14.458 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 02:32:14.525 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 02:32:18.892 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 02:32:20.363 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 02:32:20.363 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 02:32:20.382 PM] [ImptClient$2] << AUTH RES 5b83acc9-7263-43e0-a34b-281d6081c3a3
+[03/15/2020 02:32:20.383 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 02:32:20.383 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 02:32:20.385 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 02:32:33.318 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 02:32:33.318 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 02:32:33.391 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 02:32:38.674 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 02:32:42.487 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 02:32:42.488 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 02:51:20.121 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 02:51:20.121 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 02:51:41.478 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 02:51:41.478 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 02:51:41.544 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 02:51:45.375 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 02:51:47.828 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 02:51:47.829 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 02:51:47.850 PM] [ImptClient$2] << AUTH RES 479e640c-cf30-4486-a49f-316800728ab1
+[03/15/2020 02:51:47.851 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 02:51:47.852 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 02:51:47.853 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 02:51:59.106 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 02:51:59.106 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 02:51:59.183 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 02:52:03.362 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 02:52:05.758 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 02:52:05.759 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:02:22.932 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:02:22.932 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:02:45.052 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:02:45.052 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:02:45.116 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:02:46.604 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:02:47.915 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:02:47.916 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:02:47.937 PM] [ImptClient$2] << AUTH RES 6c2f4017-8a9a-4622-947a-8e27b15c651f
+[03/15/2020 03:02:47.938 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 03:02:47.939 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 03:02:47.940 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 03:02:59.395 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:02:59.395 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:02:59.458 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:03:02.439 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:03:09.445 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:03:09.445 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:03:53.273 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:03:53.273 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:04:26.312 PM] [ImptServer] IMPT Server Started
+[03/15/2020 03:04:38.738 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=54406,localport=1234]
+[03/15/2020 03:04:38.740 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:04:38.755 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 03:04:38.773 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:04:38.773 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:04:38.834 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:04:42.537 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:04:44.751 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:04:44.751 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 03:04:44.752 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:04:44.788 PM] [ImptClientManager] AUTH RES 54399153-1d39-48c9-8036-882574b95f4d
+[03/15/2020 03:04:44.789 PM] [ImptClientManager] {Doris=54399153-1d39-48c9-8036-882574b95f4d}
+[03/15/2020 03:04:44.791 PM] [ImptClient$2] << AUTH RES 54399153-1d39-48c9-8036-882574b95f4d
+[03/15/2020 03:04:44.792 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 03:04:44.793 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 03:04:44.794 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 03:05:23.945 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=54421,localport=1234]
+[03/15/2020 03:05:23.946 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:05:23.948 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 03:05:23.979 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:05:23.979 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:05:24.045 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:05:25.880 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:05:27.659 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:05:27.659 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 03:05:27.660 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:06:19.979 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:06:19.979 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:08:34.656 PM] [ImptServer] IMPT Server Started
+[03/15/2020 03:08:47.056 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=54514,localport=1234]
+[03/15/2020 03:08:47.058 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:08:47.076 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 03:08:47.094 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:08:47.094 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:08:47.164 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:08:49.808 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=54515,localport=1234]
+[03/15/2020 03:08:49.809 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:08:49.810 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 03:08:49.840 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:08:49.840 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:08:49.902 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:08:52.306 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:08:53.938 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:08:53.938 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 03:08:53.939 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:08:53.956 PM] [ImptClientManager] AUTH RES 5d3a89ce-48d6-43c0-b825-72cc5cfe0d8e
+[03/15/2020 03:08:53.957 PM] [ImptClientManager] {Doris=5d3a89ce-48d6-43c0-b825-72cc5cfe0d8e}
+[03/15/2020 03:08:53.960 PM] [ImptClient$2] << AUTH RES 5d3a89ce-48d6-43c0-b825-72cc5cfe0d8e
+[03/15/2020 03:08:53.961 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 03:08:53.962 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 03:08:53.963 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 03:08:58.569 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:09:00.224 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 03:09:00.224 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:09:00.225 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:10:27.132 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:10:27.133 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:18:24.870 PM] [ImptServer] IMPT Server Started
+[03/15/2020 03:18:40.059 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=55382,localport=1234]
+[03/15/2020 03:18:40.060 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:18:40.087 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 03:18:40.138 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:18:40.138 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:18:40.212 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:18:43.134 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=55393,localport=1234]
+[03/15/2020 03:18:43.135 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:18:43.136 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 03:18:43.183 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:18:43.183 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:18:43.271 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:18:45.578 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:18:47.951 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:18:47.951 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 03:18:47.952 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:18:47.985 PM] [ImptClientManager] AUTH RES 400ebad6-d221-4e8f-aece-240f8a9e3c50
+[03/15/2020 03:18:47.986 PM] [ImptClientManager] {Doris=400ebad6-d221-4e8f-aece-240f8a9e3c50}
+[03/15/2020 03:18:47.989 PM] [ImptClient$2] << AUTH RES 400ebad6-d221-4e8f-aece-240f8a9e3c50
+[03/15/2020 03:18:47.990 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 03:18:47.991 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 03:18:47.993 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 03:18:50.784 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:18:52.410 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 03:18:52.410 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:18:52.410 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:19:08.738 PM] [ImptClientManager]  Error Encountered: java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:222)
+	at java.base/java.util.KeyValueHolder.<init>(KeyValueHolder.java:60)
+	at java.base/java.util.Map.entry(Map.java:1662)
+	at impt.server.handlers.PaymentHandler.<init>(PaymentHandler.java:21)
+	at impt.server.ImptMessageManager.handleClientMessage(ImptMessageManager.java:65)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:46)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:19:17.644 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:19:17.644 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:19:26.277 PM] [ImptServer] IMPT Server Started
+[03/15/2020 03:19:35.681 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=55479,localport=1234]
+[03/15/2020 03:19:35.682 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:19:35.702 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 03:19:35.720 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:19:35.720 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:19:35.788 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:19:38.233 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=55483,localport=1234]
+[03/15/2020 03:19:38.234 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:19:38.234 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 03:19:38.266 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:19:38.267 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:19:38.339 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:19:41.665 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:19:42.897 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:19:42.897 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 03:19:42.898 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:19:42.929 PM] [ImptClientManager] AUTH RES 44f85ab6-2528-4a51-92ff-75627bb26e65
+[03/15/2020 03:19:42.930 PM] [ImptClientManager] {Doris=44f85ab6-2528-4a51-92ff-75627bb26e65}
+[03/15/2020 03:19:42.933 PM] [ImptClient$2] << AUTH RES 44f85ab6-2528-4a51-92ff-75627bb26e65
+[03/15/2020 03:19:42.935 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 03:19:42.936 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 03:19:42.937 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 03:19:45.129 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:19:46.179 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:19:46.179 PM] [ImptClientManager] AUTH BEGIN Calvin calvin2 IMPT1.0
+[03/15/2020 03:19:46.180 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:19:46.180 PM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/15/2020 03:19:46.181 PM] [ImptClient$2] << ERR_AUTH BEGIN authError
+[03/15/2020 03:19:46.182 PM] [ImptClientAuth] ** Oops! The username and password do not match. :( Try again! **
+[03/15/2020 03:19:46.182 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:19:48.467 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:19:50.042 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:19:50.042 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 03:19:50.043 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:21:23.277 PM] [ImptClientManager]  Error Encountered: java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:222)
+	at java.base/java.util.KeyValueHolder.<init>(KeyValueHolder.java:60)
+	at java.base/java.util.Map.entry(Map.java:1662)
+	at impt.server.handlers.PaymentHandler.<init>(PaymentHandler.java:21)
+	at impt.server.ImptMessageManager.handleClientMessage(ImptMessageManager.java:65)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:46)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:21:34.893 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:21:34.893 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:28:48.452 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:28:48.452 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:28:48.525 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:28:50.406 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:28:51.579 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:28:51.580 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:28:51.604 PM] [ImptClient$2] << AUTH RES 3369824c-74bf-4d7c-9d3d-fbf0cf87ba99
+[03/15/2020 03:28:51.605 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 03:28:51.607 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 03:28:51.609 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 03:28:56.721 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:28:56.721 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:28:56.797 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:29:01.127 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:29:04.559 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:29:04.559 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:34:19.220 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:34:19.220 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:35:15.445 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:35:15.445 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:35:15.515 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:35:18.736 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:35:20.308 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:35:20.309 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:35:20.330 PM] [ImptClient$2] << AUTH RES 8deb650b-b715-4dc2-84d0-db7412d66e96
+[03/15/2020 03:35:20.331 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 03:35:20.332 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 03:35:20.334 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 03:35:29.413 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:35:29.413 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:35:29.486 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:35:32.569 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:35:35.930 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:35:35.931 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:36:40.240 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:36:40.240 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:37:25.796 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:37:25.796 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:37:25.869 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:37:29.648 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:37:29.649 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:37:29.719 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:37:32.634 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:37:33.911 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:37:33.912 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:37:33.938 PM] [ImptClient$2] << AUTH RES cd279ef1-a5af-40dd-8ee2-1d678037c7a8
+[03/15/2020 03:37:33.939 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 03:37:33.939 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 03:37:33.941 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 03:37:38.126 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:37:46.460 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:37:46.461 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:37:46.467 PM] [ImptClient$2] << ERR_AUTH BEGIN authError
+[03/15/2020 03:37:46.468 PM] [ImptClientAuth] ** Oops! The username and password do not match. :( Try again! **
+[03/15/2020 03:37:46.469 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:37:53.362 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:37:55.472 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:37:55.473 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:38:41.294 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:38:41.294 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:39:55.142 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:39:55.142 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:39:55.220 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:39:58.118 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:39:59.448 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:39:59.449 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:39:59.470 PM] [ImptClient$2] << AUTH RES fa459fd9-9b11-4a61-8f1f-fafc3290d120
+[03/15/2020 03:39:59.470 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 03:39:59.471 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 03:39:59.472 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 03:40:03.704 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:40:03.706 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:40:03.780 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:40:10.803 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:40:13.353 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:40:13.354 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:43:15.850 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:43:15.849 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:43:47.520 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:43:47.520 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:43:47.592 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:43:49.799 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:43:51.194 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:43:51.195 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:43:51.227 PM] [ImptClient$2] << AUTH RES 080cfc43-5fcd-474e-a15f-22e5ad349941
+[03/15/2020 03:43:51.228 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 03:43:51.229 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 03:43:51.232 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 03:43:53.913 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:43:53.917 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:43:53.999 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:43:56.803 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:43:59.400 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:43:59.400 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:45:57.810 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:45:57.810 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:46:15.679 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:46:15.679 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:46:15.747 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:46:18.050 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:46:19.972 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:46:19.973 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:46:19.998 PM] [ImptClient$2] << AUTH RES 57c75033-dc66-45e7-b8ab-1d060dc9fcd9
+[03/15/2020 03:46:19.999 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 03:46:20.001 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 03:46:20.002 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 03:46:27.230 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:46:27.230 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:46:27.303 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:46:29.550 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:46:32.640 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:46:32.641 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:51:58.536 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:51:58.537 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:52:19.799 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:52:19.799 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:52:19.860 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:52:21.593 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:52:22.852 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:52:22.853 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:52:22.872 PM] [ImptClient$2] << AUTH RES df8dd9a6-3fb3-4b88-9295-30efa0224b38
+[03/15/2020 03:52:22.873 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 03:52:22.874 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 03:52:22.875 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 03:52:25.987 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:52:25.987 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:52:26.054 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:52:29.846 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:52:32.372 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:52:32.373 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:54:28.255 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:54:28.255 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:54:57.047 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:54:57.047 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:54:57.110 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:54:59.165 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:55:02.331 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:55:02.332 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 03:55:02.352 PM] [ImptClient$2] << AUTH RES ea4d8482-a6f0-4a13-b812-d71bc4ff24d7
+[03/15/2020 03:55:02.353 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 03:55:02.354 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 03:55:02.355 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 03:55:05.425 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 03:55:05.425 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 03:55:05.490 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 03:55:08.753 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 03:55:12.206 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 03:55:12.207 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 04:02:22.966 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 04:02:22.966 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 04:03:09.407 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 04:03:09.407 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 04:03:09.471 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 04:03:12.067 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 04:03:13.592 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 04:03:13.592 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 04:03:13.614 PM] [ImptClient$2] << AUTH RES 8c2f4132-bc0f-449c-9604-ef12531d845e
+[03/15/2020 04:03:13.615 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 04:03:13.615 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 04:03:13.616 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 04:03:27.539 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 04:03:27.539 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 04:03:27.603 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 04:03:31.851 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 04:03:37.379 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 04:03:37.380 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 04:06:14.954 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 04:06:14.954 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 04:06:36.871 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 04:06:36.870 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 04:06:36.940 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 04:06:39.776 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 04:06:41.378 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 04:06:41.379 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 04:06:41.398 PM] [ImptClient$2] << AUTH RES 6ce053fc-c691-401f-9d0f-7bf912d353b9
+[03/15/2020 04:06:41.399 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 04:06:41.400 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 04:06:41.401 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 04:06:48.110 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 04:06:48.110 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 04:06:48.177 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 04:06:51.940 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 04:06:56.669 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 04:06:56.670 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 04:06:56.677 PM] [ImptClient$2] << PAYINFO BEGIN 
+[03/15/2020 04:06:56.677 PM] [ImptClient$2] << INIT BEGIN Calvin 4ff5bc14-e778-4352-a5a8-0a0692e80954
+[03/15/2020 04:06:56.678 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 04:06:56.678 PM] [ImptClient$2] << INIT BEGIN Doris 6ce053fc-c691-401f-9d0f-7bf912d353b9
+[03/15/2020 04:06:56.679 PM] [ImptClient$2] << 
+[03/15/2020 04:06:56.679 PM] [ImptClientInit] Calvin is now connected with you!
+[03/15/2020 04:06:56.680 PM] [ImptClientInit] 
+** Type '#logout' anytime to disconnect **
+** Type '#payment' anytime to initiate payment **
+** Type '#help' anytime to view help on commands **
+[03/15/2020 04:06:56.680 PM] [ImptClientInit] Doris, what's on your mind? :)
+[03/15/2020 04:06:56.681 PM] [ImptClient$2] << 
+[03/15/2020 04:09:44.027 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 04:09:44.027 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 04:10:09.524 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 04:10:09.524 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 04:10:09.591 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 04:10:12.657 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 04:10:12.658 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 04:10:12.734 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 04:10:15.442 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 04:10:16.718 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 04:10:16.719 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 04:10:16.739 PM] [ImptClient$2] << AUTH RES a3c0a95c-bbeb-4cd6-bbaf-0f65e8da2b23
+[03/15/2020 04:10:16.740 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 04:10:16.740 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 04:10:16.742 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 04:10:20.806 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 04:10:23.341 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 04:10:23.342 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 04:10:23.347 PM] [ImptClient$2] << PAYINFO BEGIN PayPal,Cash
+[03/15/2020 04:10:23.347 PM] [ImptClient$2] << INIT BEGIN Calvin 4635e10c-0d36-48e0-9c41-1f4ad0e5a711
+[03/15/2020 04:10:23.347 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 04:10:23.348 PM] [ImptClient$2] << INIT BEGIN Doris a3c0a95c-bbeb-4cd6-bbaf-0f65e8da2b23
+[03/15/2020 04:10:23.348 PM] [ImptClient$2] << 
+[03/15/2020 04:10:23.348 PM] [ImptClientInit] Calvin is now connected with you!
+[03/15/2020 04:10:23.349 PM] [ImptClientInit] 
+** Type '#logout' anytime to disconnect **
+** Type '#payment' anytime to initiate payment **
+** Type '#help' anytime to view help on commands **
+[03/15/2020 04:10:23.350 PM] [ImptClientInit] Doris, what's on your mind? :)
+[03/15/2020 04:10:23.350 PM] [ImptClient$2] << 
+[03/15/2020 04:16:03.239 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 04:16:03.239 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 04:16:56.851 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 04:16:56.851 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 04:16:56.920 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 04:17:00.938 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 04:17:03.094 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 04:17:03.095 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 04:17:03.120 PM] [ImptClient$2] << AUTH RES f23bd615-d4b3-4bdd-94aa-676d18832278
+[03/15/2020 04:17:03.121 PM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 04:17:03.122 PM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 04:17:03.123 PM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 04:17:07.618 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 04:17:07.618 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 04:17:07.686 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 04:17:10.203 PM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 04:17:12.056 PM] [ImptClient$1] ** Logging in...
+[03/15/2020 04:17:12.057 PM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 04:17:12.064 PM] [ImptClient$2] << 
+[03/15/2020 04:17:12.064 PM] [ImptClient$2] << PAYINFO BEGIN PayPal,Cash
+[03/15/2020 04:17:12.065 PM] [ImptClient$2] << 
+[03/15/2020 04:17:12.065 PM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 04:20:01.473 PM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+

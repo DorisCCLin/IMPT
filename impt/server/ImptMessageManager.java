@@ -10,7 +10,7 @@ import java.util.*;
 
 import impt.server.handlers.*;
 
-class ImptMessageManger {
+public class ImptMessageManager {
     private ClientMessageObject _clientMessageObject = new ClientMessageObject();
 
     // handle incoming message and form message and recipient info in
@@ -24,8 +24,8 @@ class ImptMessageManger {
             switch (messageArr[0]) {
                 case "AUTH":
                     AuthenticationHandler authHandler = new AuthenticationHandler();
-                    AuthenticationHandler.AuthenticationObject authObject = new AuthenticationHandler.AuthenticationObject();
-                    authObject = authHandler.authenticate(messageArr[2], messageArr[3]);
+                    authHandler.authenticate(messageArr[2], messageArr[3]);
+                    AuthenticationHandler.AuthenticationObject authObject = authHandler.getAuthenticationObject();
                     _clientMessageObject.isUserLoggedIn = authObject.isUserIdLoggedIn;
                     _clientMessageObject.userIdToken = authObject.userIdToken;
 
@@ -53,12 +53,29 @@ class ImptMessageManger {
                                     String prevUserIdToken = ImptServer.activeUsers.get(prevUsername);
                                     _clientMessageObject.prevUserIdToken = prevUserIdToken;
 
+                                    // INIT Message handling
                                     _clientMessageObject.initCurrentUserMessage = "INIT BEGIN " + prevUsername + " "
                                             + prevUserIdToken;
                                     _clientMessageObject.initExistingUserMessage = "INIT BEGIN " + authObject.userName
                                             + " " + authObject.userIdToken;
 
                                     ImptServer.activeUsers.put(authObject.userName, authObject.userIdToken);
+
+                                    // PAYMENT Message handling - prepare payment info
+                                    PaymentHandler authPaymentHandler = new PaymentHandler();
+                                    authPaymentHandler.preparePaymentInfo(authObject.userName, prevUsername);
+                                    PaymentHandler.PaymentObject authPaymentObject = authPaymentHandler
+                                            .getPaymentObject();
+
+                                    if (authPaymentObject.hasPaymentError) {
+                                        _clientMessageObject.payInfoMessage = "ERR_PAY BEGIN noServices";
+
+                                    } else {
+                                        _clientMessageObject.message = "PAYINFO BEGIN "
+                                                + authPaymentObject.matchedPaymentServices;
+
+                                    }
+
                                 }
                                 break;
 
@@ -81,17 +98,19 @@ class ImptMessageManger {
                     }
                     break;
 
-                case "PAYSND":
-                    PaymentHandler paymentHandler = new PaymentHandler();
-                    PaymentHandler.PaymentObject paymentObject = new PaymentHandler.PaymentObject();
-                    paymentObject = paymentHandler.sendPayment();
-                    if (paymentObject.isPaymentSuccess) {
-                        _clientMessageObject.message = "PAYSND RES " + messageArr[3] + " success";
-                    } else {
-                        _clientMessageObject.message = "PAYSND RES fail";
-                    }
+                // case "PAYSND":
+                // PaymentHandler paymentHandler = new PaymentHandler();
+                // paymentHandler.sendPayment();
+                // PaymentHandler.PaymentObject paymentObject =
+                // paymentHandler.getPaymentObject();
 
-                    break;
+                // if (paymentObject.isPaymentSuccess) {
+                // _clientMessageObject.message = "PAYSND RES " + messageArr[3] + " success";
+                // } else {
+                // _clientMessageObject.message = "PAYSND RES fail";
+                // }
+
+                // break;
 
                 case "DISCONNECT":
                     _clientMessageObject.userIdToken = messageArr[2];

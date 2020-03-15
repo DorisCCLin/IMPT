@@ -14,6 +14,7 @@ public class ClientMessageObject {
     public String initNoneUserMessage = "";
     public String initCurrentUserMessage = "";
     public String initExistingUserMessage = "";
+    public String payInfoMessage = "";
     public String message = "";
     public String command = "";
 }

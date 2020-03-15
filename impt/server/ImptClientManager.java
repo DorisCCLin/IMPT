@@ -42,10 +42,10 @@ class ImptClientManager implements Runnable {
                 _logger.printLog(this.getClass().toString(), receivedMessage, ImptLoggerConfig.Level.DEBUG);
 
                 // sending incoming messager to message manager
-                ImptMessageManger imptMessageManger = new ImptMessageManger();
-                imptMessageManger.handleClientMessage(receivedMessage);
+                ImptMessageManager ImptMessageManager = new ImptMessageManager();
+                ImptMessageManager.handleClientMessage(receivedMessage);
 
-                _clientMessageObject = imptMessageManger.getClientMessageObject();
+                _clientMessageObject = ImptMessageManager.getClientMessageObject();
                 String outputMessage = _clientMessageObject.message;
 
                 _logger.printLog(this.getClass().toString(), outputMessage, ImptLoggerConfig.Level.DEBUG);
@@ -55,22 +55,28 @@ class ImptClientManager implements Runnable {
                     case "AUTH":
                         if (_clientMessageObject.isUserLoggedIn) {
                             ImptServer.activeSockets.put(_clientMessageObject.userIdToken, this);
-                            _logger.printLog(this.getClass().toString(), 
-                                    ImptServer.activeUsers.toString(), ImptLoggerConfig.Level.DEBUG);
+                            _logger.printLog(this.getClass().toString(), ImptServer.activeUsers.toString(),
+                                    ImptLoggerConfig.Level.DEBUG);
                             this._outputStream.writeUTF(outputMessage);
 
+                            // handle INIT message delivery
                             if (ImptServer.activeUsers.size() == 1) {
                                 this._outputStream.writeUTF(_clientMessageObject.initNoneUserMessage);
                             } else {
-                                // send to current user
+                                // send connection message to current user
                                 this._outputStream.writeUTF(_clientMessageObject.initCurrentUserMessage);
-
+                                // send connection message to existing user
                                 ImptClientManager recipientImptClientManager = ImptServer.activeSockets
                                         .get(_clientMessageObject.prevUserIdToken);
-
                                 recipientImptClientManager._outputStream
                                         .writeUTF(_clientMessageObject.initExistingUserMessage);
+
+                                // send payment message to current user
+                                this._outputStream.writeUTF(_clientMessageObject.payInfoMessage);
+                                // send payment message to existing user
+                                recipientImptClientManager._outputStream.writeUTF(_clientMessageObject.payInfoMessage);
                             }
+
                         } else {
                             _outputStream.writeUTF(outputMessage);
                         }
@@ -101,7 +107,7 @@ class ImptClientManager implements Runnable {
             } catch (Exception e) {
                 StringWriter errors = new StringWriter();
                 e.printStackTrace(new PrintWriter(errors));
-                _logger.printLog(this.getClass().toString(), " Error Encountered: " + errors.toString(), 
+                _logger.printLog(this.getClass().toString(), " Error Encountered: " + errors.toString(),
                         ImptLoggerConfig.Level.ERROR);
                 break;
             }

@@ -43,10 +43,12 @@ public class ImptClientPayment {
                 _paymentService = "Venmo";
                 _logger.printLog(this.getClass().toString(), "You picked " + _paymentService,
                         ImptLoggerConfig.Level.INFO);
+                break;
             case "3":
                 _paymentService = "Cash";
                 _logger.printLog(this.getClass().toString(), "You picked " + _paymentService,
                         ImptLoggerConfig.Level.INFO);
+                break;
             default:
                 getPaymentServiceChoice();
         }

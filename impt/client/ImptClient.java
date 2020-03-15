@@ -37,14 +37,14 @@ public class ImptClient {
     public static void handleGeneralUserInput(String input, DataOutputStream outputStream)
             throws UnknownHostException, IOException {
         switch (input) {
-            case "p":
+            case "#payment":
                 ImptClientPayment imptClientPayment = new ImptClientPayment(_recipientUserName, _recipientUserIdToken);
                 String paymentSendMessage = imptClientPayment.initialPaymentSend();
                 outputStream.writeUTF(paymentSendMessage);
                 _isAwaitPaymentSendAccept = true;
                 break;
 
-            case "logout":
+            case "#logout":
                 ImptClientInit clientInit = new ImptClientInit();
                 Boolean disconnectConfirmed = clientInit.handleDisconnect();
 
@@ -55,7 +55,18 @@ public class ImptClient {
                     _clientSocket.close();
                 }
                 break;
+            case "#help":
+                printHelpCommands();
+                break;
+            default:
+                _logger.printLog("ImptClient", "** Unknown command **", ImptLoggerConfig.Level.INFO);
         }
+    }
+
+    public static void printHelpCommands() {
+        _logger.printLog("ImptClient",
+                "\n** Type '#logout' anytime to disconnect **\n** Type '#payment' anytime to initiate payment **\n** Type '#help' anytime to view help on commands **",
+                ImptLoggerConfig.Level.INFO);
     }
 
     public static void resetLoginStatus() {

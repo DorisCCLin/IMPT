@@ -84,3 +84,264 @@
 	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
 	at java.base/java.lang.Thread.run(Thread.java:830)
 
+[03/15/2020 02:31:47.775 PM] [ImptServer] IMPT Server Started
+[03/15/2020 02:32:14.419 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=53839,localport=1234]
+[03/15/2020 02:32:14.420 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 02:32:14.436 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 02:32:20.363 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 02:32:20.378 PM] [ImptClientManager] AUTH RES 5b83acc9-7263-43e0-a34b-281d6081c3a3
+[03/15/2020 02:32:20.379 PM] [ImptClientManager] {Doris=5b83acc9-7263-43e0-a34b-281d6081c3a3}
+[03/15/2020 02:32:33.281 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=53842,localport=1234]
+[03/15/2020 02:32:33.282 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 02:32:33.284 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 02:32:42.487 PM] [ImptClientManager] AUTH BEGIN Brian brian1 IMPT1.0
+[03/15/2020 02:51:36.123 PM] [ImptServer] IMPT Server Started
+[03/15/2020 02:51:41.442 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=54226,localport=1234]
+[03/15/2020 02:51:41.443 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 02:51:41.458 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 02:51:47.829 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 02:51:47.847 PM] [ImptClientManager] AUTH RES 479e640c-cf30-4486-a49f-316800728ab1
+[03/15/2020 02:51:47.848 PM] [ImptClientManager] {Doris=479e640c-cf30-4486-a49f-316800728ab1}
+[03/15/2020 02:51:59.067 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=54236,localport=1234]
+[03/15/2020 02:51:59.067 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 02:51:59.069 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 02:52:05.758 PM] [ImptClientManager] AUTH BEGIN Brian brian1 IMPT1.0
+[03/15/2020 03:02:39.636 PM] [ImptServer] IMPT Server Started
+[03/15/2020 03:02:45.015 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=54378,localport=1234]
+[03/15/2020 03:02:45.016 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:02:45.032 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 03:02:47.916 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 03:02:47.933 PM] [ImptClientManager] AUTH RES 6c2f4017-8a9a-4622-947a-8e27b15c651f
+[03/15/2020 03:02:47.934 PM] [ImptClientManager] {Doris=6c2f4017-8a9a-4622-947a-8e27b15c651f}
+[03/15/2020 03:02:59.358 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=54387,localport=1234]
+[03/15/2020 03:02:59.359 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:02:59.361 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 03:03:09.445 PM] [ImptClientManager] AUTH BEGIN Brian brian1 IMPT1.0
+[03/15/2020 03:28:44.434 PM] [ImptServer] IMPT Server Started
+[03/15/2020 03:28:48.405 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=56106,localport=1234]
+[03/15/2020 03:28:48.407 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:28:48.426 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 03:28:51.580 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 03:28:51.600 PM] [ImptClientManager] AUTH RES 3369824c-74bf-4d7c-9d3d-fbf0cf87ba99
+[03/15/2020 03:28:51.601 PM] [ImptClientManager] {Doris=3369824c-74bf-4d7c-9d3d-fbf0cf87ba99}
+[03/15/2020 03:28:56.679 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=56112,localport=1234]
+[03/15/2020 03:28:56.680 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:28:56.681 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 03:29:04.559 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 03:29:04.562 PM] [ImptClientManager]  Error Encountered: java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:222)
+	at java.base/java.util.KeyValueHolder.<init>(KeyValueHolder.java:60)
+	at java.base/java.util.Map.entry(Map.java:1662)
+	at impt.server.handlers.PaymentHandler.<init>(PaymentHandler.java:21)
+	at impt.server.ImptMessageManager.handleClientMessage(ImptMessageManager.java:65)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:46)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:34:56.303 PM] [ImptServer] IMPT Server Started
+[03/15/2020 03:35:15.402 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=56369,localport=1234]
+[03/15/2020 03:35:15.403 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:35:15.421 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 03:35:20.308 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 03:35:20.327 PM] [ImptClientManager] AUTH RES 8deb650b-b715-4dc2-84d0-db7412d66e96
+[03/15/2020 03:35:20.328 PM] [ImptClientManager] {Doris=8deb650b-b715-4dc2-84d0-db7412d66e96}
+[03/15/2020 03:35:29.375 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=56371,localport=1234]
+[03/15/2020 03:35:29.376 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:35:29.377 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 03:35:35.930 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 03:35:35.934 PM] [ImptClientManager]  Error Encountered: java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:222)
+	at java.base/java.util.KeyValueHolder.<init>(KeyValueHolder.java:60)
+	at java.base/java.util.Map.entry(Map.java:1662)
+	at impt.server.handlers.PaymentHandler.<init>(PaymentHandler.java:21)
+	at impt.server.ImptMessageManager.handleClientMessage(ImptMessageManager.java:65)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:46)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:37:21.059 PM] [ImptServer] IMPT Server Started
+[03/15/2020 03:37:25.755 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=56486,localport=1234]
+[03/15/2020 03:37:25.756 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:37:25.772 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 03:37:29.600 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=56488,localport=1234]
+[03/15/2020 03:37:29.601 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:37:29.602 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 03:37:33.912 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 03:37:33.933 PM] [ImptClientManager] AUTH RES cd279ef1-a5af-40dd-8ee2-1d678037c7a8
+[03/15/2020 03:37:33.934 PM] [ImptClientManager] {Doris=cd279ef1-a5af-40dd-8ee2-1d678037c7a8}
+[03/15/2020 03:37:46.460 PM] [ImptClientManager] AUTH BEGIN calvin calvin1 IMPT1.0
+[03/15/2020 03:37:46.461 PM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/15/2020 03:37:55.472 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 03:37:55.475 PM] [ImptClientManager]  Error Encountered: java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:222)
+	at java.base/java.util.KeyValueHolder.<init>(KeyValueHolder.java:60)
+	at java.base/java.util.Map.entry(Map.java:1662)
+	at impt.server.handlers.PaymentHandler.<init>(PaymentHandler.java:21)
+	at impt.server.ImptMessageManager.handleClientMessage(ImptMessageManager.java:65)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:46)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:39:21.201 PM] [ImptServer] IMPT Server Started
+[03/15/2020 03:39:55.101 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=56622,localport=1234]
+[03/15/2020 03:39:55.103 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:39:55.121 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 03:39:59.449 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 03:39:59.465 PM] [ImptClientManager] AUTH RES fa459fd9-9b11-4a61-8f1f-fafc3290d120
+[03/15/2020 03:39:59.466 PM] [ImptClientManager] {Doris=fa459fd9-9b11-4a61-8f1f-fafc3290d120}
+[03/15/2020 03:40:03.662 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=56631,localport=1234]
+[03/15/2020 03:40:03.663 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:40:03.664 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 03:40:13.353 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 03:40:13.361 PM] [ImptClientManager]  Error Encountered: java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:222)
+	at java.base/java.util.KeyValueHolder.<init>(KeyValueHolder.java:60)
+	at java.base/java.util.Map.entry(Map.java:1662)
+	at impt.server.handlers.PaymentHandler.<init>(PaymentHandler.java:21)
+	at impt.server.ImptMessageManager.handleClientMessage(ImptMessageManager.java:65)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:46)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:43:40.076 PM] [ImptServer] IMPT Server Started
+[03/15/2020 03:43:47.478 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=56781,localport=1234]
+[03/15/2020 03:43:47.480 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:43:47.495 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 03:43:51.194 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 03:43:51.222 PM] [ImptClientManager] AUTH RES 080cfc43-5fcd-474e-a15f-22e5ad349941
+[03/15/2020 03:43:51.223 PM] [ImptClientManager] {Doris=080cfc43-5fcd-474e-a15f-22e5ad349941}
+[03/15/2020 03:43:53.811 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=56782,localport=1234]
+[03/15/2020 03:43:53.812 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:43:53.815 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 03:43:59.399 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 03:43:59.408 PM] [ImptClientManager]  Error Encountered: java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:222)
+	at java.base/java.util.KeyValueHolder.<init>(KeyValueHolder.java:60)
+	at java.base/java.util.Map.entry(Map.java:1662)
+	at impt.server.handlers.PaymentHandler.<init>(PaymentHandler.java:21)
+	at impt.server.ImptMessageManager.handleClientMessage(ImptMessageManager.java:65)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:46)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:46:12.085 PM] [ImptServer] IMPT Server Started
+[03/15/2020 03:46:15.637 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=56861,localport=1234]
+[03/15/2020 03:46:15.638 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:46:15.656 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 03:46:19.972 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 03:46:19.993 PM] [ImptClientManager] AUTH RES 57c75033-dc66-45e7-b8ab-1d060dc9fcd9
+[03/15/2020 03:46:19.994 PM] [ImptClientManager] {Doris=57c75033-dc66-45e7-b8ab-1d060dc9fcd9}
+[03/15/2020 03:46:27.181 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=56868,localport=1234]
+[03/15/2020 03:46:27.182 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:46:27.184 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 03:46:32.640 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 03:46:32.644 PM] [ImptClientManager]  Error Encountered: java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:222)
+	at java.base/java.util.KeyValueHolder.<init>(KeyValueHolder.java:60)
+	at java.base/java.util.Map.entry(Map.java:1662)
+	at impt.server.handlers.PaymentHandler.<init>(PaymentHandler.java:21)
+	at impt.server.ImptMessageManager.handleClientMessage(ImptMessageManager.java:65)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:46)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:52:14.702 PM] [ImptServer] IMPT Server Started
+[03/15/2020 03:52:19.766 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=57070,localport=1234]
+[03/15/2020 03:52:19.767 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:52:19.782 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 03:52:22.852 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 03:52:22.868 PM] [ImptClientManager] AUTH RES df8dd9a6-3fb3-4b88-9295-30efa0224b38
+[03/15/2020 03:52:22.869 PM] [ImptClientManager] {Doris=df8dd9a6-3fb3-4b88-9295-30efa0224b38}
+[03/15/2020 03:52:25.951 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=57071,localport=1234]
+[03/15/2020 03:52:25.952 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:52:25.954 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 03:52:32.372 PM] [ImptClientManager] AUTH BEGIN Brian brian1 IMPT1.0
+[03/15/2020 03:52:32.376 PM] [ImptClientManager]  Error Encountered: java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:222)
+	at java.base/java.util.ArrayList.batchRemove(ArrayList.java:814)
+	at java.base/java.util.ArrayList.retainAll(ArrayList.java:809)
+	at impt.server.handlers.PaymentHandler.preparePaymentInfo(PaymentHandler.java:33)
+	at impt.server.ImptMessageManager.handleClientMessage(ImptMessageManager.java:66)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:46)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 03:54:48.449 PM] [ImptServer] IMPT Server Started
+[03/15/2020 03:54:57.012 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=57097,localport=1234]
+[03/15/2020 03:54:57.013 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:54:57.028 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 03:55:02.331 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 03:55:02.349 PM] [ImptClientManager] AUTH RES ea4d8482-a6f0-4a13-b812-d71bc4ff24d7
+[03/15/2020 03:55:02.349 PM] [ImptClientManager] {Doris=ea4d8482-a6f0-4a13-b812-d71bc4ff24d7}
+[03/15/2020 03:55:05.387 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=57106,localport=1234]
+[03/15/2020 03:55:05.388 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 03:55:05.390 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 03:55:12.206 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 03:55:12.209 PM] [ImptClientManager]  Error Encountered: java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:222)
+	at java.base/java.util.ArrayList.batchRemove(ArrayList.java:814)
+	at java.base/java.util.ArrayList.retainAll(ArrayList.java:809)
+	at impt.server.handlers.PaymentHandler.preparePaymentInfo(PaymentHandler.java:33)
+	at impt.server.ImptMessageManager.handleClientMessage(ImptMessageManager.java:66)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:46)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 04:03:00.255 PM] [ImptServer] IMPT Server Started
+[03/15/2020 04:03:09.371 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=57460,localport=1234]
+[03/15/2020 04:03:09.373 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 04:03:09.387 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 04:03:13.592 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 04:03:13.609 PM] [ImptClientManager] AUTH RES 8c2f4132-bc0f-449c-9604-ef12531d845e
+[03/15/2020 04:03:13.610 PM] [ImptClientManager] {Doris=8c2f4132-bc0f-449c-9604-ef12531d845e}
+[03/15/2020 04:03:27.500 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=57461,localport=1234]
+[03/15/2020 04:03:27.501 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 04:03:27.503 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 04:03:37.379 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 04:03:37.383 PM] [ImptClientManager]  Error Encountered: java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:222)
+	at java.base/java.util.ArrayList.batchRemove(ArrayList.java:814)
+	at java.base/java.util.ArrayList.retainAll(ArrayList.java:809)
+	at impt.server.handlers.PaymentHandler.preparePaymentInfo(PaymentHandler.java:37)
+	at impt.server.ImptMessageManager.handleClientMessage(ImptMessageManager.java:66)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:46)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 04:06:30.433 PM] [ImptServer] IMPT Server Started
+[03/15/2020 04:06:36.830 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=57677,localport=1234]
+[03/15/2020 04:06:36.832 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 04:06:36.848 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 04:06:41.378 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 04:06:41.395 PM] [ImptClientManager] AUTH RES 6ce053fc-c691-401f-9d0f-7bf912d353b9
+[03/15/2020 04:06:41.396 PM] [ImptClientManager] {Doris=6ce053fc-c691-401f-9d0f-7bf912d353b9}
+[03/15/2020 04:06:48.054 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=57679,localport=1234]
+[03/15/2020 04:06:48.055 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 04:06:48.057 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 04:06:56.669 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 04:06:56.673 PM] [ImptClientManager] PAYINFO BEGIN 
+[03/15/2020 04:06:56.675 PM] [ImptClientManager] {Doris=6ce053fc-c691-401f-9d0f-7bf912d353b9, Calvin=4ff5bc14-e778-4352-a5a8-0a0692e80954}
+[03/15/2020 04:10:00.941 PM] [ImptServer] IMPT Server Started
+[03/15/2020 04:10:09.488 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=57724,localport=1234]
+[03/15/2020 04:10:09.490 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 04:10:09.505 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 04:10:12.623 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=57725,localport=1234]
+[03/15/2020 04:10:12.624 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 04:10:12.626 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 04:10:16.719 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 04:10:16.735 PM] [ImptClientManager] AUTH RES a3c0a95c-bbeb-4cd6-bbaf-0f65e8da2b23
+[03/15/2020 04:10:16.736 PM] [ImptClientManager] {Doris=a3c0a95c-bbeb-4cd6-bbaf-0f65e8da2b23}
+[03/15/2020 04:10:23.341 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 04:10:23.345 PM] [ImptClientManager] PAYINFO BEGIN PayPal,Cash
+[03/15/2020 04:10:23.345 PM] [ImptClientManager] {Doris=a3c0a95c-bbeb-4cd6-bbaf-0f65e8da2b23, Calvin=4635e10c-0d36-48e0-9c41-1f4ad0e5a711}
+[03/15/2020 04:16:49.732 PM] [ImptServer] IMPT Server Started
+[03/15/2020 04:16:56.813 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=57919,localport=1234]
+[03/15/2020 04:16:56.815 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 04:16:56.830 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/15/2020 04:17:03.094 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/15/2020 04:17:03.116 PM] [ImptClientManager] AUTH RES f23bd615-d4b3-4bdd-94aa-676d18832278
+[03/15/2020 04:17:03.117 PM] [ImptClientManager] {Doris=f23bd615-d4b3-4bdd-94aa-676d18832278}
+[03/15/2020 04:17:07.577 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=57928,localport=1234]
+[03/15/2020 04:17:07.578 PM] [ImptServer] Creating a new handler for this client...
+[03/15/2020 04:17:07.580 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/15/2020 04:17:12.056 PM] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03/15/2020 04:17:12.060 PM] [ImptClientManager] PAYINFO BEGIN PayPal,Cash
+[03/15/2020 04:17:12.063 PM] [ImptClientManager] {Doris=f23bd615-d4b3-4bdd-94aa-676d18832278, Calvin=18d9b8b2-90d2-4c02-a31a-0bcb29bfcc93}
+[03/15/2020 04:19:59.801 PM] [ImptClientManager]  Error Encountered: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
