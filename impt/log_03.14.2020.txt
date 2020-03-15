@@ -9397,3 +9397,59 @@
 [33m[03/14/2020 10:16:54.188 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=64002,localport=1234][0m
 [33m[03/14/2020 10:16:54.190 AM] [ImptServer] Creating a new handler for this client...[0m
 [36m[03/14/2020 10:16:54.200 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-0[0m
+[03/14/2020 09:31:23.108 PM] [ImptServer] IMPT Server Started
+[03/14/2020 09:31:59.798 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=59106,localport=1234]
+[03/14/2020 09:31:59.800 PM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 09:31:59.813 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/14/2020 09:32:09.095 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/14/2020 09:32:09.109 PM] [ImptClientManager] AUTH RES 45645546-c4fd-40c3-ba89-6084bfe98e35
+[03/14/2020 09:32:09.110 PM] [ImptClientManager] {Doris=45645546-c4fd-40c3-ba89-6084bfe98e35}
+[03/14/2020 09:32:20.244 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=59107,localport=1234]
+[03/14/2020 09:32:20.245 PM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 09:32:20.246 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/14/2020 09:32:25.988 PM] [ImptClientManager] AUTH BEGIN Brian brian1 IMPT1.0
+[03/14/2020 09:32:25.990 PM] [ImptClientManager] AUTH RES 98a63e2c-085e-44bf-a6bf-6107e6ed08cf
+[03/14/2020 09:32:25.990 PM] [ImptClientManager] {Brian=98a63e2c-085e-44bf-a6bf-6107e6ed08cf, Doris=45645546-c4fd-40c3-ba89-6084bfe98e35}
+[03/14/2020 09:34:02.245 PM] [ImptClientManager]  Error Encountered: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 09:34:12.713 PM] [ImptServer] IMPT Server Started
+[03/14/2020 09:34:39.178 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=59120,localport=1234]
+[03/14/2020 09:34:39.179 PM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 09:34:39.194 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/14/2020 09:34:44.399 PM] [ImptClientManager] AUTH BEGIN Doris 123 IMPT1.0
+[03/14/2020 09:34:44.401 PM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/14/2020 09:35:52.794 PM] [ImptServer] IMPT Server Started
+[03/14/2020 09:35:56.106 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=59124,localport=1234]
+[03/14/2020 09:35:56.107 PM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 09:35:56.123 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/14/2020 09:36:02.314 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/14/2020 09:36:02.332 PM] [ImptClientManager] AUTH RES 7572f345-5841-43d6-9ab1-bd9b7ab3f91d
+[03/14/2020 09:36:02.333 PM] [ImptClientManager] {Doris=7572f345-5841-43d6-9ab1-bd9b7ab3f91d}
+[03/14/2020 09:42:24.993 PM] [ImptServer] IMPT Server Started
+[03/14/2020 09:42:43.004 PM] [ImptServer] IMPT Server Started
+[03/14/2020 09:42:46.905 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=59190,localport=1234]
+[03/14/2020 09:42:46.907 PM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 09:42:46.921 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/14/2020 09:42:53.376 PM] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03/14/2020 09:42:53.392 PM] [ImptClientManager] AUTH RES 16785261-883b-4428-88a5-0e997e583193
+[03/14/2020 09:42:53.393 PM] [ImptClientManager] {Doris=16785261-883b-4428-88a5-0e997e583193}
+[03/14/2020 09:53:25.968 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=59222,localport=1234]
+[03/14/2020 09:53:25.968 PM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 09:53:25.970 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/14/2020 09:53:34.188 PM] [ImptClientManager] AUTH BEGIN Brian brain1 IMPT1.0
+[03/14/2020 09:53:34.189 PM] [ImptClientManager] ERR_AUTH BEGIN authError
+[03/14/2020 09:53:55.143 PM] [ImptClientManager] AUTH BEGIN Brian brian1 IMPT1.0
+[03/14/2020 09:53:55.145 PM] [ImptClientManager] AUTH RES 6b977e3a-35f1-41f8-b7b6-49e22d0fe89b
+[03/14/2020 09:53:55.149 PM] [ImptClientManager] {Brian=6b977e3a-35f1-41f8-b7b6-49e22d0fe89b, Doris=16785261-883b-4428-88a5-0e997e583193}
+[03/14/2020 09:54:05.729 PM] [ImptClientManager]  Error Encountered: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+

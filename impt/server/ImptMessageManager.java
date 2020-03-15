@@ -31,25 +31,51 @@ class ImptMessageManger {
 
                     if (authObject.isUserIdLoggedIn) {
 
-                        _clientMessageObject.message = "AUTH RES " + authObject.userIdToken;
+                        switch (ImptServer.activeUsers.size()) {
+                            // If currently no other users on the server, add the user to server and send
+                            // none init message.
+                            case 0:
+                                _clientMessageObject.message = "AUTH RES " + authObject.userIdToken;
+                                _clientMessageObject.initNoneUserMessage = "INIT BEGIN none none";
+                                ImptServer.activeUsers.put(authObject.userName, authObject.userIdToken);
+                                break;
 
-                        if (ImptServer.activeUsers.size() == 0) {
-                            _clientMessageObject.initNoneUserMessage = "INIT BEGIN none none";
-                        } else {
-                            String prevUsername = ImptServer.activeUsers.keySet().iterator().next();
-                            String prevUserIdToken = ImptServer.activeUsers.get(prevUsername);
-                            _clientMessageObject.prevUserIdToken = prevUserIdToken;
+                            // If currently one other user on the server, add the user to server and send
+                            // init-begin message to both users.
+                            case 1:
+                                // If it's the same user login again
+                                if (ImptServer.activeUsers.containsKey(authObject.userName)) {
+                                    _clientMessageObject.message = "ERR_AUTH BEGIN sameUser";
 
-                            _clientMessageObject.initCurrentUserMessage = "INIT BEGIN " + prevUsername + " "
-                                    + prevUserIdToken;
-                            _clientMessageObject.initExistingUserMessage = "INIT BEGIN " + authObject.userName + " "
-                                    + authObject.userIdToken;
+                                } else {
+                                    _clientMessageObject.message = "AUTH RES " + authObject.userIdToken;
+                                    String prevUsername = ImptServer.activeUsers.keySet().iterator().next();
+                                    String prevUserIdToken = ImptServer.activeUsers.get(prevUsername);
+                                    _clientMessageObject.prevUserIdToken = prevUserIdToken;
+
+                                    _clientMessageObject.initCurrentUserMessage = "INIT BEGIN " + prevUsername + " "
+                                            + prevUserIdToken;
+                                    _clientMessageObject.initExistingUserMessage = "INIT BEGIN " + authObject.userName
+                                            + " " + authObject.userIdToken;
+
+                                    ImptServer.activeUsers.put(authObject.userName, authObject.userIdToken);
+                                }
+                                break;
+
+                            // If currently one other user on the server, add the user to server and send
+                            // init-begin message to both users.
+                            case 2:
+                                _clientMessageObject.message = "ERR_AUTH BEGIN serverFull";
+                                break;
+
+                            default:
+                                _clientMessageObject.message = "ERR_AUTH BEGIN unknown";
+
                         }
-
-                        ImptServer.activeUsers.put(authObject.userName, authObject.userIdToken);
 
                     }
 
+                    // user login error
                     if (authObject.hasAuthError) {
                         _clientMessageObject.message = "ERR_AUTH BEGIN authError";
                     }

@@ -34,31 +34,31 @@ public class ImptClient {
     public static String _myUsername;
 
     // handle general request from user
-    // public static void handleGeneralUserInput(String input, DataOutputStream outputStream)
-    //         throws UnknownHostException, IOException {
-    //     switch (input) {
-    //         case "p":
-    //             ImptClientPayment imptClientPayment = new ImptClientPayment(_recipientUserName, _recipientUserIdToken);
-    //             String paymentSendMessage = imptClientPayment.initialPaymentSend();
-    //             outputStream.writeUTF(paymentSendMessage);
-    //             _isAwaitPaymentSendAccept = true;
-    //             break;
+    public static void handleGeneralUserInput(String input, DataOutputStream outputStream)
+            throws UnknownHostException, IOException {
+        switch (input) {
+            case "p":
+                ImptClientPayment imptClientPayment = new ImptClientPayment(_recipientUserName, _recipientUserIdToken);
+                String paymentSendMessage = imptClientPayment.initialPaymentSend();
+                outputStream.writeUTF(paymentSendMessage);
+                _isAwaitPaymentSendAccept = true;
+                break;
 
-    //         case "logout":
-    //             ImptClientInit clientInit = new ImptClientInit();
-    //             Boolean disconnectConfirmed = clientInit.handleDisconnect();
+            case "logout":
+                ImptClientInit clientInit = new ImptClientInit();
+                Boolean disconnectConfirmed = clientInit.handleDisconnect();
 
-    //             if (disconnectConfirmed) {
-    //                 String disconnectMessage = clientInit.getDisconnectMessage();
-    //                 outputStream.writeUTF(disconnectMessage);
-    //                 _isAwaitingResponseFromServer = true;
-    //                 _clientSocket.close();
-    //             }
-    //             break;
-    //     }
-    // }
+                if (disconnectConfirmed) {
+                    String disconnectMessage = clientInit.getDisconnectMessage();
+                    outputStream.writeUTF(disconnectMessage);
+                    _isAwaitingResponseFromServer = true;
+                    _clientSocket.close();
+                }
+                break;
+        }
+    }
 
-    public static void disconnect() {
+    public static void resetLoginStatus() {
         _isLoggedIn = _isConnectedToOther = false;
         _myUsername = _myUserIdToken = _recipientUserName = _recipientUserIdToken = null;
     }
@@ -78,14 +78,14 @@ public class ImptClient {
                 Scanner userInputScanner = new Scanner(System.in);
                 DataOutputStream outputStream = null;
                 _logger.printLog(this.getClass().toString(),
-                        "**** sendMessage Thread Name: " + Thread.currentThread().getName(), 
+                        "**** sendMessage Thread Name: " + Thread.currentThread().getName(),
                         ImptLoggerConfig.Level.DEBUG);
 
                 try {
                     outputStream = new DataOutputStream(_clientSocket.getOutputStream());
                 } catch (Exception ex) {
                     _logger.printLog(this.getClass().toString(),
-                            "** Could not establish output stream connection with the server.", 
+                            "** Could not establish output stream connection with the server.",
                             ImptLoggerConfig.Level.INFO);
                     ex.printStackTrace();
                 }
@@ -100,48 +100,48 @@ public class ImptClient {
                                 _myUsername = credential.split(" ")[0];
                                 _isAwaitingResponseFromServer = true;
 
-                                _logger.printLog(this.getClass().toString(), "** Logging in...", 
+                                _logger.printLog(this.getClass().toString(), "** Logging in...",
                                         ImptLoggerConfig.Level.INFO);
                             } else {
                                 if (_isConnectedToOther) {
-                                    // Scanner newInputScanner = new Scanner(System.in);
-                                    
+
                                     String message = userInputScanner.nextLine();
                                     if (!message.isEmpty()) {
-                                        // handleGeneralUserInput(message.toLowerCase(), outputStream);
 
-                                        switch (message.toLowerCase()) {
-                                            // LOGOUT
-                                            case "#logout":
-                                            case "#exit":
-                                                ImptClientInit clientInit = new ImptClientInit();
-                                                Boolean disconnectConfirmed = clientInit.handleDisconnect();
+                                        handleGeneralUserInput(message.toLowerCase(), outputStream);
 
-                                                if (disconnectConfirmed) {
-                                                    String disconnectMessage = clientInit.getDisconnectMessage();
-                                                    outputStream.writeUTF(disconnectMessage);
-                                                    disconnect();
-                                                    _isAwaitingResponseFromServer = true;
-                                                    // _clientSocket.close();
-                                                }
-                                                break;
-                                            // PAYMENT
-                                            case "#payment":
-                                                ImptClientPayment imptClientPayment = new ImptClientPayment(
-                                                        _recipientUserName, _recipientUserIdToken);
-                                                String paymentSendMessage = imptClientPayment.initialPaymentSend();
-                                                outputStream.writeUTF(paymentSendMessage);
-                                                _isAwaitPaymentSendAccept = true;
-                                                break;
-                                            // CHAT
-                                            default:
-                                                break;
-                                        }
+                                        // switch (message.toLowerCase()) {
+                                        // // LOGOUT
+                                        // case "#logout":
+                                        // case "#exit":
+                                        // ImptClientInit clientInit = new ImptClientInit();
+                                        // Boolean disconnectConfirmed = clientInit.handleDisconnect();
+
+                                        // if (disconnectConfirmed) {
+                                        // String disconnectMessage = clientInit.getDisconnectMessage();
+                                        // outputStream.writeUTF(disconnectMessage);
+                                        // disconnect();
+                                        // _isAwaitingResponseFromServer = true;
+                                        // _clientSocket.close();
+                                        // }
+                                        // break;
+                                        // // PAYMENT
+                                        // case "#payment":
+                                        // ImptClientPayment imptClientPayment = new ImptClientPayment(
+                                        // _recipientUserName, _recipientUserIdToken);
+                                        // String paymentSendMessage = imptClientPayment.initialPaymentSend();
+                                        // outputStream.writeUTF(paymentSendMessage);
+                                        // _isAwaitPaymentSendAccept = true;
+                                        // break;
+                                        // // CHAT
+                                        // default:
+                                        // break;
+                                        // }
                                     }
                                 }
                             }
 
-                            _logger.printLog(this.getClass().toString(), "** Awaiting server response...", 
+                            _logger.printLog(this.getClass().toString(), "** Awaiting server response...",
                                     ImptLoggerConfig.Level.INFO);
                         }
                     }
@@ -149,7 +149,8 @@ public class ImptClient {
                     StringWriter errors = new StringWriter();
                     e.printStackTrace(new PrintWriter(errors));
                     _logger.printLog(this.getClass().toString(),
-                            " Error Encountered in sendMessage Thread: " + errors.toString(), ImptLoggerConfig.Level.ERROR);
+                            " Error Encountered in sendMessage Thread: " + errors.toString(),
+                            ImptLoggerConfig.Level.ERROR);
 
                     try {
                         outputStream.close();
@@ -175,14 +176,14 @@ public class ImptClient {
             public void run() {
                 DataInputStream inputStream = null;
                 _logger.printLog(this.getClass().toString(),
-                        "**** readMessage Thread Name: " + Thread.currentThread().getName(), 
+                        "**** readMessage Thread Name: " + Thread.currentThread().getName(),
                         ImptLoggerConfig.Level.DEBUG);
 
                 try {
                     inputStream = new DataInputStream(_clientSocket.getInputStream());
                 } catch (Exception ex) {
                     _logger.printLog(this.getClass().toString(),
-                            "** Could not establish input stream connection with the server.", 
+                            "** Could not establish input stream connection with the server.",
                             ImptLoggerConfig.Level.INFO);
                 }
 
@@ -195,12 +196,19 @@ public class ImptClient {
                         if (message != null && !message.isEmpty()) {
                             if (!_isLoggedIn) {
                                 ImptClientAuth clientAuth = new ImptClientAuth();
-                                _myUserIdToken = clientAuth.handleServerAuthResponse(message);
+                                clientAuth.handleServerAuthResponse(message);
+                                _myUserIdToken = clientAuth.getUserToken();
+                                boolean _shouldCloseSocket = clientAuth.getShouldCloseSocket();
 
                                 if (_myUserIdToken != null && !_myUserIdToken.isEmpty()) {
                                     _isLoggedIn = true;
                                 } else {
-                                    disconnect();
+                                    if (_shouldCloseSocket) {
+                                        _clientSocket.close();
+                                    } else {
+                                        resetLoginStatus();
+                                    }
+
                                 }
                                 _isAwaitingResponseFromServer = false;
                             } else {
@@ -224,7 +232,7 @@ public class ImptClient {
                                         _isAwaitingResponseFromServer = false;
                                         break;
                                     case "PAYSND":
-                                        _logger.printLog(this.getClass().toString(), "SERVER PAY", 
+                                        _logger.printLog(this.getClass().toString(), "SERVER PAY",
                                                 ImptLoggerConfig.Level.DEBUG);
 
                                         ImptClientPayment imptClientPayment = new ImptClientPayment(_recipientUserName,
@@ -235,14 +243,13 @@ public class ImptClient {
                                         break;
                                     case "DISCONNECT":
                                         if (messageArr.length == 2) {
-                                            // socket.close();
-                                            _logger.printLog(this.getClass().toString(), "you are disconnected", 
+                                            _logger.printLog(this.getClass().toString(), "you are disconnected",
                                                     ImptLoggerConfig.Level.INFO);
                                             _isAwaitingResponseFromServer = false;
                                         } else {
                                             _recipientUserName = null;
                                             _recipientUserIdToken = null;
-                                            _logger.printLog(this.getClass().toString(), "someone got disconnected", 
+                                            _logger.printLog(this.getClass().toString(), "someone got disconnected",
                                                     ImptLoggerConfig.Level.INFO);
                                         }
                                     case "CHAT":
@@ -258,7 +265,7 @@ public class ImptClient {
                         e.printStackTrace(new PrintWriter(errors));
 
                         _logger.printLog(this.getClass().toString(),
-                                " Error Encountered in readMessage Thread: " + errors.toString(), 
+                                " Error Encountered in readMessage Thread: " + errors.toString(),
                                 ImptLoggerConfig.Level.ERROR);
                         break;
                     }

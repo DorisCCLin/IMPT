@@ -1,0 +1,187 @@
+[03/15/2020 09:32:33.733 AM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:194)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 09:33:13.746 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 09:33:13.746 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 09:33:13.811 AM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 09:33:18.767 AM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 09:33:20.239 AM] [ImptClient$1] ** Logging in...
+[03/15/2020 09:33:20.240 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:33:20.257 AM] [ImptClient$2] << ERR_AUTH BEGIN sameUser
+[03/15/2020 09:33:20.258 AM] [ImptClientAuth] ** It seems you have logged in somewhere. Are you sure you are you? **
+[03/15/2020 09:33:20.259 AM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 09:47:41.933 AM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:193)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 09:48:02.411 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 09:48:02.411 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 09:48:02.476 AM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 09:48:04.330 AM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 09:48:09.764 AM] [ImptClient$1] ** Logging in...
+[03/15/2020 09:48:09.765 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:48:09.783 AM] [ImptClient$2] << AUTH RES d0fbf166-c281-4b75-a79d-3ff4c345c2fc
+[03/15/2020 09:48:09.783 AM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 09:48:09.784 AM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 09:48:09.785 AM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 09:48:35.966 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 09:48:35.966 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 09:48:36.030 AM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 09:48:38.044 AM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 09:48:39.534 AM] [ImptClient$1] ** Logging in...
+[03/15/2020 09:48:39.535 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:48:39.543 AM] [ImptClient$2] << ERR_AUTH BEGIN authError
+[03/15/2020 09:48:39.544 AM] [ImptClientAuth] ** Oops! The username and password do not match. :( Try again! **
+[03/15/2020 09:48:39.545 AM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 09:48:44.803 AM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 09:48:50.128 AM] [ImptClient$1] ** Logging in...
+[03/15/2020 09:48:50.129 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:48:50.145 AM] [ImptClient$2] << AUTH RES 020ad875-91fc-4c59-997d-574ea56ef773
+[03/15/2020 09:48:50.146 AM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 09:48:50.147 AM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 09:48:50.149 AM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 09:48:53.670 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 09:48:53.670 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 09:48:53.734 AM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 09:48:55.701 AM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 09:48:58.841 AM] [ImptClient$1] ** Logging in...
+[03/15/2020 09:48:58.842 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:48:58.855 AM] [ImptClient$2] << ERR_AUTH BEGIN sameUser
+[03/15/2020 09:48:58.856 AM] [ImptClientAuth] ** It seems you have logged in somewhere. Are you sure you are you? **
+[03/15/2020 09:48:58.857 AM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 09:48:58.857 AM] [ImptClient$2] << 
+[03/15/2020 09:49:14.901 AM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 09:49:17.552 AM] [ImptClient$1] ** Logging in...
+[03/15/2020 09:49:17.553 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:49:17.560 AM] [ImptClient$2] << AUTH RES cc9196e9-d3d8-46bf-ad29-f45e43c5cf64
+[03/15/2020 09:49:17.561 AM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 09:49:17.562 AM] [ImptClient$2] << INIT BEGIN Brian cc9196e9-d3d8-46bf-ad29-f45e43c5cf64
+[03/15/2020 09:49:17.562 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:49:17.562 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:49:17.563 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:49:17.564 AM] [ImptClientInit] Brian is now connected with you!
+[03/15/2020 09:49:17.564 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:49:17.565 AM] [ImptClientInit] 
+** Type '#logout' anytime to disconnect **
+** Type '#payment' anytime to initiate payment **
+** Type '#help' anytime to view help on commands **
+[03/15/2020 09:49:17.565 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:49:17.566 AM] [ImptClientInit] Brian, what's on your mind? :)
+[03/15/2020 09:49:17.566 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:49:17.566 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:49:17.566 AM] [ImptClient$2] << INIT BEGIN Brian cc9196e9-d3d8-46bf-ad29-f45e43c5cf64
+[03/15/2020 09:49:17.567 AM] [ImptClientInit] Brian is now connected with you!
+[03/15/2020 09:49:17.568 AM] [ImptClientInit] 
+** Type '#logout' anytime to disconnect **
+** Type '#payment' anytime to initiate payment **
+** Type '#help' anytime to view help on commands **
+[03/15/2020 09:49:17.568 AM] [ImptClientInit] Brian, what's on your mind? :)
+[03/15/2020 09:49:32.515 AM] [ImptClientPayment] Are you sending payment to Brian? (y/n):
+[03/15/2020 09:50:09.131 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 09:50:09.132 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 09:50:09.204 AM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 09:50:59.466 AM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 09:51:05.043 AM] [ImptClient$1] ** Logging in...
+[03/15/2020 09:51:05.044 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:51:05.050 AM] [ImptClient$2] << ERR_AUTH BEGIN serverFull
+[03/15/2020 09:51:05.051 AM] [ImptClientAuth] ** Oops! There are too many users online. :( Try later! **
+[03/15/2020 09:51:05.055 AM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 09:51:05.056 AM] [ImptClient$2]  Error Encountered in readMessage Thread: java.net.SocketException: Socket closed
+	at java.base/sun.nio.ch.NioSocketImpl.ensureOpenAndConnected(NioSocketImpl.java:166)
+	at java.base/sun.nio.ch.NioSocketImpl.beginRead(NioSocketImpl.java:232)
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:300)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:193)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 09:59:03.472 AM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:193)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 09:59:03.472 AM] [ImptClient$2]  Error Encountered in readMessage Thread: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:345)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:193)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/15/2020 09:59:36.282 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 09:59:36.282 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 09:59:36.348 AM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 09:59:38.240 AM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 09:59:40.361 AM] [ImptClient$1] ** Logging in...
+[03/15/2020 09:59:40.361 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:59:40.382 AM] [ImptClient$2] << AUTH RES 845ff69f-8ea8-4aef-8fda-bb39d7ff14a6
+[03/15/2020 09:59:40.382 AM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 09:59:40.383 AM] [ImptClient$2] << INIT BEGIN none none
+[03/15/2020 09:59:40.384 AM] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[03/15/2020 09:59:44.716 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 09:59:44.716 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 09:59:44.780 AM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 09:59:47.356 AM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 09:59:53.875 AM] [ImptClient$1] ** Logging in...
+[03/15/2020 09:59:53.876 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:59:53.883 AM] [ImptClient$2] << INIT BEGIN Brian 91e5a8bc-49e8-4913-84ed-6e111abbef10
+[03/15/2020 09:59:53.883 AM] [ImptClient$2] << AUTH RES 91e5a8bc-49e8-4913-84ed-6e111abbef10
+[03/15/2020 09:59:53.884 AM] [ImptClientAuth] ** Logged in successfully! **
+[03/15/2020 09:59:53.884 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:59:53.884 AM] [ImptClientInit] Brian is now connected with you!
+[03/15/2020 09:59:53.884 AM] [ImptClient$2] << INIT BEGIN Doris 845ff69f-8ea8-4aef-8fda-bb39d7ff14a6
+[03/15/2020 09:59:53.885 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:59:53.885 AM] [ImptClientInit] 
+** Type '#logout' anytime to disconnect **
+** Type '#payment' anytime to initiate payment **
+** Type '#help' anytime to view help on commands **
+[03/15/2020 09:59:53.886 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:59:53.886 AM] [ImptClientInit] Doris, what's on your mind? :)
+[03/15/2020 09:59:53.886 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:59:53.887 AM] [ImptClientInit] Doris is now connected with you!
+[03/15/2020 09:59:53.887 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:59:53.887 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:59:53.887 AM] [ImptClientInit] 
+** Type '#logout' anytime to disconnect **
+** Type '#payment' anytime to initiate payment **
+** Type '#help' anytime to view help on commands **
+[03/15/2020 09:59:53.896 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 09:59:53.896 AM] [ImptClientInit] Brian, what's on your mind? :)
+[03/15/2020 09:59:53.896 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 10:00:13.962 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 10:00:53.213 AM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/15/2020 10:00:53.213 AM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/15/2020 10:00:53.280 AM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 10:00:57.295 AM] [ImptClientAuth] << ENTER PASSWORD:
+[03/15/2020 10:01:00.772 AM] [ImptClient$1] ** Logging in...
+[03/15/2020 10:01:00.773 AM] [ImptClient$1] ** Awaiting server response...
+[03/15/2020 10:01:00.779 AM] [ImptClient$2] << ERR_AUTH BEGIN serverFull
+[03/15/2020 10:01:00.780 AM] [ImptClientAuth] ** Oops! There are too many users online. :( Try later! **
+[03/15/2020 10:01:00.784 AM] [ImptClientAuth] << ENTER USERNAME:
+[03/15/2020 10:01:00.785 AM] [ImptClient$2]  Error Encountered in readMessage Thread: java.net.SocketException: Socket closed
+	at java.base/sun.nio.ch.NioSocketImpl.ensureOpenAndConnected(NioSocketImpl.java:166)
+	at java.base/sun.nio.ch.NioSocketImpl.beginRead(NioSocketImpl.java:232)
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:300)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.client.ImptClient$2.run(ImptClient.java:193)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
