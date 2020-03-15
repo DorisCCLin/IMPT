@@ -22,7 +22,7 @@ public class ImptClientInit {
         switch (initUsername) {
             case "none":
                 _logger.printLog(this.getClass().toString(),
-                        ">> You are the only one Online. Waiting for other user...", ImptLoggerConfig.Level.INFO);
+                        "You are the only one Online. Waiting for other user...", ImptLoggerConfig.Level.PROMPT);
                 break;
             default:
                 _recipientUsername = initUsername;
@@ -31,9 +31,9 @@ public class ImptClientInit {
                         ImptLoggerConfig.Level.INFO);
                 _logger.printLog(this.getClass().toString(),
                         "\n** Type '#logout' anytime to disconnect **\n** Type '#payment' anytime to initiate payment **\n** Type '#help' anytime to view help on commands **",
-                        ImptLoggerConfig.Level.INFO);
+                        ImptLoggerConfig.Level.PROMPT);
                 _logger.printLog(this.getClass().toString(), ImptClient._myUsername + ", what's on your mind? :)",
-                        ImptLoggerConfig.Level.INFO);
+                        ImptLoggerConfig.Level.PROMPT);
                 success = true;
                 break;
         }

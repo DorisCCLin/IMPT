@@ -9397,3 +9397,23 @@
 [33m[03/14/2020 10:16:54.188 AM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=64002,localport=1234][0m
 [33m[03/14/2020 10:16:54.190 AM] [ImptServer] Creating a new handler for this client...[0m
 [36m[03/14/2020 10:16:54.200 AM] [ImptServer] IMPT Client Manager Thread Name: Thread-0[0m
+[03/14/2020 09:35:32.176 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 09:35:32.176 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 09:35:32.220 PM] [ImptClientAuth] << ENTER USERNAME:
+[09:43:56.516 PM] [DEBUG] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[09:43:56.516 PM] [DEBUG] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[09:43:56.557 PM] [PROMPT] [ImptClientAuth] << ENTER USERNAME:
+[09:47:25.263 PM] [PROMPT] [ImptClientAuth] << ENTER PASSWORD:
+[09:47:26.922 PM] [INFO] [ImptClient$1] ** Logging in...
+[09:47:26.923 PM] [INFO] [ImptClient$1] ** Awaiting server response...
+[09:47:27.153 PM] [DEFAULT] [ImptClient$2] << AUTH RES 2f9b48f8-a16d-422f-bdce-e685de6e4442
+[09:47:27.154 PM] [INFO] [ImptClientAuth] ** Logged in successfully!
+[09:47:27.154 PM] [DEFAULT] [ImptClient$2] << INIT BEGIN none none
+[09:47:27.155 PM] [INFO] [ImptClientInit] >> You are the only one Online. Waiting for other user...
+[09:47:36.743 PM] [DEFAULT] [ImptClient$2] << INIT BEGIN Doris 557cc86f-e95c-403c-b70d-2a25352825a1
+[09:47:36.744 PM] [INFO] [ImptClientInit] Doris is now connected with you!
+[09:47:36.745 PM] [INFO] [ImptClientInit] 
+** Type '#logout' anytime to disconnect **
+** Type '#payment' anytime to initiate payment **
+** Type '#help' anytime to view help on commands **
+[09:47:36.746 PM] [INFO] [ImptClientInit] Calvin, what's on your mind? :)

@@ -547,3 +547,93 @@
 	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
 	at java.base/java.lang.Thread.run(Thread.java:830)
 [0m
+[03/14/2020 09:35:29.884 PM] [ImptServer] IMPT Server Started
+[03/14/2020 09:35:32.152 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=58250,localport=1234]
+[03/14/2020 09:35:32.153 PM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 09:35:32.164 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03/14/2020 09:35:34.560 PM] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=58251,localport=1234]
+[03/14/2020 09:35:34.562 PM] [ImptServer] Creating a new handler for this client...
+[03/14/2020 09:35:34.563 PM] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/14/2020 09:35:34.584 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 09:35:34.584 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 09:35:34.609 PM] [ImptClientAuth] << Enter username:
+[03/14/2020 09:43:06.940 PM] [ImptClientManager]  Error Encountered: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03/14/2020 09:43:11.210 PM] [ImptClientManager]  Error Encountered: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[09:43:52.113 PM] [INFO] [ImptServer] IMPT Server Started
+[09:43:56.490 PM] [INFO] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=58651,localport=1234]
+[09:43:56.491 PM] [INFO] [ImptServer] Creating a new handler for this client...
+[09:43:56.503 PM] [DEBUG] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[09:44:00.510 PM] [INFO] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=58663,localport=1234]
+[09:44:00.511 PM] [INFO] [ImptServer] Creating a new handler for this client...
+[09:44:00.512 PM] [DEBUG] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03/14/2020 09:44:00.545 PM] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[03/14/2020 09:44:00.545 PM] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[03/14/2020 09:44:00.568 PM] [ImptClientAuth] << Enter username:
+[09:44:03.750 PM] [ERROR] [ImptClientManager]  Error Encountered: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[09:47:16.624 PM] [INFO] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=58759,localport=1234]
+[09:47:16.625 PM] [INFO] [ImptServer] Creating a new handler for this client...
+[09:47:16.627 PM] [DEBUG] [ImptServer] IMPT Client Manager Thread Name: Thread-2
+[09:47:16.648 PM] [DEBUG] [ImptClient$1] **** sendMessage Thread Name: Thread-0
+[09:47:16.648 PM] [DEBUG] [ImptClient$2] **** readMessage Thread Name: Thread-1
+[09:47:16.682 PM] [PROMPT] [ImptClientAuth] << ENTER USERNAME:
+[09:47:26.922 PM] [DEBUG] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[09:47:27.151 PM] [DEBUG] [ImptClientManager] AUTH RES 2f9b48f8-a16d-422f-bdce-e685de6e4442
+[09:47:27.152 PM] [DEBUG] [ImptClientManager] {Calvin=2f9b48f8-a16d-422f-bdce-e685de6e4442}
+[09:47:35.043 PM] [PROMPT] [ImptClientAuth] << ENTER PASSWORD:
+[09:47:36.737 PM] [INFO] [ImptClient$1] ** Logging in...
+[09:47:36.737 PM] [DEBUG] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[09:47:36.737 PM] [INFO] [ImptClient$1] ** Awaiting server response...
+[09:47:36.740 PM] [DEBUG] [ImptClientManager] AUTH RES 557cc86f-e95c-403c-b70d-2a25352825a1
+[09:47:36.741 PM] [DEBUG] [ImptClientManager] {Calvin=2f9b48f8-a16d-422f-bdce-e685de6e4442, Doris=557cc86f-e95c-403c-b70d-2a25352825a1}
+[09:47:36.743 PM] [DEFAULT] [ImptClient$2] << AUTH RES 557cc86f-e95c-403c-b70d-2a25352825a1
+[09:47:36.744 PM] [INFO] [ImptClientAuth] ** Logged in successfully!
+[09:47:36.744 PM] [INFO] [ImptClient$1] ** Awaiting server response...
+[09:47:36.744 PM] [DEFAULT] [ImptClient$2] << INIT BEGIN Calvin 2f9b48f8-a16d-422f-bdce-e685de6e4442
+[09:47:36.745 PM] [INFO] [ImptClient$1] ** Awaiting server response...
+[09:47:36.745 PM] [INFO] [ImptClient$1] ** Awaiting server response...
+[09:47:36.746 PM] [INFO] [ImptClient$1] ** Awaiting server response...
+[09:47:36.746 PM] [INFO] [ImptClient$1] ** Awaiting server response...
+[09:47:36.747 PM] [INFO] [ImptClient$1] ** Awaiting server response...
+[09:47:36.747 PM] [INFO] [ImptClientInit] Calvin is now connected with you!
+[09:47:36.747 PM] [INFO] [ImptClient$1] ** Awaiting server response...
+[09:47:36.748 PM] [INFO] [ImptClientInit] 
+** Type '#logout' anytime to disconnect **
+** Type '#payment' anytime to initiate payment **
+** Type '#help' anytime to view help on commands **
+[09:47:36.748 PM] [INFO] [ImptClient$1] ** Awaiting server response...
+[09:47:36.748 PM] [INFO] [ImptClient$1] ** Awaiting server response...
+[09:47:36.749 PM] [INFO] [ImptClientInit] Doris, what's on your mind? :)
+[09:47:36.749 PM] [INFO] [ImptClient$1] ** Awaiting server response...

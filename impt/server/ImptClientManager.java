@@ -15,37 +15,48 @@ import impt.common.*;
 
 class ImptClientManager implements Runnable {
     Scanner scn = new Scanner(System.in);
-    // private String name;
-    private Socket _socket;
+
     private DataInputStream _inputStream;
     private DataOutputStream _outputStream;
-    // private String _outputMessage;
     private ImptLogger _logger = new ImptLogger();
+
     private ClientMessageObject _clientMessageObject = new ClientMessageObject();
 
+    private String _clientUserName;
+
     // constructor
-    public ImptClientManager(Socket socket, DataInputStream inputStream, DataOutputStream outputStream) {
-        this._socket = socket;
-        this._inputStream = inputStream;
-        this._outputStream = outputStream;
+    public ImptClientManager(DataInputStream inputStream, DataOutputStream outputStream) {
+        _inputStream = inputStream;
+        _outputStream = outputStream;
     }
 
     @Override
     public void run() {
-
-        String receivedMessage = null;
-
         while (true) {
             try {
                 // receive the string
-                receivedMessage = this._inputStream.readUTF();
+                String receivedMessage = _inputStream.readUTF();
                 _logger.printLog(this.getClass().toString(), receivedMessage, ImptLoggerConfig.Level.DEBUG);
 
                 // sending incoming messager to message manager
                 ImptMessageManger imptMessageManger = new ImptMessageManger();
-                imptMessageManger.handleClientMessage(receivedMessage);
+                ClientMessageObject newClientMessageObject = imptMessageManger.handleClientMessage(receivedMessage);
 
-                _clientMessageObject = imptMessageManger.getClientMessageObject();
+                if(newClientMessageObject != null)
+                {
+                    _clientMessageObject = newClientMessageObject;
+                }
+
+                // check if otherUserIdToken is null
+                if (_clientMessageObject.otherUserIdToken == null) {
+                    if (ImptServer.activeUsers.size() > 1) {
+                        // get other user's id token
+                        String otherUserName = ImptServer.activeUsers.keySet().stream()
+                                .filter(s -> !s.contains(_clientUserName)).toString();
+                        _clientMessageObject.otherUserIdToken = ImptServer.activeUsers.get(otherUserName);
+                    }
+                }
+
                 String outputMessage = _clientMessageObject.message;
 
                 _logger.printLog(this.getClass().toString(), outputMessage, ImptLoggerConfig.Level.DEBUG);
@@ -55,20 +66,17 @@ class ImptClientManager implements Runnable {
                     case "AUTH":
                         if (_clientMessageObject.isUserLoggedIn) {
                             ImptServer.activeSockets.put(_clientMessageObject.userIdToken, this);
-                            _logger.printLog(this.getClass().toString(), 
-                                    ImptServer.activeUsers.toString(), ImptLoggerConfig.Level.DEBUG);
-                            this._outputStream.writeUTF(outputMessage);
+                            _logger.printLog(this.getClass().toString(), ImptServer.activeUsers.toString(),
+                                    ImptLoggerConfig.Level.DEBUG);
+                            _outputStream.writeUTF(outputMessage);
 
                             if (ImptServer.activeUsers.size() == 1) {
-                                this._outputStream.writeUTF(_clientMessageObject.initNoneUserMessage);
+                                _outputStream.writeUTF(_clientMessageObject.initNoneUserMessage);
                             } else {
                                 // send to current user
-                                this._outputStream.writeUTF(_clientMessageObject.initCurrentUserMessage);
+                                _outputStream.writeUTF(_clientMessageObject.initCurrentUserMessage);
 
-                                ImptClientManager recipientImptClientManager = ImptServer.activeSockets
-                                        .get(_clientMessageObject.prevUserIdToken);
-
-                                recipientImptClientManager._outputStream
+                                ImptServer.activeSockets.get(_clientMessageObject.otherUserIdToken)._outputStream
                                         .writeUTF(_clientMessageObject.initExistingUserMessage);
                             }
                         } else {
@@ -78,16 +86,14 @@ class ImptClientManager implements Runnable {
                         break;
                     case "PAYSND":
                         _outputStream.writeUTF(outputMessage);
-                        break;
 
+                        break;
                     case "DISCONNECT":
                         if (ImptServer.activeUsers.size() > 0) {
                             this._outputStream.writeUTF(_clientMessageObject.message);
 
-                            ImptClientManager recipientImptClientManager = ImptServer.activeSockets
-                                    .get(_clientMessageObject.prevUserIdToken);
-
-                            recipientImptClientManager._outputStream
+                            // Send the other user that the current user has disconnected
+                            ImptServer.activeSockets.get(_clientMessageObject.otherUserIdToken)._outputStream
                                     .writeUTF(_clientMessageObject.initExistingUserMessage);
                         } else {
                             this._outputStream.writeUTF(_clientMessageObject.message);
@@ -95,13 +101,12 @@ class ImptClientManager implements Runnable {
 
                         break;
                 }
-
-                receivedMessage = null;
-
+            } catch (SocketException socketEx) {
+                _logger.printToFile("** SocketException below normally indicates loss of connection from a Client **");
+                _logger.printToFile(_logger.getExceptionMessage(socketEx));
+                return;
             } catch (Exception e) {
-                StringWriter errors = new StringWriter();
-                e.printStackTrace(new PrintWriter(errors));
-                _logger.printLog(this.getClass().toString(), " Error Encountered: " + errors.toString(), 
+                _logger.printLog(this.getClass().toString(), " Error Encountered: " + _logger.getExceptionMessage(e),
                         ImptLoggerConfig.Level.ERROR);
                 break;
             }

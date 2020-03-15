@@ -1,0 +1,83 @@
+[10:47:46.519 AM] [DEFAULT] [ImptClient] Welcome to IMPT Client! (> '')>
+[10:47:46.547 AM] [DEFAULT] [ImptClient] Connecting to server...
+[02:33:09.234 PM] [DEFAULT] [ImptClient] Welcome to IMPT Client! (> '')>
+[02:33:09.261 PM] [DEFAULT] [ImptClient] Connecting to server...
+[02:33:10.279 PM] [DEFAULT] [ImptClient] Connection established!
+[02:34:13.892 PM] [DEFAULT] [ImptClient] Welcome to IMPT Client! (> '')>
+[02:34:13.920 PM] [DEFAULT] [ImptClient] Connecting to server...
+[02:34:14.939 PM] [DEFAULT] [ImptClient] Connection established!
+[03:32:19.046 PM] [INFO] [ImptServer] IMPT Server Started
+[03:32:24.219 PM] [INFO] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=57266,localport=1234]
+[03:32:24.220 PM] [INFO] [ImptServer] Creating a new handler for this client...
+[03:32:24.231 PM] [DEBUG] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+[03:32:47.442 PM] [DEBUG] [ImptClientManager] AUTH BEGIN Doris doris1 IMPT1.0
+[03:32:47.639 PM] [DEBUG] [ImptClientManager] AUTH RES 28f18a6c-3b55-4877-9840-b5bb4b02eec3
+[03:32:47.640 PM] [DEBUG] [ImptClientManager] {Doris=28f18a6c-3b55-4877-9840-b5bb4b02eec3}
+[03:33:36.317 PM] [INFO] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=57293,localport=1234]
+[03:33:36.319 PM] [INFO] [ImptServer] Creating a new handler for this client...
+[03:33:36.320 PM] [DEBUG] [ImptServer] IMPT Client Manager Thread Name: Thread-1
+[03:33:40.649 PM] [DEBUG] [ImptClientManager] AUTH BEGIN Calvin calvin1 IMPT1.0
+[03:33:40.657 PM] [DEBUG] [ImptClientManager] AUTH RES db84986b-15f9-48f4-9d9c-d23651034f96
+[03:33:40.660 PM] [DEBUG] [ImptClientManager] {Doris=28f18a6c-3b55-4877-9840-b5bb4b02eec3, Calvin=db84986b-15f9-48f4-9d9c-d23651034f96}
+** SocketException below normally indicates loss of connection from a Client **
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:38)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+** SocketException below normally indicates loss of connection from a Client **
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:38)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[03:56:39.823 PM] [INFO] [ImptServer] IMPT Server Started
+[03:56:54.364 PM] [INFO] [ImptServer] New client request received : Socket[addr=/127.0.0.1,port=57739,localport=1234]
+[03:56:54.366 PM] [INFO] [ImptServer] Creating a new handler for this client...
+[03:56:54.376 PM] [DEBUG] [ImptServer] IMPT Client Manager Thread Name: Thread-0
+** SocketException below normally indicates loss of connection from a Client **
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:324)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:351)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:802)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:937)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:932)
+	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:342)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:594)
+	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:569)
+	at impt.server.ImptClientManager.run(ImptClientManager.java:38)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+
+[04:13:35.971 PM] [DEFAULT] [ImptClient] Welcome to IMPT Client! (> '')>
+[04:13:35.999 PM] [DEFAULT] [ImptClient] Connecting to server...
+[04:13:37.017 PM] [DEFAULT] [ImptClient] Connection established!
+[04:13:37.020 PM] [DEBUG] [MessageInputHandler] **** MessageInputHandler Thread Name: Thread-1
+[04:13:37.028 PM] [DEBUG] [MessageOutputHandler] **** MessageOutputHandler Thread Name: Thread-0
+[04:13:44.734 PM] [INFO] [MessageOutputHandler] ** Logging in...
+[04:13:44.930 PM] [DEFAULT] [MessageInputHandler] << AUTH RES 1262c744-6675-419a-8ee7-ec6a4cf3f468
+[04:13:44.931 PM] [DEFAULT] [MessageInputHandler] << INIT BEGIN none none
+[04:13:57.066 PM] [DEFAULT] [ImptClient] Welcome to IMPT Client! (> '')>
+[04:13:57.098 PM] [DEFAULT] [ImptClient] Connecting to server...
+[04:13:58.117 PM] [DEFAULT] [ImptClient] Connection established!
+[04:13:58.121 PM] [DEBUG] [MessageInputHandler] **** MessageInputHandler Thread Name: Thread-1
+[04:13:58.128 PM] [DEBUG] [MessageOutputHandler] **** MessageOutputHandler Thread Name: Thread-0
+[04:14:02.350 PM] [INFO] [MessageOutputHandler] ** Logging in...
+[04:14:02.356 PM] [DEFAULT] [MessageInputHandler] << AUTH RES 30120eff-0b8e-487d-b316-cb0559580c76
+[04:14:02.356 PM] [DEFAULT] [MessageInputHandler] << INIT BEGIN Calvin 30120eff-0b8e-487d-b316-cb0559580c76
+[04:14:02.357 PM] [DEFAULT] [MessageInputHandler] << INIT BEGIN Doris 1262c744-6675-419a-8ee7-ec6a4cf3f468
+[04:14:02.357 PM] [INFO] [ImptClientInit] Calvin is now connected with you!
+[04:14:02.358 PM] [INFO] [ImptClientInit] Doris is now connected with you!

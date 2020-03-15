@@ -7,42 +7,44 @@
 package impt.server;
 
 import java.util.*;
+import java.util.regex.*;
 
 import impt.server.handlers.*;
 
 class ImptMessageManger {
-    private ClientMessageObject _clientMessageObject = new ClientMessageObject();
-
     // handle incoming message and form message and recipient info in
     // ClientMessageObject
-    public void handleClientMessage(String message) {
+    public ClientMessageObject handleClientMessage(String message) {
         boolean isMessageValid = isMessageValid(message);
         String[] messageArr = message.split(" ");
+        ClientMessageObject clientMessageObject = null;
 
         if (isMessageValid) {
-            _clientMessageObject.command = messageArr[0];
+            clientMessageObject = new ClientMessageObject();
+            clientMessageObject.command = messageArr[0];
+
             switch (messageArr[0]) {
                 case "AUTH":
                     AuthenticationHandler authHandler = new AuthenticationHandler();
                     AuthenticationHandler.AuthenticationObject authObject = new AuthenticationHandler.AuthenticationObject();
                     authObject = authHandler.authenticate(messageArr[2], messageArr[3]);
-                    _clientMessageObject.isUserLoggedIn = authObject.isUserIdLoggedIn;
-                    _clientMessageObject.userIdToken = authObject.userIdToken;
+                    clientMessageObject.isUserLoggedIn = authObject.isUserIdLoggedIn;
+                    clientMessageObject.userIdToken = authObject.userIdToken;
 
                     if (authObject.isUserIdLoggedIn) {
 
-                        _clientMessageObject.message = "AUTH RES " + authObject.userIdToken;
+                        clientMessageObject.message = "AUTH RES " + authObject.userIdToken;
 
                         if (ImptServer.activeUsers.size() == 0) {
-                            _clientMessageObject.initNoneUserMessage = "INIT BEGIN none none";
+                            clientMessageObject.initNoneUserMessage = "INIT BEGIN none none";
                         } else {
-                            String prevUsername = ImptServer.activeUsers.keySet().iterator().next();
-                            String prevUserIdToken = ImptServer.activeUsers.get(prevUsername);
-                            _clientMessageObject.prevUserIdToken = prevUserIdToken;
+                            String otherUsername = ImptServer.activeUsers.keySet().iterator().next();
+                            String otherUserIdToken = ImptServer.activeUsers.get(otherUsername);
+                            clientMessageObject.otherUserIdToken = otherUserIdToken;
 
-                            _clientMessageObject.initCurrentUserMessage = "INIT BEGIN " + prevUsername + " "
-                                    + prevUserIdToken;
-                            _clientMessageObject.initExistingUserMessage = "INIT BEGIN " + authObject.userName + " "
+                            clientMessageObject.initCurrentUserMessage = "INIT BEGIN " + otherUsername + " "
+                                    + otherUserIdToken;
+                            clientMessageObject.initExistingUserMessage = "INIT BEGIN " + authObject.userName + " "
                                     + authObject.userIdToken;
                         }
 
@@ -51,7 +53,7 @@ class ImptMessageManger {
                     }
 
                     if (authObject.hasAuthError) {
-                        _clientMessageObject.message = "ERR_AUTH BEGIN authError";
+                        clientMessageObject.message = "ERR_AUTH BEGIN authError";
                     }
                     break;
 
@@ -60,15 +62,15 @@ class ImptMessageManger {
                     PaymentHandler.PaymentObject paymentObject = new PaymentHandler.PaymentObject();
                     paymentObject = paymentHandler.sendPayment();
                     if (paymentObject.isPaymentSuccess) {
-                        _clientMessageObject.message = "PAYSND RES " + messageArr[3] + " success";
+                        clientMessageObject.message = "PAYSND RES " + messageArr[3] + " success";
                     } else {
-                        _clientMessageObject.message = "PAYSND RES fail";
+                        clientMessageObject.message = "PAYSND RES fail";
                     }
 
                     break;
 
                 case "DISCONNECT":
-                    _clientMessageObject.userIdToken = messageArr[2];
+                    clientMessageObject.userIdToken = messageArr[2];
 
                     if (ImptServer.activeUsers.size() > 1) {
                         String currentUsername = "";
@@ -79,37 +81,33 @@ class ImptMessageManger {
                         }
 
                         String otherUserIdToken = messageArr[2];
-                        _clientMessageObject.prevUserIdToken = otherUserIdToken;
-
-                        _clientMessageObject.initExistingUserMessage = "DISCONNECT FIN " + currentUsername + " "
-                                + messageArr[2];
-
-                        while (ImptServer.activeUsers.values().remove(messageArr[2]))
-                            ;
-                        String prevUsername = ImptServer.activeUsers.keySet().iterator().next();
-                        String prevUserIdToken = ImptServer.activeUsers.get(prevUsername);
-                        _clientMessageObject.prevUserIdToken = prevUserIdToken;
+                        clientMessageObject.otherUserIdToken = otherUserIdToken;
+                        clientMessageObject.initExistingUserMessage = "DISCONNECT FIN " + currentUsername + " "
+                                + messageArr[2];                          
+                            
+                        String otherUsername = ImptServer.activeUsers.keySet().iterator().next();
+                        clientMessageObject.otherUserIdToken = ImptServer.activeUsers.get(otherUsername);
                     } else {
-                        while (ImptServer.activeUsers.values().remove(messageArr[2]))
-                            ;
+                            
+                        while (ImptServer.activeUsers.values().remove(messageArr[2]));
                     }
 
-                    _clientMessageObject.message = "DISCONNECT FIN";
+                    clientMessageObject.message = "DISCONNECT FIN";
 
                     System.out.println("Active Users[MessageManager]: " + ImptServer.activeUsers);
 
                     break;
             }
         }
+        
+        return clientMessageObject;
     }
 
     // mockup message validation mechanism
     public boolean isMessageValid(String message) {
+        String[] messageParts = message.split(" ");
+        boolean hasCommand = Pattern.compile(".*[A-Z].*").matcher(messageParts[0]).matches();
 
-        return true;
-    }
-
-    public ClientMessageObject getClientMessageObject() {
-        return _clientMessageObject;
+        return hasCommand;
     }
 }

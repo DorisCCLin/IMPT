@@ -44,20 +44,18 @@ public class ImptServer {
                 _logger.printLog("ImptServer", "Creating a new handler for this client...",
                         ImptLoggerConfig.Level.INFO);
 
-                ImptClientManager imptClientManager = new ImptClientManager(socket, inputStream, outputStream);
+                ImptClientManager imptClientManager = new ImptClientManager(inputStream, outputStream);
 
                 // Create a new Thread with this object. CONCURRENT
                 Thread thread = new Thread(imptClientManager);
-                _logger.printLog("ImptServer", "IMPT Client Manager Thread Name: " + thread.getName(), 
+                _logger.printLog("ImptServer", "ImptClientManager Thread Name: " + thread.getName(), 
                         ImptLoggerConfig.Level.DEBUG);
 
                 // start the thread.
                 thread.start();
             }
         } catch (Exception ex) {
-            StringWriter errors = new StringWriter();
-            ex.printStackTrace(new PrintWriter(errors));
-            _logger.printLog("ImptServer", " Error Encountered in IMPT Server: " + errors.toString(), 
+            _logger.printLog("ImptServer", " Error Encountered in IMPT Server: " + _logger.getExceptionMessage(ex), 
                     ImptLoggerConfig.Level.ERROR);
         } finally {
             serverSocket.close();
