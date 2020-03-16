@@ -10,7 +10,7 @@ package impt.client;
 import java.util.Scanner;
 import impt.common.*;
 
-public class ImptClientInit {
+class ImptClientInit {
     // Init information
     private String _recipientUsername;
     private String _recipientUserIdToken;
@@ -21,8 +21,8 @@ public class ImptClientInit {
         Boolean success = false;
         switch (initUsername) {
             case "none":
-                _logger.printLog(this.getClass().toString(),
-                        "You are the only one Online. Waiting for other user...", ImptLoggerConfig.Level.PROMPT);
+                _logger.printLog(this.getClass().toString(), "You are the only one Online. Waiting for other user...",
+                        ImptLoggerConfig.Level.PROMPT);
                 break;
             default:
                 _recipientUsername = initUsername;
@@ -45,20 +45,23 @@ public class ImptClientInit {
         Scanner disconnectConfirmScanner = new Scanner(System.in); // Create a Scanner object
         String response = "o";
 
+        _logger.printLog(this.getClass().toString(), ">> Are you sure you want to log out? (y/n) **",
+                ImptLoggerConfig.Level.PROMPT);
+
         while (response.toLowerCase().equals("y") || response.toLowerCase().equals("n")) {
-            _logger.printLog(this.getClass().toString(), ">> Are you sure you want to log out? (y/n) **",
-                    ImptLoggerConfig.Level.PROMPT);
-            response = disconnectConfirmScanner.nextLine();
+            if (disconnectConfirmScanner.hasNextLine()) {
+                response = disconnectConfirmScanner.nextLine();
 
-            if (response.toLowerCase().equals("y")) {
-                _disconnectMessage = "DISCONNECT BEGIN " + ImptClient._myUserIdToken;
-                disconnectConfirmScanner.close();
+                if (response.toLowerCase().equals("y")) {
+                    _disconnectMessage = "DISCONNECT BEGIN " + ImptClient._myUserIdToken;
+                    disconnectConfirmScanner.close();
 
-                return true;
-            } else if (response.toLowerCase().equals("n")) {
-                disconnectConfirmScanner.close();
+                    return true;
+                } else if (response.toLowerCase().equals("n")) {
+                    disconnectConfirmScanner.close();
 
-                return false;
+                    return false;
+                }
             }
         }
 

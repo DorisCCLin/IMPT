@@ -12,7 +12,7 @@ import java.net.*;
 import impt.common.*;
 
 // Server class 
-public class ImptServer {
+class ImptServer {
 
     // Map to store active clients
     public static Map<String, String> activeUsers = new HashMap<String, String>();
@@ -26,7 +26,7 @@ public class ImptServer {
         ServerSocket serverSocket = new ServerSocket(1234);
         Socket socket;
 
-        _logger.printLog("ImptServer", "IMPT Server Started", ImptLoggerConfig.Level.INFO);
+        _logger.printLog("ImptServer", "IMPT Server Started! (>''<)", ImptLoggerConfig.Level.INFO);
 
         try {
             // running infinite loop for getting

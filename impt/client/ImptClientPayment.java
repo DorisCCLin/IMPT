@@ -10,7 +10,7 @@ package impt.client;
 import java.util.Scanner;
 import impt.common.*;
 
-public class ImptClientPayment {
+class ImptClientPayment {
     // Init information
     private String _recipientUsername;
     private String _recipientUserIdToken;
@@ -46,16 +46,22 @@ public class ImptClientPayment {
                 ImptLoggerConfig.Level.PROMPT);
         _logger.printLog(this.getClass().toString(), matchedPaymentServices, ImptLoggerConfig.Level.PROMPT);
 
-        String entryNumber = paymentScanner.nextLine();
+        while (true) {
+            if (paymentScanner.hasNextLine()) {
+                String entryNumber = paymentScanner.nextLine();
 
-        for (String service : paymentServices) {
-            int i = 0;
-            if (entryNumber.equals(Integer.toString(i + 1))) {
-                _chosenService = service;
-                _logger.printLog(this.getClass().toString(), "You picked " + _chosenService,
-                        ImptLoggerConfig.Level.INFO);
+                for (String service : paymentServices) {
+                    int i = 0;
+                    if (entryNumber.equals(Integer.toString(i + 1))) {
+                        _chosenService = service;
+                        _logger.printLog(this.getClass().toString(), "You picked " + _chosenService,
+                                ImptLoggerConfig.Level.INFO);
+                    }
+                    i++;
+                }
+
+                break;
             }
-            i++;
         }
 
         paymentScanner.close();
@@ -66,17 +72,30 @@ public class ImptClientPayment {
         Scanner paymentScanner = new Scanner(System.in); // Create a Scanner object
         _logger.printLog(this.getClass().toString(), "Are you sending payment to " + _recipientUsername + "? (y/n):",
                 ImptLoggerConfig.Level.PROMPT);
-        String response = paymentScanner.nextLine();
 
-        if (response.equals("y") || response.equals("n")) {
-            if (response.equals("y")) {
-                _logger.printLog(this.getClass().toString(), "How much would you like to send?",
-                        ImptLoggerConfig.Level.PROMPT);
-                _paymentAmount = paymentScanner.nextLine();
-                getPaymentServiceChoice(_paymentServices);
+        while (true) {
+            if (paymentScanner.hasNextLine()) {
+                String response = paymentScanner.nextLine();
+
+                if (response.equals("y") || response.equals("n")) {
+                    if (response.equals("y")) {
+                        _logger.printLog(this.getClass().toString(), "How much would you like to send?",
+                                ImptLoggerConfig.Level.PROMPT);
+
+                        while (true) {
+                            if (paymentScanner.hasNextLine()) {
+                                _paymentAmount = paymentScanner.nextLine();
+                                getPaymentServiceChoice(_paymentServices);
+                                break;
+                            }
+                        }
+                    }
+                } else {
+                    initialPaymentSend();
+                }
+
+                break;
             }
-        } else {
-            initialPaymentSend();
         }
 
         paymentScanner.close();

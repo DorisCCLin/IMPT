@@ -9,6 +9,7 @@ package impt.server;
 
 public class ClientMessageObject {
     public boolean isUserLoggedIn = false;
+    public String userName = "";
     public String userIdToken = "";
     public String otherUserIdToken = "";
     public String initNoneUserMessage = "";

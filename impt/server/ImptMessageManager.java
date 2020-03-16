@@ -9,9 +9,11 @@ package impt.server;
 import java.util.*;
 import java.util.regex.*;
 
-import impt.server.handlers.*;
+import impt.common.*;
 
-public class ImptMessageManager {
+class ImptMessageManager {
+    private ImptLogger _logger = new ImptLogger();
+
     // handle incoming message and form message and recipient info in
     // ClientMessageObject
     public ClientMessageObject handleClientMessage(String message) {
@@ -30,6 +32,7 @@ public class ImptMessageManager {
                     AuthenticationHandler.AuthenticationObject authObject = authHandler.getAuthenticationObject();
                     clientMessageObject.isUserLoggedIn = authObject.isUserIdLoggedIn;
                     clientMessageObject.userIdToken = authObject.userIdToken;
+                    clientMessageObject.userName = authObject.userName;
 
                     if (authObject.isUserIdLoggedIn) {
                         switch (ImptServer.activeUsers.size()) {
@@ -64,9 +67,8 @@ public class ImptMessageManager {
 
                                     // PAYMENT Message handling - prepare payment info
                                     PaymentHandler authPaymentHandler = new PaymentHandler();
-                                    authPaymentHandler.preparePaymentInfo(authObject.userName, otherUsername);
                                     PaymentHandler.PaymentObject authPaymentObject = authPaymentHandler
-                                            .getPaymentObject();
+                                            .preparePaymentInfo(authObject.userName, otherUsername);
 
                                     if (authPaymentObject.hasPaymentError) {
                                         clientMessageObject.payInfoMessage = "ERR_PAY BEGIN noServices";
@@ -111,27 +113,29 @@ public class ImptMessageManager {
                     break;
 
                 case "DISCONNECT":
+                    System.out.println("DISCONNECT received: " + message);
                     clientMessageObject.userIdToken = messageArr[2];
 
                     if (ImptServer.activeUsers.size() > 1) {
-                        String currentUsername = "";
+                        String foundUserName = "";
                         for (Map.Entry<String, String> entry : ImptServer.activeUsers.entrySet()) {
-                            if (entry.getValue().equals(messageArr[2])) {
-                                currentUsername = entry.getKey();
+                            if (entry.getValue().equals(clientMessageObject.userIdToken)) {
+                                foundUserName = entry.getKey();
                             }
                         }
 
-                        String otherUserIdToken = messageArr[2];
-                        clientMessageObject.otherUserIdToken = otherUserIdToken;
+                        final String currentUsername = foundUserName;
+
+                        String otherUserName = ImptServer.activeUsers.keySet().stream()
+                                .filter(s -> !s.contains(currentUsername)).toString();
+
+                        clientMessageObject.otherUserIdToken = ImptServer.activeUsers.get(otherUserName);
                         clientMessageObject.initExistingUserMessage = "DISCONNECT FIN " + currentUsername + " "
-                                + messageArr[2];
+                                + clientMessageObject.userIdToken;
 
-                        String otherUsername = ImptServer.activeUsers.keySet().iterator().next();
-                        clientMessageObject.otherUserIdToken = ImptServer.activeUsers.get(otherUsername);
-                    } else {
-
-                        while (ImptServer.activeUsers.values().remove(messageArr[2]))
-                            ;
+                        ImptServer.activeUsers.remove(currentUsername);
+                        _logger.printLog(this.getClass().toString(),
+                                "Removed " + currentUsername + ": " + ImptServer.activeUsers.toString());
                     }
 
                     clientMessageObject.message = "DISCONNECT FIN";

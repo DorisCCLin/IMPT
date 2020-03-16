@@ -11,9 +11,9 @@ import java.io.*;
 import java.net.*;
 import java.util.concurrent.TimeUnit;
 import impt.common.*;
-import impt.client.handlers.*;
+// import impt.client.handlers.*;
 
-public class ImptClient {
+class ImptClient {
     final static int ServerPort = 1234;
 
     private static ImptLogger _logger = new ImptLogger();
@@ -37,8 +37,10 @@ public class ImptClient {
 
     public static void printHelpCommands() {
         _logger.printLog("ImptClient",
-                "\n** Type '#logout' anytime to disconnect **\n** Type '#payment' anytime to initiate payment **\n** Type '#help' anytime to view help on commands **",
-                ImptLoggerConfig.Level.INFO);
+                "\n** Type '#logout' anytime to disconnect **\n" + 
+                "** Type '#payment' anytime to initiate payment **\n" +
+                "** Type '#help' anytime to view help on commands **",
+                ImptLoggerConfig.Level.PROMPT);
     }
 
     public static void disconnect() {

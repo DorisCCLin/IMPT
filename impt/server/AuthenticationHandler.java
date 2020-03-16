@@ -4,11 +4,11 @@
  * @author Doris Chia-ching Lin
  * @version 1
  */
-package impt.server.handlers;
+package impt.server;
 
 import java.util.*;
 
-public class AuthenticationHandler {
+class AuthenticationHandler {
     private AuthenticationObject _authenticationObject = new AuthenticationObject();
 
     // mock user credential data

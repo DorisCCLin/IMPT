@@ -10,7 +10,7 @@ package impt.client;
 import java.util.Scanner;
 import impt.common.*;
 
-public class ImptClientAuth {
+class ImptClientAuth {
     private ImptLogger _logger = new ImptLogger();
     private String _userToken = null;
     private boolean _shouldCloseSocket = false;

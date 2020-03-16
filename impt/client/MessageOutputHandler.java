@@ -1,12 +1,12 @@
-package impt.client.handlers;
+package impt.client;
 
 import java.util.*;
 import java.io.*;
 import java.net.*;
 import impt.common.*;
-import impt.client.*;
+// import impt.client.*;
 
-public class MessageOutputHandler implements Runnable {
+class MessageOutputHandler implements Runnable {
     private static ImptLogger _logger = new ImptLogger();
     private Socket _clientSocket;
     private String _version;
@@ -43,15 +43,19 @@ public class MessageOutputHandler implements Runnable {
 
                         _logger.printLog(this.getClass().toString(), "** Logging in...", ImptLoggerConfig.Level.INFO);
                     } else {
-                        if (ImptClient._isConnectedToOther) {
+                        userInputScanner = new Scanner(System.in);
+                        if (ImptClient._isConnectedToOther && userInputScanner.hasNextLine()) {
                             String message = userInputScanner.nextLine();
 
+                            System.out.println("User INPUT: " + message);
+
                             if (!message.isEmpty()) {
-                                handleGeneralUserInput(message.toLowerCase(), outputStream);
+                                handleGeneralUserInput(message, outputStream);
                             }
                         }
                     }
-
+                }
+                else {
                     _logger.printLog(this.getClass().toString(), "** Awaiting server response...",
                             ImptLoggerConfig.Level.DEBUG);
                 }
@@ -78,7 +82,7 @@ public class MessageOutputHandler implements Runnable {
     // handle general request from user
     public void handleGeneralUserInput(String input, DataOutputStream outputStream)
             throws UnknownHostException, IOException {
-        switch (input) {
+        switch (input.toLowerCase()) {
             case "#payment":
                 if (ImptClient._matchedPaymentServices.length == 0 || ImptClient._matchedPaymentServices == null) {
                     ImptClientPayment imptClientPayment = new ImptClientPayment(
@@ -94,6 +98,7 @@ public class MessageOutputHandler implements Runnable {
 
                 break;
             case "#logout":
+                System.out.print("User wants to log out");
                 ImptClientInit clientInit = new ImptClientInit();
                 Boolean disconnectConfirmed = clientInit.handleDisconnect();
 
@@ -101,7 +106,7 @@ public class MessageOutputHandler implements Runnable {
                     String disconnectMessage = clientInit.getDisconnectMessage();
                     outputStream.writeUTF(disconnectMessage);
                     ImptClient._isAwaitingResponseFromServer = true;
-                    ImptClient.disconnect();
+                    // ImptClient.disconnect();
                     return;
                     // _clientSocket.close();
                 }
@@ -112,7 +117,7 @@ public class MessageOutputHandler implements Runnable {
 
                 break;
             default:
-                _logger.printLog("ImptClient", "** Unknown command **", ImptLoggerConfig.Level.INFO);
+                _logger.printLog("ImptClient", "** Unknown command ** " + input, ImptLoggerConfig.Level.INFO);
                 break;
         }
     }

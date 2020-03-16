@@ -1,11 +1,11 @@
-package impt.client.handlers;
+package impt.client;
 
 import java.io.*;
 import java.net.*;
 import impt.common.*;
-import impt.client.*;
+// import impt.client.*;
 
-public class MessageInputHandler implements Runnable {
+class MessageInputHandler implements Runnable {
     private static ImptLogger _logger = new ImptLogger();
     private Socket _clientSocket;
 
@@ -30,7 +30,8 @@ public class MessageInputHandler implements Runnable {
         while (true) {
             try {
                 // read the message sent to this client
-                String message = inputStream.readUTF();
+                String message = null;
+                message = inputStream.readUTF();
                 _logger.printLog(this.getClass().toString(), "<< " + message);
 
                 if (message != null && !message.isEmpty()) {
@@ -57,19 +58,24 @@ public class MessageInputHandler implements Runnable {
                                 Boolean connected = clientInit.handleIncomingConnect(messageArr[2], messageArr[3]);
 
                                 if (connected) {
+                                    System.out.print("CONNECTED TO OTHER USER");
                                     ImptClient._recipientUserName = clientInit.getRecipientUsername();
                                     ImptClient._recipientUserIdToken = clientInit.getRecipientUserIdToken();
                                     ImptClient._isConnectedToOther = true;
+
+                                    // ImptClient._isAwaitingResponseFromServer = false; will be set after receiving
+                                    // the PAYINFO
                                 } else {
+                                    System.out.print("NOT CONNECTED TO OTHER USER");
                                     ImptClient._recipientUserName = ImptClient._recipientUserIdToken = null;
                                     ImptClient._isConnectedToOther = false;
+                                    ImptClient._isAwaitingResponseFromServer = false; 
                                 }
 
-                                ImptClient._isAwaitingResponseFromServer = false;
                                 break;
                             case "PAYINFO":
-                                _logger.printLog(this.getClass().toString(), "SERVER PAY",
-                                        ImptLoggerConfig.Level.DEBUG);
+                                // _logger.printLog(this.getClass().toString(), "SERVER PAY",
+                                // ImptLoggerConfig.Level.DEBUG);
 
                                 ImptClient._matchedPaymentServices = messageArr[2].split(",");
                                 System.out.println(ImptClient._matchedPaymentServices[0]);
@@ -77,8 +83,8 @@ public class MessageInputHandler implements Runnable {
                                 ImptClient._isAwaitingResponseFromServer = false;
                                 break;
                             case "PAYSND":
-                                _logger.printLog(this.getClass().toString(), "SERVER PAY",
-                                        ImptLoggerConfig.Level.DEBUG);
+                                // _logger.printLog(this.getClass().toString(), "SERVER PAY",
+                                // ImptLoggerConfig.Level.DEBUG);
 
                                 ImptClientPayment imptClientPayment = new ImptClientPayment(
                                         ImptClient._recipientUserName, ImptClient._recipientUserIdToken,
@@ -91,25 +97,33 @@ public class MessageInputHandler implements Runnable {
                                 if (messageArr.length == 2) {
                                     _logger.printLog(this.getClass().toString(), "you are disconnected",
                                             ImptLoggerConfig.Level.INFO);
-                                    ImptClient._isAwaitingResponseFromServer = false;
+                                    ImptClient.disconnect();
+                                    ImptClient._isConnectedToServer = false;
                                 } else {
-                                    ImptClient._recipientUserName = null;
-                                    ImptClient._recipientUserIdToken = null;
-                                    _logger.printLog(this.getClass().toString(), "someone got disconnected",
+                                    _logger.printLog(this.getClass().toString(),
+                                            ImptClient._recipientUserName + " disconnected",
                                             ImptLoggerConfig.Level.INFO);
+                                    ImptClient._recipientUserName = ImptClient._recipientUserIdToken = null;
+                                    ImptClient._isConnectedToOther = false;
                                 }
+
+                                ImptClient._isAwaitingResponseFromServer = false;
+                                break;
                             case "CHAT":
+                            default:
+                                _logger.printLog(this.getClass().toString(), "Unhandled message: " + message,
+                                        ImptLoggerConfig.Level.PROMPT);
                                 break;
                         }
                     }
 
                     message = null;
                 }
-
             } catch (SocketException socketEx) {
                 _logger.printToFile(
                         "** SocketException below normally indicates loss of connection from the Server **");
                 _logger.printToFile(_logger.getExceptionMessage(socketEx));
+                _logger.printLog(this.getClass().toString(), "Disconnected from the server...");
                 break;
             } catch (Exception e) {
                 _logger.printLog(this.getClass().toString(), " Error Encountered: " + _logger.getExceptionMessage(e),

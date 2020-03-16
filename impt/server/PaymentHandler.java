@@ -5,12 +5,12 @@
  * @version 1
  */
 
-package impt.server.handlers;
+package impt.server;
 
 import java.util.*;
 import impt.common.*;
 
-public class PaymentHandler {
+class PaymentHandler {
     // mock user payment data
     private Map<String, List<String>> _userPaymentServices = Map.ofEntries(
             Map.entry("Doris",
@@ -24,7 +24,7 @@ public class PaymentHandler {
     private PaymentObject _paymentObject = new PaymentObject();;
 
     // Prepare payment info to send to both users when connection is established
-    public void preparePaymentInfo(String usernameOne, String usernameTwo) {
+    public PaymentObject preparePaymentInfo(String usernameOne, String usernameTwo) {
         List<String> usernameOneServices = _userPaymentServices.get(usernameOne);
         List<String> usernameTwoServices = _userPaymentServices.get(usernameTwo);
 
@@ -39,6 +39,8 @@ public class PaymentHandler {
         } else {
             _paymentObject.hasPaymentError = true;
         }
+
+        return _paymentObject;
     }
 
     public PaymentObject getPaymentObject() {
