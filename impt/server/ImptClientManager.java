@@ -127,7 +127,14 @@ class ImptClientManager implements Runnable {
                         }
 
                         break;
+
                     case "PAYSND":
+                        // send payment request to the other user
+                        ImptServer.activeSockets.get(_clientMessageObject.otherUserIdToken)._outputStream
+                                .writeUTF(_clientMessageObject.message);
+
+                        break;
+                    case "PAYACCEPT":
                         _outputStream.writeUTF(outputMessage);
 
                         break;

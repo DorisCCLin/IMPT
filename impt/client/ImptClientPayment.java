@@ -17,6 +17,7 @@ class ImptClientPayment {
     private String _paymentAmount;
     private String _chosenService;
     private String[] _paymentServices;
+    private boolean _paymentSendAccepted = false;
 
     private static ImptLogger _logger = new ImptLogger();
 
@@ -42,7 +43,7 @@ class ImptClientPayment {
         String matchedPaymentServices = "** ( " + renderPaymentServices(paymentServices) + ") **";
 
         Scanner paymentScanner = new Scanner(System.in); // Create a Scanner object
-        _logger.printLog(this.getClass().toString(), "** what payment service, please enter the number? **",
+        _logger.printLog(this.getClass().toString(), ">> what payment service, please enter the number? **",
                 ImptLoggerConfig.Level.PROMPT);
         _logger.printLog(this.getClass().toString(), matchedPaymentServices, ImptLoggerConfig.Level.PROMPT);
 
@@ -70,8 +71,8 @@ class ImptClientPayment {
     // fetch User's info to send a payment request
     public String initialPaymentSend() {
         Scanner paymentScanner = new Scanner(System.in); // Create a Scanner object
-        _logger.printLog(this.getClass().toString(), "Are you sending payment to " + _recipientUsername + "? (y/n):",
-                ImptLoggerConfig.Level.PROMPT);
+        _logger.printLog(this.getClass().toString(),
+                ">> Are you sending payment to " + _recipientUsername + "? (y/n): ", ImptLoggerConfig.Level.PROMPT);
 
         while (true) {
             if (paymentScanner.hasNextLine()) {
@@ -79,7 +80,7 @@ class ImptClientPayment {
 
                 if (response.equals("y") || response.equals("n")) {
                     if (response.equals("y")) {
-                        _logger.printLog(this.getClass().toString(), "How much would you like to send?",
+                        _logger.printLog(this.getClass().toString(), ">> How much would you like to send? **",
                                 ImptLoggerConfig.Level.PROMPT);
 
                         while (true) {
@@ -103,7 +104,27 @@ class ImptClientPayment {
         return "PAYSND BEGIN " + _recipientUserIdToken + " " + _paymentAmount + " " + _chosenService;
     }
 
-    // handle when Server resturns the payment transaction result
+    // handle incoming PAYSND
+    public void handlePaymentSendRequest(String paymentAmount, String paymentService) {
+        Scanner paymentScanner = new Scanner(System.in);
+        _logger.printLog(this.getClass().toString(), ">> " + _recipientUsername + " wanna send you $" + paymentAmount
+                + " through " + paymentService + ", okay? (y/n): ", ImptLoggerConfig.Level.PROMPT);
+        String response = paymentScanner.nextLine();
+
+        if (response.equals("y") || response.equals("n")) {
+            if (response.equals("y")) {
+                _paymentSendAccepted = true;
+                _logger.printLog(this.getClass().toString(), "** Accepting Payment...", ImptLoggerConfig.Level.INFO);
+            } else {
+                _logger.printLog(this.getClass().toString(), "** Declining Payment...", ImptLoggerConfig.Level.INFO);
+            }
+
+        } else {
+            _logger.printLog(this.getClass().toString(), "** unknown command", ImptLoggerConfig.Level.INFO);
+        }
+    }
+
+    // handle when Server returns the payment transaction result
     public void handlePaymentResponse(String[] response) {
         if (response.length == 4 && response[3].equals("success")) {
             _logger.printLog(this.getClass().toString(),
@@ -111,14 +132,18 @@ class ImptClientPayment {
         } else {
             switch (response[2]) {
                 case ("fail"):
-                    _logger.printLog(this.getClass().toString(), "Opps, transaction failed",
+                    _logger.printLog(this.getClass().toString(), "** Opps, transaction failed",
                             ImptLoggerConfig.Level.INFO);
                     break;
                 default:
-                    _logger.printLog(this.getClass().toString(), "Opps, something went wrong",
+                    _logger.printLog(this.getClass().toString(), "** Opps, something went wrong",
                             ImptLoggerConfig.Level.INFO);
                     break;
             }
         }
+    }
+
+    public boolean getPaymentSendAccepted() {
+        return _paymentSendAccepted;
     }
 }

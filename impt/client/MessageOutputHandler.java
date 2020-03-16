@@ -21,7 +21,8 @@ class MessageOutputHandler implements Runnable {
         Scanner userInputScanner = new Scanner(System.in);
         DataOutputStream outputStream = null;
         _logger.printLog(this.getClass().toString(),
-                "**** MessageOutputHandler Thread Name: " + Thread.currentThread().getName(), ImptLoggerConfig.Level.DEBUG);
+                "**** MessageOutputHandler Thread Name: " + Thread.currentThread().getName(),
+                ImptLoggerConfig.Level.DEBUG);
 
         try {
             outputStream = new DataOutputStream(_clientSocket.getOutputStream());
@@ -60,14 +61,12 @@ class MessageOutputHandler implements Runnable {
                             ImptLoggerConfig.Level.DEBUG);
                 }
             }
-        }
-        catch (SocketException socketEx) {
+        } catch (SocketException socketEx) {
             _logger.printToFile("** SocketException below normally indicates loss of connection from the Server **");
             _logger.printToFile(_logger.getExceptionMessage(socketEx));
-        }
-        catch (Exception e) {
-            _logger.printLog(this.getClass().toString(),
-                    " Error Encountered: " + _logger.getExceptionMessage(e), ImptLoggerConfig.Level.ERROR);
+        } catch (Exception e) {
+            _logger.printLog(this.getClass().toString(), " Error Encountered: " + _logger.getExceptionMessage(e),
+                    ImptLoggerConfig.Level.ERROR);
         }
     }
 
@@ -85,8 +84,7 @@ class MessageOutputHandler implements Runnable {
         switch (input.toLowerCase()) {
             case "#payment":
                 if (ImptClient._matchedPaymentServices.length == 0 || ImptClient._matchedPaymentServices == null) {
-                    ImptClientPayment imptClientPayment = new ImptClientPayment(
-                            ImptClient._recipientUserName,
+                    ImptClientPayment imptClientPayment = new ImptClientPayment(ImptClient._recipientUserName,
                             ImptClient._recipientUserIdToken, ImptClient._matchedPaymentServices);
                     String paymentSendMessage = imptClientPayment.initialPaymentSend();
                     outputStream.writeUTF(paymentSendMessage);
