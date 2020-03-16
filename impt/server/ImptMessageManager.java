@@ -98,14 +98,21 @@ public class ImptMessageManager {
                     break;
 
                 case "PAYSND":
+                    clientMessageObject.otherUserIdToken = messageArr[2];
+                    clientMessageObject.message = "PAYSND RES " + messageArr[3] + messageArr[4];
+
+                    break;
+
+                case "PAYACCEPT":
+                    clientMessageObject.message = "PAYSND RES fail";
                     PaymentHandler paymentHandler = new PaymentHandler();
                     paymentHandler.sendPayment();
                     PaymentHandler.PaymentObject paymentObject = paymentHandler.getPaymentObject();
 
                     if (paymentObject.isPaymentSuccess) {
-                        clientMessageObject.message = "PAYSND RES " + messageArr[3] + " success";
+                        clientMessageObject.message = "PAYACCEPT RES " + messageArr[3] + " success";
                     } else {
-                        clientMessageObject.message = "PAYSND RES fail";
+                        clientMessageObject.message = "PAYACCEPT RES fail";
                     }
 
                     break;

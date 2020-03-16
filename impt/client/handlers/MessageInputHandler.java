@@ -80,6 +80,17 @@ public class MessageInputHandler implements Runnable {
                                 _logger.printLog(this.getClass().toString(), "SERVER PAY",
                                         ImptLoggerConfig.Level.DEBUG);
 
+                                ImptClientPayment imptClientPaymentPaysnd = new ImptClientPayment(
+                                        ImptClient._recipientUserName, ImptClient._recipientUserIdToken,
+                                        ImptClient._matchedPaymentServices);
+                                imptClientPaymentPaysnd.handlePaymentSendRequest(messageArr[2], messageArr[3]);
+
+                                ImptClient._isAwaitingResponseFromServer = false;
+                                break;
+                            case "PAYACCEPT":
+                                _logger.printLog(this.getClass().toString(), "SERVER PAY",
+                                        ImptLoggerConfig.Level.DEBUG);
+
                                 ImptClientPayment imptClientPayment = new ImptClientPayment(
                                         ImptClient._recipientUserName, ImptClient._recipientUserIdToken,
                                         ImptClient._matchedPaymentServices);

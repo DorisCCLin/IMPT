@@ -42,8 +42,7 @@ class ImptClientManager implements Runnable {
                 ImptMessageManager imptMessageManager = new ImptMessageManager();
                 ClientMessageObject newClientMessageObject = imptMessageManager.handleClientMessage(receivedMessage);
 
-                if(newClientMessageObject != null)
-                {
+                if (newClientMessageObject != null) {
                     _clientMessageObject = newClientMessageObject;
                 }
 
@@ -93,7 +92,14 @@ class ImptClientManager implements Runnable {
                         }
 
                         break;
+
                     case "PAYSND":
+                        // send payment request to the other user
+                        ImptServer.activeSockets.get(_clientMessageObject.otherUserIdToken)._outputStream
+                                .writeUTF(_clientMessageObject.message);
+
+                        break;
+                    case "PAYACCEPT":
                         _outputStream.writeUTF(outputMessage);
 
                         break;
