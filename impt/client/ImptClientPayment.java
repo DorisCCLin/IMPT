@@ -35,19 +35,18 @@ public class ImptClientPayment {
         }
 
         return list;
-
     }
 
     // fetch User's choice of payment service
     private void getPaymentServiceChoice(String[] paymentServices) {
         String matchedPaymentServices = "** ( " + renderPaymentServices(paymentServices) + ") **";
 
-        Scanner myObj = new Scanner(System.in); // Create a Scanner object
+        Scanner paymentScanner = new Scanner(System.in); // Create a Scanner object
         _logger.printLog(this.getClass().toString(), "** what payment service, please enter the number? **",
                 ImptLoggerConfig.Level.PROMPT);
         _logger.printLog(this.getClass().toString(), matchedPaymentServices, ImptLoggerConfig.Level.PROMPT);
 
-        String entryNumber = myObj.nextLine();
+        String entryNumber = paymentScanner.nextLine();
 
         for (String service : paymentServices) {
             int i = 0;
@@ -57,50 +56,30 @@ public class ImptClientPayment {
                         ImptLoggerConfig.Level.INFO);
             }
             i++;
-
         }
 
-        // switch (service) {
-        // case "1":
-
-        // _paymentService = "PayPay";
-        // _logger.printLog(this.getClass().toString(), "You picked " + _paymentService,
-        // ImptLoggerConfig.Level.INFO);
-        // break;
-        // case "2":
-        // _paymentService = "Venmo";
-        // _logger.printLog(this.getClass().toString(), "You picked " + _paymentService,
-        // ImptLoggerConfig.Level.INFO);
-        // break;
-        // case "3":
-        // _paymentService = "Cash";
-        // _logger.printLog(this.getClass().toString(), "You picked " + _paymentService,
-        // ImptLoggerConfig.Level.INFO);
-        // break;
-        // default:
-        // getPaymentServiceChoice();
-        // }
-
+        paymentScanner.close();
     }
 
     // fetch User's info to send a payment request
     public String initialPaymentSend() {
-        Scanner myObj = new Scanner(System.in); // Create a Scanner object
+        Scanner paymentScanner = new Scanner(System.in); // Create a Scanner object
         _logger.printLog(this.getClass().toString(), "Are you sending payment to " + _recipientUsername + "? (y/n):",
                 ImptLoggerConfig.Level.PROMPT);
-        String response = myObj.nextLine();
+        String response = paymentScanner.nextLine();
 
         if (response.equals("y") || response.equals("n")) {
             if (response.equals("y")) {
                 _logger.printLog(this.getClass().toString(), "How much would you like to send?",
                         ImptLoggerConfig.Level.PROMPT);
-                _paymentAmount = myObj.nextLine();
+                _paymentAmount = paymentScanner.nextLine();
                 getPaymentServiceChoice(_paymentServices);
             }
-
         } else {
             initialPaymentSend();
         }
+
+        paymentScanner.close();
 
         return "PAYSND BEGIN " + _recipientUserIdToken + " " + _paymentAmount + " " + _chosenService;
     }
@@ -110,7 +89,7 @@ public class ImptClientPayment {
         if (response.length == 4 && response[3].equals("success")) {
             _logger.printLog(this.getClass().toString(),
                     "You have paid " + _recipientUsername + " " + response[2] + ".", ImptLoggerConfig.Level.INFO);
-        } else
+        } else {
             switch (response[2]) {
                 case ("fail"):
                     _logger.printLog(this.getClass().toString(), "Opps, transaction failed",
@@ -119,8 +98,8 @@ public class ImptClientPayment {
                 default:
                     _logger.printLog(this.getClass().toString(), "Opps, something went wrong",
                             ImptLoggerConfig.Level.INFO);
-
+                    break;
             }
+        }
     }
-
 }

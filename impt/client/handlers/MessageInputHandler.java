@@ -62,6 +62,7 @@ public class MessageInputHandler implements Runnable {
                                     ImptClient._isConnectedToOther = true;
                                 } else {
                                     ImptClient._recipientUserName = ImptClient._recipientUserIdToken = null;
+                                    ImptClient._isConnectedToOther = false;
                                 }
 
                                 ImptClient._isAwaitingResponseFromServer = false;

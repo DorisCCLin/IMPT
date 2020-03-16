@@ -52,8 +52,8 @@ public class MessageOutputHandler implements Runnable {
                         }
                     }
 
-                    // _logger.printLog(this.getClass().toString(), "** Awaiting server response...",
-                    //         ImptLoggerConfig.Level.INFO);
+                    _logger.printLog(this.getClass().toString(), "** Awaiting server response...",
+                            ImptLoggerConfig.Level.DEBUG);
                 }
             }
         }
